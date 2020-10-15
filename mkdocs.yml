@@ -1,4 +1,22 @@
 site_name: PurpleCypress
 
+nav:
+    - 简介:
+      - 首页: index.md
+    - CSAPP:
+      - 工大黑书整理: CSAPP.md
+
+# Theme
 theme:
-    name: material
+    name: 'material'
+    language: 'zh'
+    palette:
+      primary: 'white'
+      accent: 'black'
+    logo:
+      icon: 'school'
+    feature:
+      tabs: true
+    font:
+      text: 'Fira Sans'
+      code: 'Fira Mono'
