@@ -11,7 +11,7 @@ install:
   - echo -e "machine github.com\n  login ${GITHUB_TOKEN}" > ~/.netrc
 
 script:
-  - mkdocs gh-deploy --force --clean
+  - mkdocs gh-deploy --force
   - mkdocs build
 
 after_success:
