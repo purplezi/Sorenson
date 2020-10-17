@@ -26,8 +26,8 @@
 
 某天在校园网进行测试，发现用`tracert`的第一跳和默认网关的地址不一样，还不知道是为啥
 
-![](img\tracert-nexthop-problem.png)
+![下一跳](img\tracert-nexthop-problem.png)
 
 这难道是路由表更新了的证明
 
-![](img\tracert-peer.png)
+![更新发生？](img\tracert-peer.png)
