@@ -7,6 +7,11 @@ nav:
       - 工大黑书整理: CSAPP/CSAPP.md
     - Computer Network:
       - 工大计网: Network/ComputerNetwork.md
+    - English:
+      - Speaking: English/speaking.md
+      - Writing: English/writing.md
+      - Listening: English/listening.md
+      - Reading: English/reading.md
 
 # Theme
 theme:
