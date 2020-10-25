@@ -162,4 +162,10 @@ emotional support
    >
    > The second reason is that it is indeed convenient for students. Because the shcool's cafe shop is full of people all the time and students have to wait for a long time to get what they want to eat. Plus if they want to eat at the stores in the town, they have to spend many hours on commuting, which will influence their study. 
 
-   
+
+# Task 3
+
+>  Sharping is a method that parents use to have their children act in a positive manner.
+>
+> The professor use her own experience to explain this method. She helped her young daughter to learn to draw and color the picture with marker and crayon.  When her daughter made a mark in a proper place or colored a thing right, the professor would praised her very much. So the professor's compliments encouraged her child to do more coloring. But if her daughter didn't mark the right place or draw the inaccurate color, the professor did nothing, which made her child realize that she was drawing improperly. Finally her child focused on the drawing and made harder to do right.
+
