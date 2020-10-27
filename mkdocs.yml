@@ -12,6 +12,8 @@ nav:
       - Writing: English/writing.md
       - Listening: English/listening.md
       - Reading: English/reading.md
+    - Linux:
+      - 嵌入式计算机系统实验自救手册: Linux/Linux.md
 
 # Theme
 theme:
