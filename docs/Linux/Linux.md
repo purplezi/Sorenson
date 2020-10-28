@@ -174,19 +174,33 @@
 
 - [x] **下载解压交叉编译工具到/test文件夹下，添加系统路径**
 
-个人理解思路：
+交叉编译：在当前编译平台下，编译出来的程序能运行在体系结构不同的另一种目标平台上，但是编译平台本身却不能运行该程序。比如，在`x86`平台上，编写程序并编译成能运行在`ARM`平台的程序，编译得到的程序在`x86`平台上是不能运行的，必须放到`ARM`平台上才能运行
+
+<details>
+<summary>个人理解思路 - 未实践</summary>
 
 1. 首先安装Linux的交叉编译工具链，下载后解压(tar命令)
    	- https://blog.csdn.net/baidu_37973494/article/details/82949963
 2. 将该工具链导出到环境变量，使得终端可以直接使用命令
    	- https://blog.csdn.net/zy_heu/article/details/80062806
-      	- https://blog.csdn.net/lhh_qrsly/article/details/109193284
+    - https://blog.csdn.net/lhh_qrsly/article/details/109193284
+
+</details>
 
 ## Step 5
 
 - [x] **编写makefile文件，通过make实现hello.c交叉编译**
 
-1. 编写makefile文件，在命令行下`gedit makefile1`，写入如下内容：
+1. 编写makefile文件，在命令行下
+    
+    ```shell
+    gedit makefile1
+    # 或者 vim makefile1
+    ```
+    
+    写入如下内容：
+
+    法①
 
     ```makefile
     all:
@@ -195,7 +209,54 @@
         rm -rf hello hello.o
     ```
 
-    或者
+    上述修改为 :robot:makefile**自动变量**写法
+
+    ```makefile
+    .PHONY:clean
+    CC = gcc
+    OBJ = hello.c
+    hello:$(OBJ) #hello:hello.c
+        $(CC) $^ -o $@
+
+    clean:
+        rm -f *.o hello
+    ```
+
+    解析：
+
+    ```makefile
+    .PHONY:clean
+    CC = gcc
+    OBJ = hello.c
+    hello:$(OBJ)
+        $(CC) $^ -o $@
+        # $^ 指的是冒号后的值
+        # $@ 指的是冒号前面的hello
+        # 相当于gcc hello.c -o hello
+    clean:
+        rm -f *.o hello
+    ```
+
+    <details>
+    <summary>关于自动变量的一些tips</summary>
+
+    | 选项名 | 作用 |
+    | --- | --- |
+    | $@ | 规则的目标文件名 |
+    | $< | 规则的第一个依赖文件名 | 
+    | $^ | 规则的所有依赖文件列表 |
+
+
+    reference:
+    - https://blog.csdn.net/men_wen/article/details/75272585
+    - https://blog.csdn.net/u010299133/article/details/88761179
+
+    </details>
+
+    ---
+
+
+    或者法② [稍复杂，分为两个过程]
 
     ```makefile
     hello:hello.o
@@ -205,6 +266,26 @@
     clean:
         rm -rf hello.o hello
     ```
+
+    对应的自动变量写法
+
+    ```makefile
+    .PHONY:clean
+    CC = gcc
+    hello:hello.o
+        $(CC) $^ -o $@
+    hello.o:hello.c
+        $(CC) -c $^ -o $@
+    
+    clean:
+        rm -f *.o hello
+    ```
+
+    - `all`：其功能一般是编译所有的目标
+    - `clean`：功能是删除所有被make创建的文件，此情景下删除的时中间.o文件
+    - 通过gcc不加参数可以**一步直接编译**生成可执行文件
+    - `-o <file>` 表示将输出放入<文件>
+    - `-c` 表示编译和汇编，但不要链接，生成.o文件，`gcc hello.o`即gcc自动链接上一步生成的hello.o来生成最终可执行文件hello
 
 2. 通过make将源文件hello.c编译生成可执行文件
 
@@ -285,7 +366,7 @@ Reference：
             DIE("unable to dup2 the error log");
         }
 
-        修改为
+        修改为(即注释掉)
 
         /*if (dup2(error_log, STDERR_FILENO) == -1) {
             DIE("unable to dup2 the error log");
@@ -358,7 +439,7 @@ Reference：
 
 - [x] **编写网页文件，通过浏览器访问boa服务器网页 **
 
-- 在boa已启动的前提下，在/var/www/html目录下，新建index.html
+- 在boa已启动的前提下，在/var/www/html目录下，新建index.html / 如果已经有了就用自己的内容覆盖他
 
 - 在firefox输入 127.0.0.1，即可显示自己编写的网页
 
@@ -393,7 +474,7 @@ systemctl start httpd
 
 - [x] **编写shell程序，检测/test文件夹是否存在，如果存在显示里边**
 
-- 首先出/test目录，新建shell脚本
+- 首先出/test目录(即和test目录并行)，新建shell脚本
 
     ```bash
     vi a.sh
@@ -404,24 +485,20 @@ systemctl start httpd
     ```shell
     #! /bin/bash
 
-    function read_dir(){
     for file in `ls` #注意此处这是两个反引号，表示运行系统命令
     do
-    # 判断文件夹是否存在 -d
-    if [[ ! -d "$1" ]]; then
-    pass
-    else
-    echo "/test exists, showing inside..."
-    for file in "./test"/*
-    do
-        echo "file: ${file}"
+        # -d directory 判断文件夹test是否存在
+        if [[ ! -d "test" ]]; then
+            pass
+        else
+            echo "test exists, showing inside..."
+            for file in "./test"/*
+            do
+                echo "file: ${file}"
+            done
+            break
+        fi
     done
-    break
-    fi
-    done
-    } 
-
-    read_dir 
     ```
 
 - 执行shell
@@ -431,4 +508,3 @@ systemctl start httpd
     ```
     
     ![shell](img/shell.png)
-
