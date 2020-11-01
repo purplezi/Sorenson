@@ -12,3 +12,5 @@
   ```
   ![Screenshot](img/screenshot.png)
   ```
+
+- [解救我的烂糟mathjax](https://www.coder.work/article/97039)

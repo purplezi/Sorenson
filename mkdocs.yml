@@ -4,7 +4,10 @@ nav:
     - 简介:
       - 首页: index.md
     - CSAPP:
-      - 工大黑书整理: CSAPP/CSAPP.md
+      - 【考研向】计算机系统基本概念: CSAPP/CSAPP-PartZero.md
+      - 【考研向】程序结构和执行: CSAPP/CSAPP-PartOne.md
+      - 【考研向】在系统上运行程序: CSAPP/CSAPP-PartTwo.md
+      - 【考研向】程序间的交互和通信: CSAPP/CSAPP-PartThree.md
     - Computer Network:
       - 工大计网: Network/ComputerNetwork.md
     - English:
@@ -32,6 +35,8 @@ theme:
 
 extra_javascript:
     - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+    - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML'
+    - 'https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js'
 
 extra:
   social:
