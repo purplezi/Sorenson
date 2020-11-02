@@ -162,10 +162,100 @@ emotional support
    >
    > The second reason is that it is indeed convenient for students. Because the shcool's cafe shop is full of people all the time and students have to wait for a long time to get what they want to eat. Plus if they want to eat at the stores in the town, they have to spend many hours on commuting, which will influence their study. 
 
-
 # Task 3
 
->  Sharping is a method that parents use to have their children act in a positive manner.
->
-> The professor use her own experience to explain this method. She helped her young daughter to learn to draw and color the picture with marker and crayon.  When her daughter made a mark in a proper place or colored a thing right, the professor would praised her very much. So the professor's compliments encouraged her child to do more coloring. But if her daughter didn't mark the right place or draw the inaccurate color, the professor did nothing, which made her child realize that she was drawing improperly. Finally her child focused on the drawing and made harder to do right.
+1. Sharping
+
+   > Sharping is a method that parents use to have their children act in a positive manner.
+   >
+   > The professor use her own experience to explain this method. She helped her young daughter to learn to draw and color the picture with marker and crayon.  When her daughter made a mark in a proper place or colored a thing right, the professor would praised her very much. So the professor's compliments encouraged her child to do more coloring. But if her daughter didn't mark the right place or draw the inaccurate color, the professor did nothing, which made her child realize that she was drawing improperly. Finally her child focused on the drawing and made harder to do right.
+
+2. Explicit memory and implicit memory
+
+   > Explicit memory is a conscious or intentional recollection, but the implicit memory is the opposite.
+   > The professor tells that we can easily remember what we ate and done last night to illustrate we have an explicit memory. 
+   >
+   > Furthermore he uses a study to demostrate implicit memory. In the study, people were driving in the highway with a billboard that advertising a car. The ad showed a big picture of the car, and under the picture was the name of car "Penser". When the researchers asked the drivers whether they remembered the car advertisement. None of them said yes. So they could not consciously recall about the experience in the highway. But when they were asked to name an animal starting with letter 'P', they answered "penser" which was the name of the car instead of saying the most common word "Pig". Because the advertisement had an effect on the drivers even though they didn't remember seeing it.
+
+3. Reference Groups
+
+   > Reference Groups are groups of people whom we admire and whose behavior and attitudes we tend to imitate.
+   >
+   > The professor demostrates the term with his own experience. When he began his study in the university, he made friends with some art students. He thought they were cool, fun and creative and they often wore casual clothes like T-shirts, jeans and sneakers. So he also dressed like them and he fit in the group well and also felt cool.
+   >
+   > However, when the professor moved to Chigago to start his job, he was impressed by the young people who worked there for few years and could handle major responsibility in the company. His collegues liked to dress up a little bit when going out on a concert or baseball games. The men would wear a pair of nicer pants and the women would wear a more fashionable dress and nicer shoes. Finally, the professor thought it was really classic and formal, so he abandoned T-shirts and jeans and started to dress like his collegues.
+
+4. Scent Marketing
+
+   - 阅读思路
+
+     - 找definition 
+
+       - 定位“第二句”：one effective method - 能够知道这是一种营销手段
+
+       - 觉着这个定义太少了，就加了它的功能 - “第一句话” 
+
+       - 文章想讲的思路是：
+
+         ① 商场有香气，但是香气是根据不同的section而变化的
+
+         ② 人们会产生好的感觉
+
+         ③ 最终会促使人们消费
+
+     - 猜想听力
+
+       - 针对“study”，研究的内容应该是
+
+         ① 在不同的section设置不同的scent
+
+         ② 观察最终的销量和平常的区别
+
+         ③ 询问原因：人们被香气吸引
+
+         ④ 得出结论：不同的香气促使人们消费
+
+   > Scent Marketing is an effective way to use different scents to encourage shoppers to purchase more products when they visit.
+   >
+   > The professor raises two studies to explain this idea.
+   >
+   > One study conducted in a department store is that the scent in the woman's section was appealing to women and the scent in the man's section could please the men. Finally, the store sold double number of the clothes. And the male and female customers said they were attracted to the smell so they purchased more than they would do normally.
+   >
+   > Another survey is that people prefer the running shoes to have some kind of fragrance. So they would pay more money for those shoes that smell nicer.
+   >
+   > Generally speaking, various scents not only entice people to buy more, but also encourage them to pay more for the same products.
+
+5. Population Growth
+
+   - 阅读思路
+
+     - 找definition
+
+       - 本来想只找population growth is xxx，但是想想不对，这只是一个定义，但是原文应该讲的是一个物种速率变化的过程吧 :beetle:
+
+       - 文章想讲的应该是：
+
+         ① 如果一个物种的population的增长速率变化
+
+         ② 会造成的影响
+
+         ③ 大自然会调控
+
+     - 猜想听力
+
+       - 针对动植物的变化：
+
+          ① 物种速率变化，数量变多/变少
+
+          ② 造成一定好/坏影响 
+
+          ③ 由于一些因素，物种的增长速率变回恒定
+
+   > Population growth is the rate at a specie increases in numbers. If the rate is too rapid, it may affect the nature and nature will do something to handle it.
+   >
+   > The professor gives two species' examples to illustrate this.
+   >
+   > One is the pinetree. The pinetree grows very fast at any soil and any climate. It can easily occupy the whole forest, which will influence other trees' species. Besides killed by some diseases and human, in most time the pinetrees are burnt down by the forest fires occured naturally. So in this way their growth can be limited.
+   >
+   > Another is the deer. The rate of deer specie is also rapid. But as the number of the deer increases, so does that of their predators like wolf because they have more deers to eat. So the deer number will decrease because their predators increases. As the decline of the deer population, the wolf number will decline too. So the nature can control the rate of the animal specia at a suitable rate.
 
