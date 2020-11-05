@@ -1,26 +1,19 @@
 # 事实信息题
 
 1. TPO 4 Petroleum Resources (正确率 68.54%) 
-
-   <u>Petroleum, **consisting of** crude oil and natural gas, seems to originate from organic matter in marine sediment</u>:star:. Microscopic organisms settle to the seafloor and accumulate in marine mud. The organic matter may partially decompose, using up the dissolved oxygen in the sediment. As soon as the oxygen is gone, decay stops and the remaining organic matter is preserved. 
-
-   Q: According to paragraph 1, which of the following is **true** about ==petroleum formation==? 
-
-   A.Microscopic organisms that live in mud produce crude oil and natural gas.
-
-   B.Large amounts of oxygen are needed for petroleum formation to begin.
-
-   C.Petroleum is produced when organic material in sediments combines with decaying marine organisms.
-
-   D.Petroleum formation appears to begin in marine sediments where organic matter is present. 
-
-   > 选择：D - 直接找到了原文的对应句子
-   >
-   > A选项后半句错误，不是mud produce crude oil and natural gas
-   >
-   > B选项意思错误，从原文最后一句得知，没有氧气的时候有机物质才会保存
-   >
-   > C选项意思错误，不是二者combine，而是decaying marine organisms产生organic material
+        <u>Petroleum, **consisting of** crude oil and natural gas, seems to originate from organic matter in marine sediment</u>:star:. Microscopic organisms settle to the seafloor and accumulate in marine mud. The organic matter may partially decompose, using up the dissolved oxygen in the sediment. As soon as the oxygen is gone, decay stops and the remaining organic matter is preserved. 
+        Q: According to paragraph 1, which of the following is **true** about ==petroleum formation==? 
+        A.Microscopic organisms that live in mud produce crude oil and natural gas.
+        B.Large amounts of oxygen are needed for petroleum formation to begin.
+        C.Petroleum is produced when organic material in sediments combines with decaying marine organisms.
+        D.Petroleum formation appears to begin in marine sediments where organic matter is present. 
+        > 选择：D - 直接找到了原文的对应句子
+        >
+        > A选项后半句错误，不是mud produce crude oil and natural gas
+        >
+        > B选项意思错误，从原文最后一句得知，没有氧气的时候有机物质才会保存
+        >
+        > C选项意思错误，不是二者combine，而是decaying marine organisms产生organic material
 
 2. TPO 8 Running Water on Mars (正确率 68.41%)
    Some scientists speculate that Mars may have enjoyed an extended early Period during which rivers, lakes, and perhaps even oceans adorned its surface. A 2003 Mars Global Surveyor image shows what mission specialists think may be a delta―a fan-shaped network of channels and sediments where a river once flowed into a larger body of water, in this case a lake filling a crater in the southern highlands. <u>Other researchers go even further, suggesting that the data provide evidence for large open expenses of water on the early Martian surface.</u>:star: <u>A computer- generated view of the Martian North Polar Region shows the extent of what may have been an ancient ocean **covering** much of the northern lowlands.</u> The Hellas Basin, which measures some 3,000 kilometers across and has a floor that lies nearly 9 kilometers below the basin’s rim, is another candidate for an ancient Martian sea. 

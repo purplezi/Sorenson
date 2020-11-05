@@ -1,3 +1,6 @@
+- 练的套路
+- 在解题的时候可以先聊一聊定义，顺着定义往下走就有思路了 - 题不太好解，比较模糊
+
 # Task 1
 
 - 音调太平，语速
@@ -257,5 +260,9 @@ emotional support
    >
    > One is the pinetree. The pinetree grows very fast at any soil and any climate. It can easily occupy the whole forest, which will influence other trees' species. Besides killed by some diseases and human, in most time the pinetrees are burnt down by the forest fires occured naturally. So in this way their growth can be limited.
    >
-   > Another is the deer. The rate of deer specie is also rapid. But as the number of the deer increases, so does that of their predators like wolf because they have more deers to eat. So the deer number will decrease because their predators increases. As the decline of the deer population, the wolf number will decline too. So the nature can control the rate of the animal specia at a suitable rate.
+   > Another is the deer. The rate of deer specie is also rapid. But as the number of the deer increases, so does that of their predators like wolf because they have more deers to eat. So the deer number will decrease because their predators increases. As the decline of the deer population, the wolf number will decline too. So the nature can control the rate of the animal specie at a suitable rate.
+
+# Task 4
+
+
 
