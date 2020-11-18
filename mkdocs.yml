@@ -5,7 +5,8 @@ nav:
       - 首页: index.md
     - CSAPP:
       - 【考研向】计算机系统基本概念: CSAPP/CSAPP-PartZero.md
-      - 【考研向】程序结构和执行: CSAPP/CSAPP-PartOne.md
+      - 【考研向】程序结构和执行-信息的表示和处理: CSAPP/CSAPP-PartOne-1.md
+      - 【考研向】程序结构和执行-程序的机器级表示: CSAPP/CSAPP-PartOne-2.md
       - 【考研向】在系统上运行程序: CSAPP/CSAPP-PartTwo.md
       - 【考研向】程序间的交互和通信: CSAPP/CSAPP-PartThree.md
     - Computer Network:
