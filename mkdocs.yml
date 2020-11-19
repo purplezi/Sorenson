@@ -1,4 +1,6 @@
 site_name: PurpleCypress
+repo_name: 'purplezi/For_HIT'
+# repo_url: https://github.com/purplezi/For_HIT
 
 nav:
     - 简介:
@@ -28,8 +30,11 @@ theme:
     name: 'material'
     language: 'zh'
     palette:
-      primary: 'white'
-      accent: 'black'
+      primary: 'pink'
+      accent: 'cyan'
+    toggle:
+      icon: 'material/toggle-switch-off-outline'
+      name: 'Switch to dark mode'
     logo:
       icon: 'school'
     feature:
@@ -47,9 +52,14 @@ extra:
   social:
     - type: 'github'
       link: 'https://github.com/purplezi'
+  extra:
+    - disqus: 'https-purplezi-site-for-hit'
 
 # Extensions
 markdown_extensions:
+    - toc:
+        permalink: ⚓︎
+        integrate: true
     - admonition
     - codehilite:
         guess_lang: false
@@ -64,7 +74,9 @@ markdown_extensions:
     - pymdownx.critic
     - pymdownx.details
     - pymdownx.emoji:
-        emoji_generator: !!python/name:pymdownx.emoji.to_svg
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+        # emoji_generator: !!python/name:pymdownx.emoji.to_svg
     - pymdownx.inlinehilite
     - pymdownx.keys
     - pymdownx.magiclink
