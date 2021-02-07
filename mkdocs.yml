@@ -22,10 +22,10 @@ nav:
       - Reading-Homework5-2: English/reading-hw5-b.md
       - Reading-Homework6: English/reading-hw6.md
       - Reading-Homework7: English/reading-hw7.md
+    - Forensics:
+      - 数字图像取证: Forensics/image.md
     - Linux:
       - 嵌入式计算机系统实验自救手册: Linux/Linux.md
-    - Forensic:
-      - 数字图像取证：Forensics/image.md
 
 # Theme
 theme:
