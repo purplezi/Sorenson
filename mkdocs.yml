@@ -24,6 +24,8 @@ nav:
       - Reading-Homework7: English/reading-hw7.md
     - Linux:
       - 嵌入式计算机系统实验自救手册: Linux/Linux.md
+    - Forensic:
+      - 数字图像取证：Forensics/image.md
 
 # Theme
 theme:

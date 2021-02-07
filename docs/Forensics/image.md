@@ -145,21 +145,13 @@
 - 定性
   - 使用视觉图形显示恢复的干净图像
 
-
-
 设计损失函数
 
 挖掘边缘信息
 
 # 取证 Forensics
 
-
-
-
-
 ## Forensic Similarity
-
-
 
 从噪声残差中提取特征
 
@@ -175,7 +167,6 @@
 - “Forensic Similarity for Digital Images”
   - forensic similarity
 - “Media Forensics and DeepFakes: an overview”
-  - 
 - “Noiseprint: a CNN-based camera model fingerprint”
   - 相机指纹
 - “On Addressing the Impact of ISO Speed Upon PRNU and Forgery Detection”
