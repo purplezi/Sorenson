@@ -26,6 +26,8 @@ nav:
       - 数字图像取证: Forensics/image.md
     - Linux:
       - 嵌入式计算机系统实验自救手册: Linux/Linux.md
+    - YOLO:
+      - yolo原理: YOLO/yolo原理.md
 
 # Theme
 theme:
