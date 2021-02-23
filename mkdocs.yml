@@ -29,6 +29,8 @@ nav:
       - Linux与Windows文件交互: Linux/Linux_Corresponence_Windows.md
     - YOLO:
       - yolo原理: YOLO/yolo原理.md
+      - yolo_spp_code_学习笔记1: YOLO/yolo_spp_code_1.md
+      - yolo_spp_code_学习笔记2: YOLO/yolo_spp_code_2.md
 
 # Theme
 theme:
