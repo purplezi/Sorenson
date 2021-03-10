@@ -31,6 +31,8 @@ nav:
       - yolo原理: YOLO/yolo原理.md
       - yolo_spp_code_学习笔记1: YOLO/yolo_spp_code_1.md
       - yolo_spp_code_学习笔记2: YOLO/yolo_spp_code_2.md
+    - Socket:
+      - socket基础: Socket/socket.md
 
 # Theme
 theme:
