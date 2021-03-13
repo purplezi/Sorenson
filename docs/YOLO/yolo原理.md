@@ -53,7 +53,7 @@
 
 ==tips:==
 
-(1) bouding box 损失中的宽高损失计算需要**开根号**，目的是**防止不同尺寸的目标框偏移相同距离时的 loss 值一样**（偏移相同的距离，对于大目标而言， IoU 较大，则loss值应该相对较低；对于小目标而言， IoU 较小，则loss值应该相对较高，故采用开根可以起到如此效果）
+(1) bouding box 损失中的宽高损失计算需要**开根号**，目的是**防止不同尺寸的目标框偏移相同距离时的 loss 值一样**（偏移相同的距离，对于大目标而言， IoU 较大，则 loss 值应该相对较低；对于小目标而言， IoU 较小，则 loss 值应该相对较高，故采用开根可以起到如此效果）
 
 <!-- <img src=".\pic\yolov1_boundingboxloss.png"> -->
 ![](pic/yolov1_boundingboxloss.png)
@@ -76,7 +76,7 @@
 
 #### 2.1 改进
 
-(1) Batch Normalization : 在每个卷积层后都增加了BN层
+(1) Batch Normalization : 在每个卷积层后都增加了 BN 层
 
 * 更好收敛
 * 减少其他形式的正则化处理
@@ -115,7 +115,7 @@
 
 ![](pic/yolov3_darknet53.png)
 
-* 53个卷积层（包括最后的 Connnected ），其中 convolutianl 均由`卷积层， BN 层，激活函数(LeakyRelu)`组成，残差结构均为`主分支和捷径分支`的相加结构
+* 53 个卷积层（包括最后的 Connnected ），其中 convolutianl 均由`卷积层， BN 层，激活函数(LeakyRelu)`组成，残差结构均为`主分支和捷径分支`的相加结构
 * 没有 maxpolling 层，下采样均由卷积层处理( size 为 2 )
 
 #### 3.2 模型结构
@@ -142,7 +142,7 @@
 
 #### 3.4 损失函数
 
->  YOLOv3 的损失函数主要分为 3 个部分：目标置信度损失 $L_{conf}(o,c)$ ,目标分类损失 $L_{cla}(O,C)$ 和目标定位偏移量损失 $L_{loc}(l,g)$ , $\lambda_1,\lambda_2,\lambda_3$ 为平衡系数
+> YOLOv3 的损失函数主要分为 3 个部分：目标置信度损失 $L_{conf}(o,c)$ ,目标分类损失 $L_{cla}(O,C)$ 和目标定位偏移量损失 $L_{loc}(l,g)$ , $\lambda_1,\lambda_2,\lambda_3$ 为平衡系数
 >  $L(O,o,C,c,l,g) = \lambda_1 L_{conf}(o,c) + \lambda_2 L_{cla}(O,C) + \lambda_3 L_{loc}(l,g)$
 
 ##### 3.4.1 目标置信度损失（二值交叉熵）
@@ -181,7 +181,7 @@ $O_{ij} \in {\{0,1\}}$，表示目标边界框 i 中是否存在第 j 类目标�
 （2） 增加目标个数
 （3） BN 能一次性统计多张图片的参数
 
-##### 3.5.2 SPP模块
+##### 3.5.2 SPP 模块
 
 ![](pic/yolov3_spp.png)
 
