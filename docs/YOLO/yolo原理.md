@@ -60,8 +60,6 @@
 
 (2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $\hat{C_i}$ 取 1 或 0 
 
-(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $$\hat{C_i}$$ 取 1 或 0 
-
 #### 1.3 局限性
 
 (1) 群体性目标难预测，例如一群飞鸟，不适合密集性对象
@@ -128,7 +126,7 @@
   
 ![](pic/yolov3_boundingbox_parameters.png)
 
-每个特征层的预测参数个数为 $ N \times N \times [3 * (4 + 1 + 80)] $ ,其中 80 为种类数（ CoCo 数据集）
+每个特征层的预测参数个数为 $N \times N \times [3 * (4 + 1 + 80)]$ ,其中 80 为种类数（ CoCo 数据集）
 
 *  Up Sampling 为上采样层，高和宽会扩大为原来的 2 倍，扩大后便可与原来低层的输出进行 concatenate ，即进行深度上的拼接（ 13 -> 26 -> 52 ）
 *  特征图 1 尺寸为 13 * 13,用来预测相对较大的目标；特征图 2 尺寸为 26 * 26,用来预测大小中等的目标；特征图 3 尺寸为 52 * 52，用来预测相对较小的目标
@@ -137,7 +135,7 @@
 
 ![](pic/yolov3_boundingboxpredict.png)
 
-> $ \sigma $ 函数即为 sigmoid 函数，将预测的增量限制在一定范围使 anchor 不会超出对应的 grid cell 
+> $\sigma$ 函数即为 sigmoid 函数，将预测的增量限制在一定范围使 anchor 不会超出对应的 grid cell 
 
 与 ground truth 的 重合度最大的 bounding box 定为正样本，重合度不是最大但大于阈值的则忽视（不作为样本，即不计算目标框损失 loss for coordinate prediction 和类别损失 loss for class prediction ,仅计算置信度 objectness ），其余的则为负样本
 
@@ -156,7 +154,7 @@ $o_i \in [0,1]$,表示目标边界与真实边界(ground truth)的 IoU ,c 为预
 
 ##### 3.4.2 目标类别损失（二值交叉熵）
 
-> $L_{cla}(O,C) = - \frac{ \sum_{i \in pos} \sum_{j \in cla} (O_{ij} ln(\hat{C_{ij}}) + (1-O_{ij}) ln(1- \hat{C_{ij}}))}{N_{pos}} $
+> $L_{cla}(O,C) = - \frac{ \sum_{i \in pos} \sum_{j \in cla} (O_{ij} ln(\hat{C_{ij}}) + (1-O_{ij}) ln(1- \hat{C_{ij}}))}{N_{pos}}$
 > $\hat{C_{ij}}=sigmoid(C_{ij})$
 
 $O_{ij} \in {\{0,1\}}$，表示目标边界框 i 中是否存在第 j 类目标，$C_{ij}$ 为目标值,$\hat {C_{ij}}$ 为 $C_{ij}$ 通过 sigmoid 函数得到的目标概率， $N_{pos}$ 为正样本个数
@@ -219,7 +217,7 @@ $0 \leq GIoU Loss \leq 2$
 
 (4) DIoU Loss = 1 - DIoU
 $DIoU = IoU -\frac{\rho^2(b,b^{gt})}{c^2} = IoU - \frac{d^2}{c^2}$
-$-1 \leq DIoU \leq 1 $
+$-1 \leq DIoU \leq 1$
 $0 \leq DIoU Loss \leq 2$
 
 ![](pic/yolov3_DIoU.png)
