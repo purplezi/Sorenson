@@ -1,7 +1,7 @@
 <!-- <img src=".\pic\say_yolo_again.png"> -->
 ![](pic/say_yolo_again.png)
 
-## YOLO学习笔记
+## YOLO 学习笔记
 
 ### 1.yolo v1
 
@@ -9,7 +9,7 @@
 > You Only Look Once:Unified,Real-Time Object Detection
 > [参考网站](https://pjreddie.com/darknet/yolo/)
 
-#### 1.1 基本思想：
+#### 1.1 基本思想
 
 (1)将一幅图像分成 $S \times S$ 个网格(grid cell)，如果某个 object 的中心落在网格之中，则这个网格就负责预测这个 object 。
 

@@ -8,9 +8,9 @@
 
 烂糟问题
 
-- 注：mkdocs的图片插入方式严格按照[官方文档](https://markdown-docs-zh.readthedocs.io/zh_CN/latest/user-guide/writing-your-docs/#_5)才能显示
-  ```
+- 注：mkdocs 的图片插入方式严格按照[官方文档](https://markdown-docs-zh.readthedocs.io/zh_CN/latest/user-guide/writing-your-docs/#_5)才能显示
+  ```md
   ![Screenshot](img/screenshot.png)
   ```
 
-- [解救我的烂糟mathjax](https://www.coder.work/article/97039)
+- [解救我的烂糟 mathjax](https://www.coder.work/article/97039)
