@@ -58,7 +58,9 @@
 <!-- <img src=".\pic\yolov1_boundingboxloss.png"> -->
 ![](pic/yolov1_boundingboxloss.png)
 
-(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $ \hat{C_i}$ 取 1 或 0 
+(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $\hat{C_i}$ 取 1 或 0 
+
+(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $$\hat{C_i}$$ 取 1 或 0 
 
 #### 1.3 局限性
 
