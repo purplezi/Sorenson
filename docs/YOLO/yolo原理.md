@@ -1,7 +1,7 @@
 <!-- <img src=".\pic\say_yolo_again.png"> -->
 ![](pic/say_yolo_again.png)
 
-## YOLO学习笔记
+## YOLO 学习笔记
 
 ### 1.yolo v1
 
@@ -9,7 +9,7 @@
 > You Only Look Once:Unified,Real-Time Object Detection
 > [参考网站](https://pjreddie.com/darknet/yolo/)
 
-#### 1.1 基本思想：
+#### 1.1 基本思想
 
 (1)将一幅图像分成 $S \times S$ 个网格(grid cell)，如果某个 object 的中心落在网格之中，则这个网格就负责预测这个 object 。
 
@@ -53,12 +53,12 @@
 
 ==tips:==
 
-(1) bouding box 损失中的宽高损失计算需要**开根号**，目的是**防止不同尺寸的目标框偏移相同距离时的 loss 值一样**（偏移相同的距离，对于大目标而言， IoU 较大，则loss值应该相对较低；对于小目标而言， IoU 较小，则loss值应该相对较高，故采用开根可以起到如此效果）
+(1) bouding box 损失中的宽高损失计算需要**开根号**，目的是**防止不同尺寸的目标框偏移相同距离时的 loss 值一样**（偏移相同的距离，对于大目标而言， IoU 较大，则 loss 值应该相对较低；对于小目标而言， IoU 较小，则 loss 值应该相对较高，故采用开根可以起到如此效果）
 
 <!-- <img src=".\pic\yolov1_boundingboxloss.png"> -->
 ![](pic/yolov1_boundingboxloss.png)
 
-(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $ \hat{C_i}$ 取 1 或 0 
+(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $\hat{C_i}$ 取 1 或 0 
 
 #### 1.3 局限性
 
@@ -76,7 +76,7 @@
 
 #### 2.1 改进
 
-(1) Batch Normalization : 在每个卷积层后都增加了BN层
+(1) Batch Normalization : 在每个卷积层后都增加了 BN 层
 
 * 更好收敛
 * 减少其他形式的正则化处理
@@ -115,7 +115,7 @@
 
 ![](pic/yolov3_darknet53.png)
 
-* 53个卷积层（包括最后的 Connnected ），其中 convolutianl 均由`卷积层， BN 层，激活函数(LeakyRelu)`组成，残差结构均为`主分支和捷径分支`的相加结构
+* 53 个卷积层（包括最后的 Connnected ），其中 convolutianl 均由`卷积层， BN 层，激活函数(LeakyRelu)`组成，残差结构均为`主分支和捷径分支`的相加结构
 * 没有 maxpolling 层，下采样均由卷积层处理( size 为 2 )
 
 #### 3.2 模型结构
@@ -126,7 +126,7 @@
   
 ![](pic/yolov3_boundingbox_parameters.png)
 
-每个特征层的预测参数个数为 $ N \times N \times [3 * (4 + 1 + 80)] $ ,其中 80 为种类数（ CoCo 数据集）
+每个特征层的预测参数个数为 $N \times N \times [3 * (4 + 1 + 80)]$ ,其中 80 为种类数（ CoCo 数据集）
 
 *  Up Sampling 为上采样层，高和宽会扩大为原来的 2 倍，扩大后便可与原来低层的输出进行 concatenate ，即进行深度上的拼接（ 13 -> 26 -> 52 ）
 *  特征图 1 尺寸为 13 * 13,用来预测相对较大的目标；特征图 2 尺寸为 26 * 26,用来预测大小中等的目标；特征图 3 尺寸为 52 * 52，用来预测相对较小的目标
@@ -135,14 +135,14 @@
 
 ![](pic/yolov3_boundingboxpredict.png)
 
-> $ \sigma $ 函数即为 sigmoid 函数，将预测的增量限制在一定范围使 anchor 不会超出对应的 grid cell 
+> $\sigma$ 函数即为 sigmoid 函数，将预测的增量限制在一定范围使 anchor 不会超出对应的 grid cell 
 
 与 ground truth 的 重合度最大的 bounding box 定为正样本，重合度不是最大但大于阈值的则忽视（不作为样本，即不计算目标框损失 loss for coordinate prediction 和类别损失 loss for class prediction ,仅计算置信度 objectness ），其余的则为负样本
 
 
 #### 3.4 损失函数
 
->  YOLOv3 的损失函数主要分为 3 个部分：目标置信度损失 $L_{conf}(o,c)$ ,目标分类损失 $L_{cla}(O,C)$ 和目标定位偏移量损失 $L_{loc}(l,g)$ , $\lambda_1,\lambda_2,\lambda_3$ 为平衡系数
+> YOLOv3 的损失函数主要分为 3 个部分：目标置信度损失 $L_{conf}(o,c)$ ,目标分类损失 $L_{cla}(O,C)$ 和目标定位偏移量损失 $L_{loc}(l,g)$ , $\lambda_1,\lambda_2,\lambda_3$ 为平衡系数
 >  $L(O,o,C,c,l,g) = \lambda_1 L_{conf}(o,c) + \lambda_2 L_{cla}(O,C) + \lambda_3 L_{loc}(l,g)$
 
 ##### 3.4.1 目标置信度损失（二值交叉熵）
@@ -154,7 +154,7 @@ $o_i \in [0,1]$,表示目标边界与真实边界(ground truth)的 IoU ,c 为预
 
 ##### 3.4.2 目标类别损失（二值交叉熵）
 
-> $L_{cla}(O,C) = - \frac{ \sum_{i \in pos} \sum_{j \in cla} (O_{ij} ln(\hat{C_{ij}}) + (1-O_{ij}) ln(1- \hat{C_{ij}}))}{N_{pos}} $
+> $L_{cla}(O,C) = - \frac{ \sum_{i \in pos} \sum_{j \in cla} (O_{ij} ln(\hat{C_{ij}}) + (1-O_{ij}) ln(1- \hat{C_{ij}}))}{N_{pos}}$
 > $\hat{C_{ij}}=sigmoid(C_{ij})$
 
 $O_{ij} \in {\{0,1\}}$，表示目标边界框 i 中是否存在第 j 类目标，$C_{ij}$ 为目标值,$\hat {C_{ij}}$ 为 $C_{ij}$ 通过 sigmoid 函数得到的目标概率， $N_{pos}$ 为正样本个数
@@ -181,7 +181,7 @@ $O_{ij} \in {\{0,1\}}$，表示目标边界框 i 中是否存在第 j 类目标�
 （2） 增加目标个数
 （3） BN 能一次性统计多张图片的参数
 
-##### 3.5.2 SPP模块
+##### 3.5.2 SPP 模块
 
 ![](pic/yolov3_spp.png)
 
@@ -217,7 +217,7 @@ $0 \leq GIoU Loss \leq 2$
 
 (4) DIoU Loss = 1 - DIoU
 $DIoU = IoU -\frac{\rho^2(b,b^{gt})}{c^2} = IoU - \frac{d^2}{c^2}$
-$-1 \leq DIoU \leq 1 $
+$-1 \leq DIoU \leq 1$
 $0 \leq DIoU Loss \leq 2$
 
 ![](pic/yolov3_DIoU.png)
