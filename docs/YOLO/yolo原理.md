@@ -49,7 +49,7 @@
 > (2) confidence loss
 > (3) classes loss
 
-<img src=".\pic\yolov1_lossfuction.png">
+![](pic/yolov1_lossfuction.png)
 
 ==tips:==
 
