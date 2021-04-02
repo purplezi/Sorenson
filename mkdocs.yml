@@ -52,6 +52,11 @@ nav:
         - 线段树: DataStructure/tree/segopration.md
         - 树状数组: DataStructure/tree/treearray.md
         - 树上差分: DataStructure/tree/treediff.md
+    - Skill:
+      - 常用思维: Skill/common_thougt.md
+      - 动态规划: Skill/DramaticProgramme.md
+      - 排序: Skill/sort.md
+      - 字符串: Skill/string.md
 
 # Theme
 theme:
