@@ -33,6 +33,25 @@ nav:
       - yolo_spp_code_学习笔记2: YOLO/yolo_spp_code_2.md
     - Socket:
       - socket基础: Socket/socket.md
+    - DataStructure:
+      - chain:
+        - 链表: DataStructure/chain/LinkList.md
+        - STL: DataStructure/chain/STL.md
+      - graph:
+        - 二分图: DataStructure/graph/bipartite.md
+        - 生成树: DataStructure/graph/GenerateTree.md
+        - 网络流: DataStructure/graph/netstream.md
+        - 最短路: DataStructure/graph/ShortestRoad.md
+        - tarjan: DataStructure/graph/tarjan.md
+      - tree:
+        - 二叉树: DataStructure/tree/binary_tree.md
+        - 树的直径: DataStructure/tree/DiameterOfTree.md
+        - 最近公共祖先: DataStructure/tree/lca.md
+        - 莫队算法: DataStructure/tree/modui.md
+        - 点分治: DataStructure/tree/PointDivide.md
+        - 线段树: DataStructure/tree/segopration.md
+        - 树状数组: DataStructure/tree/treearray.md
+        - 树上差分: DataStructure/tree/treediff.md
 
 # Theme
 theme:
