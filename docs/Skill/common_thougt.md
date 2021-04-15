@@ -94,7 +94,7 @@ void InsertArray(int a[], int lena, int b[],int lenb,int total)   //把有序的
 while(l <= r)
 {
     mid = (l + r)>>1;
-    if()
+    if(check the mid)
     {
         update(ans);
         l = mid; or  l = mid - 1;
@@ -109,6 +109,73 @@ while(l <= r)
 
 * 二分的左右针需视情况决定逼近方式和跳出方式
 * 初始定针尽可能缩短头尾长度(-inf ~ inf)
+* 常用于求“使……最大值尽可能小”
+
+> 给定一个非负整数数组 nums 和一个整数 m ，你需要将这个数组分成 m 个非空的连续子数组。设计一个算法使得这 m 个子数组各自和的最大值最小。
+
+>输入：nums = [7,2,5,10,8], m = 2
+输出：18
+解释：
+一共有四种方法将 nums 分割为 2 个子数组。 其中最好的方式是将其分为 [7,2,5] 和 [10,8] 。
+因为此时这两个子数组各自的和的最大值为18，在所有情况中最小。
+
+```c++
+int n, m, a[1000005];
+int sum, maxn;
+
+bool check(int x)
+{
+	int cnt = 0;
+	int tmp = 0;
+	for (int i = 0; i < n; i++)
+	{
+		tmp += a[i];
+		if (tmp > x)
+		{
+			cnt++;
+			tmp = a[i];
+		}
+		else
+		{
+			tmp += a[i];
+		}
+	}
+	if (cnt <= m)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+int main()
+{
+	scanf("%d%d", &n, &m);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &a[i]);
+		sum += a[i];
+		maxn = max(maxn, a[i]);
+	}
+	int l = maxn, r = sum, ans = -1;
+	while (l <= r)
+	{
+		int mid = (l + r) >> 1;
+		if (check(mid))
+		{
+			r = mid - 1;
+			ans = mid;
+		}
+		else
+		{
+			l = mid + 1;
+		}
+	}
+	printf("%d\n", ans);
+	return 0;
+}
+```
 
 #### 2.2 快慢针查找（可参考链表的查找倒数第 k 个、判环）
 
@@ -287,8 +354,77 @@ public:
     }
 };
 
-
 ```
+
+##### 2.5.2 全排列
+
+> 输入: [1,2,3]
+输出:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+
+普通 dfs ：较慢
+```c++
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> tmp;
+    int vis[1000005] = {0};
+
+    void dfs(vector<int>& nums)
+    {
+        if(tmp.size() == nums.size())
+        {
+            ans.push_back(tmp);
+            return;
+        }
+        int len = nums.size();
+        for(int i = 0; i < len; i++)
+        {
+            if(!vis[i])
+            {
+                vis[i] = 1;
+                tmp.push_back(nums[i]);
+                dfs(nums);
+                tmp.pop_back();
+                vis[i] = 0;
+            }
+        }
+        
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        dfs(nums);
+        return ans;
+    }
+};
+```
+
+采用内置哈函数 next_permutation/prev_permutation : 返回下/上一个按字典序排列的全排列（比自己写的快很多）
+
+`next_permutation(a,a+len)`  a 可为整型或字符数组
+`next_premutation(vec.begin(),vec.end())` vec 为 vector
+```c++
+class Solution {
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+        sort(nums.begin(),nums.end());
+        ans.push_back(nums);
+        while(next_permutation(nums.begin(),nums.end()))
+        {
+            ans.push_back(nums);
+        }
+        return ans;
+    }
+};
+```
+
 ### 3 数学技巧
 
 #### 3.1 快速幂取模
@@ -594,7 +730,9 @@ RandomListNode* Clone(RandomListNode* pHead) {
 
 #### 6.3 红黑树和堆
 
+
 > c++语言中，multiset 是 <set> 库中一个非常有用的类型，它可以看成一个序列，插入一个数，删除一个数都能够在 O(logn) 的时间内完成，而且他能时刻保证序列中的数是有序的，而且序列中可以存在重复的数。
+
 
 >给定一个数组，找出其中最小的K个数。例如数组元素是4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4。如果K>数组的长度，那么返回一个空的数组
 
@@ -605,8 +743,9 @@ RandomListNode* Clone(RandomListNode* pHead) {
 > [1,2,3,4]
 
 采用红黑树维护可以减少排序带来的时间复杂度
+前 k 小用大根堆，前 k 大用小根堆
 ```c++
-multiset<int> ms;
+multiset<int，greater<int>> ms;
 vector<int> GetLeastNumbers_Solution(vector<int> input, int k) 
 {
         ms.clear();
@@ -633,7 +772,7 @@ vector<int> GetLeastNumbers_Solution(vector<int> input, int k)
             }
         }
         auto ms_iter = ms.begin();
-        for(;ms_iter != ms.end();iter++)
+        for(;ms_iter != ms.end();ms_iter++)
         {
             ans.push_back(*ms_iter);
         }
@@ -662,7 +801,9 @@ public:
         max_q.push(min_q.top()); 
         min_q.pop();
 
-        if (min_q.size() < max_q.si***_q.push(max_q.top());
+        if (min_q.size() < max_q.size)
+        {
+            min_q.push(max_q.top());
             max_q.pop();
         }
 
@@ -676,6 +817,8 @@ public:
 };
 ```
 
+multiset 默认小顶堆，大顶堆为`multiset<int, greater<int>> ms;`
+priority_queue 默认大顶堆，小顶堆为`priority_queue<int, vector<int>, greater<int>> pq;`
 #### 6.4 双端队列
 
 双端队列是对头和尾都能操作，适合于窗口滑动问题
