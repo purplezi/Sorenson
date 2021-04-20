@@ -180,7 +180,7 @@ $o_i \in [0,1]$,表示目标边界与真实边界(ground truth)的 IoU ,c 为预
 
 ##### 3.4.2 目标类别损失（二值交叉熵）
 
-> $L_{cla}(O,C) = - \frac{ \sum_{i \in pos} \sum_{j \in cla} (O_{ij} ln(\hat{C_{ij}}) + (1-O_{ij}) ln(1- \hat{C_{ij}}))}{N_{pos}} $
+> $L_{cla}(O,C) = - \frac{ \sum_{i \in pos} \sum_{j \in cla} (O_{ij} ln(\hat{C_{ij}}) + (1-O_{ij}) ln(1- \hat{C_{ij}}))}{N_{pos}}$
 > $\hat{C_{ij}}=sigmoid(C_{ij})$
 
 $O_{ij} \in {\{0,1\}}$，表示目标边界框 i 中是否存在第 j 类目标，$C_{ij}$ 为目标值,$\hat {C_{ij}}$ 为 $C_{ij}$ 通过 sigmoid 函数得到的目标概率， $N_{pos}$ 为正样本个数
