@@ -42,7 +42,7 @@
 
 最后两层： 4096 -> 1470 ->( reshape 处理) 7  \* 7 \* 30  （即上述的 cell 结构）
 
-(4) 激活函数： leak RELU
+(4) 激活函数： leaky ReLU
 
 ![](pic/three_relu.png)
 
@@ -58,7 +58,8 @@ RReLu 的 $a_{ji}$ 是一个给定范围随机抽取的值
 > (2) confidence loss
 > (3) classes loss
 
-<img src=".\pic\yolov1_lossfuction.png">
+<!-- <img src=".\pic\yolov1_lossfuction.png"> -->
+![](pic/yolov1_lossfuction.png)
 
 ==tips:==
 
@@ -67,7 +68,7 @@ RReLu 的 $a_{ji}$ 是一个给定范围随机抽取的值
 <!-- <img src=".\pic\yolov1_boundingboxloss.png"> -->
 ![](pic/yolov1_boundingboxloss.png)
 
-(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 $ {C_i}$ 取 1 或 0 
+(2) confidence 损失计算中分为正样本和负样本的计算，根据正负样本真实值 ${C_i}$ 取 1 或 0 
 
 (3) $\lambda$ 为损失函数的权重 loss weight
 * 8 维的 localization error 和 20 维的 classes error 相比，前者的权重需要大些才合理，即对坐标赋予更大的 loss weight
@@ -151,7 +152,7 @@ RReLu 的 $a_{ji}$ 是一个给定范围随机抽取的值
   
 ![](pic/yolov3_boundingbox_parameters.png)
 
-每个特征层的预测参数个数为 $ N \times N \times [3 * (4 + 1 + 80)] $ ,其中 80 为种类数（ CoCo 数据集）
+每个特征层的预测参数个数为 $N \times N \times [3 * (4 + 1 + 80)]$ ,其中 80 为种类数（ CoCo 数据集）
 
 *  Up Sampling 为上采样层，高和宽会扩大为原来的 2 倍，扩大后便可与原来低层的输出进行 concatenate ，即进行深度上的拼接（ 13 -> 26 -> 52 ）
 *  特征图 1 尺寸为 13 * 13,用来预测相对较大的目标；特征图 2 尺寸为 26 * 26,用来预测大小中等的目标；特征图 3 尺寸为 52 * 52，用来预测相对较小的目标
@@ -160,7 +161,7 @@ RReLu 的 $a_{ji}$ 是一个给定范围随机抽取的值
 
 ![](pic/yolov3_boundingboxpredict.png)
 
-> $ \sigma $ 函数即为 sigmoid 函数，将预测的增量限制在一定范围使 anchor 不会超出对应的 grid cell 
+> $\sigma$ 函数即为 sigmoid 函数，将预测的增量限制在一定范围使 anchor 不会超出对应的 grid cell 
 
 与 ground truth 的 重合度最大的 bounding box 定为正样本，重合度不是最大但大于阈值的则忽视（不作为样本，即不计算目标框损失 loss for coordinate prediction 和类别损失 loss for class prediction ,仅计算置信度 objectness ），其余的则为负样本
 
