@@ -401,3 +401,52 @@ public:
     }
 };
 ```
+
+#### 5.整型与字符串
+
+##### 5.1 ip地址转换为整数
+
+可以采用共用体简化（union）
+常用输入输出函数：文件（fscanf,fprintf）,字符串（sscanf,sprintf）
+```c
+union IP
+{
+    struct{
+        unsigned char a1;
+        unsigned char a2;
+        unsigned char a3;
+        unsigned char a4;
+    }ip;
+    unsigned int num;
+}
+
+int main()
+{
+    union IP p;
+    char str[100] = {0};
+    int arr[4] = 0;
+    while(~scanf("%s",str))
+    {
+        sscanf(str,"%d.%d.%d.%d",arr,arr+1,arr+2,arr+3);
+        p.ip.a1 = arr[0];
+        p.ip.a2 = arr[1];
+        p.ip.a3 = arr[2];
+        p.ip.a4 = arr[3];
+        printf("%u\n",p.num);
+    }
+    return 0;
+}
+```
+
+tips:
+设计内存存储时要考虑大小端存储方式
+目前计算机一般都用小端存储方式（数据低位存储到低地址）
+```c
+bool is_little()
+{
+    int num = 1;
+    return ((char*)(&num))[0];
+}
+```
+故上述的 ip 地址转换代码实际上存储的 num 对应为 1.0.168.192
+须在 arr 赋值处倒着存
