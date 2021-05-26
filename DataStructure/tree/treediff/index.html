@@ -1,0 +1,2153 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>树上差分 - PurpleCypress</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#e91e63">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="pink" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="PurpleCypress" aria-label="PurpleCypress" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              PurpleCypress
+            </span>
+            <span class="md-header-nav__topic">
+              
+                树上差分
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../CSAPP/CSAPP-PartZero/" class="md-tabs__link">
+          CSAPP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Network/ComputerNetwork/" class="md-tabs__link">
+          Computer Network
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../English/speaking/" class="md-tabs__link">
+          English
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Forensics/image/" class="md-tabs__link">
+          Forensics
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Linux/Linux/" class="md-tabs__link">
+          Linux
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../YOLO/yolo%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          YOLO
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Socket/socket/" class="md-tabs__link">
+          Socket
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../chain/LinkList/" class="md-tabs__link">
+          DataStructure
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Skill/common_thougt/" class="md-tabs__link">
+          Skill
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="PurpleCypress" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    PurpleCypress
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      CSAPP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSAPP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartZero/" title="【考研向】计算机系统基本概念" class="md-nav__link">
+      【考研向】计算机系统基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartOne-1/" title="【考研向】程序结构和执行-信息的表示和处理" class="md-nav__link">
+      【考研向】程序结构和执行-信息的表示和处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartOne-2/" title="【考研向】程序结构和执行-程序的机器级表示" class="md-nav__link">
+      【考研向】程序结构和执行-程序的机器级表示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartTwo/" title="【考研向】在系统上运行程序" class="md-nav__link">
+      【考研向】在系统上运行程序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartThree/" title="【考研向】程序间的交互和通信" class="md-nav__link">
+      【考研向】程序间的交互和通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Computer Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Computer Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Network/ComputerNetwork/" title="工大计网" class="md-nav__link">
+      工大计网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      English
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        English
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/speaking/" title="Speaking" class="md-nav__link">
+      Speaking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/writing/" title="Writing" class="md-nav__link">
+      Writing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/listening/" title="Listening" class="md-nav__link">
+      Listening
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading/" title="Reading" class="md-nav__link">
+      Reading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw5-a/" title="Reading-Homework5-1" class="md-nav__link">
+      Reading-Homework5-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw5-b/" title="Reading-Homework5-2" class="md-nav__link">
+      Reading-Homework5-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw6/" title="Reading-Homework6" class="md-nav__link">
+      Reading-Homework6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw7/" title="Reading-Homework7" class="md-nav__link">
+      Reading-Homework7
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Forensics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Forensics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Forensics/image/" title="数字图像取证" class="md-nav__link">
+      数字图像取证
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Linux/Linux/" title="嵌入式计算机系统实验自救手册" class="md-nav__link">
+      嵌入式计算机系统实验自救手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Linux/Linux_Corresponence_Windows/" title="Linux与Windows文件交互" class="md-nav__link">
+      Linux与Windows文件交互
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      YOLO
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        YOLO
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../YOLO/yolo%E5%8E%9F%E7%90%86/" title="yolo原理" class="md-nav__link">
+      yolo原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../YOLO/yolo_spp_code_1/" title="yolo_spp_code_学习笔记1" class="md-nav__link">
+      yolo_spp_code_学习笔记1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../YOLO/yolo_spp_code_2/" title="yolo_spp_code_学习笔记2" class="md-nav__link">
+      yolo_spp_code_学习笔记2
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Socket
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Socket
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Socket/socket/" title="socket基础" class="md-nav__link">
+      socket基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      DataStructure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        DataStructure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      chain
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        chain
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain/LinkList/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain/STL/" title="STL" class="md-nav__link">
+      STL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../graph/bipartite/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../graph/GenerateTree/" title="生成树" class="md-nav__link">
+      生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../graph/netstream/" title="网络流" class="md-nav__link">
+      网络流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../graph/ShortestRoad/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../graph/tarjan/" title="tarjan" class="md-nav__link">
+      tarjan
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3" checked>
+    
+    <label class="md-nav__link" for="nav-9-3">
+      tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-3">
+        tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../binary_tree/" title="二叉树" class="md-nav__link">
+      二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../DiameterOfTree/" title="树的直径" class="md-nav__link">
+      树的直径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../modui/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PointDivide/" title="点分治" class="md-nav__link">
+      点分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segopration/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../treearray/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        树上差分
+      </label>
+    
+    <a href="./" title="树上差分" class="md-nav__link md-nav__link--active">
+      树上差分
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    树上差分
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Skill
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Skill
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/common_thougt/" title="常用思维" class="md-nav__link">
+      常用思维
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/DramaticProgramme/" title="动态规划" class="md-nav__link">
+      动态规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/sort/" title="排序" class="md-nav__link">
+      排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/string/" title="字符串" class="md-nav__link">
+      字符串
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    树上差分
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>树上差分</h1>
+                
+                <h3 id="_1">树上差分<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>//差分数组：O(1)修改区间,O(n)查询，差分数组的前缀和数组即为原数组
+//树上差分维护的差分对应的链为x到根节点的链，树上差分的查询即针对子树和的搜索查询
+//关于点的差分：所有路径某点被经过的次数、修改两点间路径所有点的权值
+
+
+//题目描述
+//松鼠的新家是一棵树，前几天刚刚装修了新家，新家有n个房间，并且有n - 1根树枝连接，每个房间都可以相互到达，且俩个房间之间的路线都是唯一的。天哪，他居然真的住在”树“上。
+//松鼠想邀请小熊维尼前来参观，并且还指定一份参观指南，他希望维尼能够按照他的指南顺序，先去a1，再去a2，......，最后到an，去参观新家。
+//可是这样会导致维尼重复走很多房间，懒惰的维尼不停地推辞。可是松鼠告诉他，每走到一个房间，他就可以从房间拿一块糖果吃。
+//维尼是个馋家伙，立马就答应了。现在松鼠希望知道为了保证维尼有糖果吃，他需要在每一个房间各放至少多少个糖果。
+//因为松鼠参观指南上的最后一个房间an是餐厅，餐厅里他准备了丰盛的大餐，所以当维尼在参观的最后到达餐厅时就不需要再拿糖果吃了。
+//输入格式
+//第一行一个整数n，表示房间个数第二行n个整数，依次描述a1 - an
+//接下来n - 1行，每行两个整数x，y，表示标号x和y的两个房间之间有树枝相连。
+//输出格式
+//一共n行，第i行输出标号为i的房间至少需要放多少个糖果，才能让维尼有糖果吃。
+//
+//输入：
+//5
+//1 4 5 3 2
+//1 2
+//2 4
+//2 3
+//4 5
+//
+//输出：
+//1
+//2
+//1
+//2
+//1
+
+
+//#pragma warning(disable:4996)
+//#include&lt;iostream&gt;
+//#include &lt;cstdio&gt;
+//#include &lt;cstring&gt;
+//#include&lt;algorithm&gt;
+//using namespace std;
+//struct node {
+//  int next, to;
+//}; node edge[600010];
+//int n, cnt;
+//int a[300010], head[600010], deep[300010], p[300010][25], sum[300010];
+//
+//void change(int &amp;a, int &amp;b)
+//{
+//  int t = a; a = b; b = t;
+//}
+//
+//void add(int a, int b)//链式前向星加边
+//{
+//  edge[++cnt].to = b;
+//  edge[cnt].next = head[a];
+//  head[a] = cnt;
+//}
+//
+//void dfs(int a, int fa)
+//{
+//  deep[a] = deep[fa] + 1;//深度
+//  p[a][0] = fa;
+//  for (int i = 1; (1 &lt;&lt; i) &lt;= deep[a]; i++)
+//      p[a][i] = p[p[a][i - 1]][i - 1];//RMQ预处理以找LCA
+//  for (int i = head[a]; i; i = edge[i].next)
+//  {
+//      int v = edge[i].to;
+//      if (v != fa)
+//          dfs(v, a);
+//  }
+//}
+//
+//int lca(int a, int b)
+//{
+//  if (deep[a] &gt; deep[b]) change(a, b);
+//  for (int i = 20; i &gt;= 0; i--)
+//  {
+//      if (deep[a] &lt;= deep[b] - (1 &lt;&lt; i))
+//      {
+//          //printf(&quot;a=%d %d %d\n&quot;,a,b,i);
+//          b = p[b][i];//同一高度
+//      }
+//  }
+//  //printf(&quot;%d %d\n&quot;,a,b);
+//  if (a == b) return a;
+//  for (int i = 20; i &gt;= 0; i--)
+//  {
+//      if (p[a][i] != p[b][i])
+//          a = p[a][i], b = p[b][i];
+//  }
+//  //printf(&quot;a=%d\n&quot;,a);
+//  return p[a][0];
+//}
+//void search(int a)
+//{
+//  for (int i = head[a]; i; i = edge[i].next)
+//  {
+//      int v = edge[i].to;
+//      if (v == p[a][0]) continue;
+//      search(v);
+//      sum[a] += sum[v];//子树和
+//  }
+//}
+//int main()
+//{
+//  scanf(&quot;%d&quot;, &amp;n);
+//  for (int i = 1; i &lt;= n; i++)
+//      scanf(&quot;%d&quot;, &amp;a[i]);
+//  for (int i = 1; i &lt;= n - 1; i++)
+//  {
+//      int u, v;
+//      scanf(&quot;%d%d&quot;, &amp;u, &amp;v);
+//      add(u, v); 
+//      add(v, u);
+//  }
+//  dfs(1, 0);//预处理倍增数组
+//  for (int i = 1; i &lt;= n - 1; i++)
+//  {
+//      int x = a[i], y = a[i + 1], LCA = lca(x, y);//表示从x走到y的路径
+//      //printf(&quot;lca=%d\n&quot;,LCA);
+//      sum[x]++;
+//      sum[y]++;
+//      sum[LCA]--;
+//      sum[p[LCA][0]]--;
+//  }//点差分核心代码：起点终点++，公共祖先及祖先父亲--
+//  search(1);//求出各点子树和
+//  for (int i = 2; i &lt;= n; i++)
+//      sum[a[i]]--;//每次计算新的路径，除了第一个路径的起点，其他路径的起点和上一次路径的终点都重复计算了一次，应该--
+//  for (int i = 1; i &lt;= n; i++)
+//      printf(&quot;%d\n&quot;, sum[i]);
+//  system(&quot;pause&quot;);
+//  return 0;
+//}
+
+
+//题目大意：给出一棵树，n(n&lt;=5w)个节点，k(k&lt;=10w)次修改，每次给定s和t，把s到t的路径上的点权+1，问k次操作后最大点权。
+//FJ给他的牛棚的N(2≤N≤50,000)个隔间之间安装了N-1根管道，隔间编号从1到N。所有隔间都被管道连通了。
+//FJ有K(1≤K≤100, 000)条运输牛奶的路线，第i条路线从隔间si运输到隔间ti。
+//一条运输路线会给它的两个端点处的隔间以及中间途径的所有隔间带来一个单位的运输压力，你需要计算压力最大的隔间的压力是多少。
+//对于每次修改，给s和t的点权 + 1，给lca(s, t)和lca(s, t)的父亲的点权 - 1，每一个点的权就是它与它的子树权和
+//The first line of the input contains N and K
+//The next N - 1 lines each contain two integers x and y（x≠y) describing a pipe between stalls x and y
+//The next K lines each contain two integers s and tdescribing the endpoint
+//stalls of a path through which milk is being pumped.
+//ouput:An integer specifying the maximum amount of milk pumped through any stall in the barn.
+//输入：
+//5 10
+//3 4
+//1 5
+//4 2
+//5 4
+//5 4
+//5 4
+//3 5
+//4 3
+//4 3
+//1 3
+//3 5
+//5 4
+//1 5
+//3 4
+//
+//输出：
+//9
+//#pragma warning(disable:4996)
+//#include&lt;iostream&gt;
+//#include&lt;cstdio&gt;
+//#include&lt;cstring&gt;
+//#include&lt;algorithm&gt;
+//#define fsb(a,b,c) for (int a=b;a&lt;=c;a++)
+//#define maxn 50100
+//#define maxm 100100
+//#define mem(a,b) memset(a,b,sizeof(a))
+//#define max(a,b) ((a)&gt;(b)?(a):(b))
+//using namespace std;
+//
+//struct edge 
+//{
+//  int v, next;
+//}a[maxn * 2];
+//int n, m, x, y, head[maxn], cnt = 0, cntb = 0, headb[maxn], fa[maxn], vis[maxn], dlt[maxn], faa[maxn], maxx = 0;
+//
+//struct qus 
+//{
+//  int v, next, mark;
+//}b[maxm * 2];
+//
+//struct ablca 
+//{
+//  int x, y, z;
+//}ans[maxm];
+//
+//inline void adda(int x, int y)//链式前向星加边
+//{
+//  a[++cnt].v = y;
+//  a[cnt].next = head[x]; 
+//  head[x] = cnt;
+//}
+//
+//inline void addb(int x, int y, int z) 
+//{
+//  b[++cntb].v = y; b[cntb].mark = z; b[cntb].next = headb[x]; headb[x] = cntb;
+//}
+//
+//inline int getf(int x) {
+//  return x == fa[x] ? x : fa[x] = getf(fa[x]);
+//}
+//inline void dfs1(int u, int f) 
+//{//tarjan求lca
+//  faa[u] = f;
+//  for (int t = headb[u]; t != -1; t = b[t].next) {
+//      int v = b[t].v;
+//      if (vis[v]) ans[b[t].mark].z = getf(v);
+//  }
+//  // printf(&quot;%d &quot;,u);
+//  vis[u] = 1;
+//  for (int t = head[u]; t != -1; t = a[t].next) {
+//      int v = a[t].v; if (v == f) continue;
+//      dfs1(v, u);
+//      int fau = getf(u), fav = getf(v);
+//      if (fau != fav) fa[fav] = fau;
+//  }
+//}
+//
+//inline int dfs2(int u) {
+//  int now = dlt[u], ans = 0;
+//  for (int t = head[u]; t != -1; t = a[t].next) {
+//      int v = a[t].v; if (v == faa[u]) continue;
+//      now += dfs2(v);//now记录点u的修改后点权
+//  }
+//  maxx = max(maxx, now);
+//  return now;
+//}
+//int main() {
+//  // freopen(&quot;std.in&quot;,&quot;r&quot;,stdin);
+//  scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+//  mem(head, 255);
+//  fsb(i, 1, n - 1) 
+//  {
+//      scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
+//      adda(x, y);
+//      adda(y, x);
+//  }
+//  mem(headb, 255);
+//  fsb(i, 1, m) 
+//  {
+//      scanf(&quot;%d%d&quot;, &amp;ans[i].x, &amp;ans[i].y);
+//      addb(ans[i].x, ans[i].y, i); 
+//      addb(ans[i].y, ans[i].x, i);
+//  }
+//  fsb(i, 1, n) fa[i] = i; mem(vis, 0);
+//  dfs1(1, 0); mem(dlt, 0);
+//  fsb(i, 1, m) 
+//  {
+//      dlt[ans[i].x]++; 
+//      dlt[ans[i].y]++; 
+//      dlt[ans[i].z]--; 
+//      dlt[faa[ans[i].z]]--;
+//  }
+//  // printf(&quot;!!!\n&quot;);
+//  n = dfs2(1);
+//  printf(&quot;%d\n&quot;, maxx);
+//  return 0;
+//}
+
+
+//边差分：找所有路径共同覆盖的边
+//公元2044年，人类进入了宇宙纪元。
+//L 国有n个星球，还有n-1条双向航道，每条航道建立在两个星球之间，这n-1条航道连通了L国的所有星球。
+//小 P 掌管一家物流公司， 该公司有很多个运输计划，每个运输计划形如：有一艘物流飞船需要从ui号星球沿最快的宇航路径飞行到vi号星球去。
+//显然，飞船驶过一条航道是需要时间的，对于航道j, 任意飞船驶过它所花费的时间为tj, 并且任意两艘飞船之间不会产生任何干扰。
+//为了鼓励科技创新，L国国王同意小P的物流公司参与L 国的航道建设，即允许小P把某一条航道改造成虫洞，飞船驶过虫洞不消耗时间。
+//在虫洞的建设完成前小P的物流公司就预接了m个运输计划。在虫洞建设完成后，这m个运输计划会同时开始，所有飞船一起出发。当这m个运输计划都完成时，小p的物流公司的阶段性工作就完成了。
+//如果小P 可以自由选择将哪一条航道改造成虫洞， 试求出小P的物流公司完成阶段性工作所需要的最短时间是多少？
+//第一行包括两个正整数n,m, 表示L 国中星球的数量及小P公司预接的运输计划的数量，星球从1到n编号
+//接下来n−1 行描述航道的建设情况，其中第i 行包含三个整数ai,bi和ti，表示第i 条双向航道修建在ai与bi两个星球之间，任意飞船驶过它所花费的时间为ti。
+//数据保证1≤ai, bi≤n 且0≤ti≤1000。
+//接下来m 行描述运输计划的情况，其中第j 行包含两个正整数uj和vj，表示第j 个运输计划是从uj号星球飞往vj号星球。数据保证1≤ui, vi≤n
+//输出：一个整数，表示小p的物流公司完成阶段性工作所需要的最短时间。
+//
+//输入：
+//6 3
+//1 2 3
+//1 6 4
+//3 1 7
+//4 3 6
+//3 5 5
+//3 6
+//2 5
+//4 5
+//输出：
+//11
+
+#pragma warning(disable:4996)
+#include&lt;algorithm&gt;
+#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;cstring&gt;
+using namespace std;
+
+struct node 
+{
+    int next, to, val;
+}edge[600010];
+
+struct truck 
+{
+    int s, t, lca;
+}; truck node[300010];
+
+int n, m, p, flag, cnt, maxn;
+int head[300010], deep[300010], f[300010][25], dis[300010], pre[300010], sum[300010];
+
+void change(int &amp;a, int &amp;b)
+{
+    int t = a; a = b; b = t;
+}
+
+void add(int a, int b, int c)//链式前向星加边
+{
+    edge[++p].to = b;
+    edge[p].next = head[a];
+    edge[p].val = c;
+    head[a] = p;
+}
+
+void dfs(int a, int fa)//预处理倍增数组
+{
+    deep[a] = deep[fa] + 1;
+    f[a][0] = fa;
+    for (int i = 1; i &lt;= 20; i++)
+        f[a][i] = f[f[a][i - 1]][i - 1];
+    for (int i = head[a]; i; i = edge[i].next)
+    {
+        int v = edge[i].to;
+        if (v == fa) continue;
+        dis[v] = dis[a] + edge[i].val;
+        pre[v] = edge[i].val;
+        dfs(v, a);
+    }
+}
+
+int getlca(int a, int b)
+{
+    if (deep[a] &gt; deep[b]) change(a, b);
+    for (int i = 20; i &gt;= 0; i--)
+    {
+        if (deep[a] &lt;= deep[f[b][i]])
+            b = f[b][i];
+    }
+    if (a == b) return a;
+    for (int i = 20; i &gt;= 0; i--)
+        if (f[a][i] != f[b][i])
+        {
+            a = f[a][i];
+            b = f[b][i];
+        }
+    return f[a][0];
+}
+
+int judge(int a, int fa, int cnt, int maxn)//子树求和
+{
+    int nsum = sum[a];
+    for (int i = head[a]; i; i = edge[i].next)
+    {
+        int v = edge[i].to;
+        if (v == fa) continue;
+        nsum += judge(v, a, cnt, maxn);
+    }//存在当前对应边数经过的次数应该大于所有超时的路径数！！！！！！！！！
+    if (nsum &gt;= cnt &amp;&amp; pre[a] &gt;= maxn) //a对应的边的时间大于不够的时间，变成虫洞后即可省掉这么多时间，返回真值
+        flag = 1;
+    return nsum;
+}
+
+int check(long long limit)//判断当前设的时间是否能完成所有任务
+{
+    memset(sum, 0, sizeof(sum));
+    cnt = 0, flag = 0, maxn = 0;
+    for (int i = 1; i &lt;= m; i++)
+        if (dis[node[i].s] + dis[node[i].t] - 2 * dis[node[i].lca] &gt; limit)
+        {
+            sum[node[i].s]++, sum[node[i].t]++, sum[node[i].lca] -= 2;//边差分处理核心代码
+            cnt++;
+            maxn = max(maxn, dis[node[i].s] + dis[node[i].t] - 2 * dis[node[i].lca]);
+        }
+    if (cnt == 0) return 1;//时间太长，必定完成
+    int wsb = judge(1, 0, cnt, maxn - limit);//判断不够的时间能否通过虫洞改变而使其在当前时间内完成任务
+    return flag;
+}
+
+int main()
+{
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for (int i = 1; i &lt;= n - 1; i++)
+    {
+        int a, b, c;
+        scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+        add(a, b, c);
+        add(b, a, c);
+    }
+    dfs(1, 0);
+    for (int i = 1; i &lt;= m; i++)
+    {
+        scanf(&quot;%d%d&quot;, &amp;node[i].s, &amp;node[i].t);
+        node[i].lca = getlca(node[i].s, node[i].t);
+    }
+    long long l = 0, r = 3000000000;
+    while (l + 1 &lt; r)
+    {
+        int mid = (l + r) / 2;
+        if (check(mid))
+            r = mid;
+        else
+            l = mid;
+    }
+    if (check(l)) printf(&quot;%lld\n&quot;, l);
+    else printf(&quot;%lld\n&quot;, r);
+    return 0;
+}
+</code></pre></div>
+</td></tr></table>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../treearray/" title="树状数组" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                树状数组
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../../Skill/common_thougt/" title="常用思维" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                常用思维
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/purplezi" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1.2",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

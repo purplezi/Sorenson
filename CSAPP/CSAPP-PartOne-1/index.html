@@ -1,0 +1,3081 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>【考研向】程序结构和执行-信息的表示和处理 - PurpleCypress</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#e91e63">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="pink" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#partone" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="PurpleCypress" aria-label="PurpleCypress" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              PurpleCypress
+            </span>
+            <span class="md-header-nav__topic">
+              
+                【考研向】程序结构和执行-信息的表示和处理
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../CSAPP-PartZero/" class="md-tabs__link md-tabs__link--active">
+          CSAPP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Network/ComputerNetwork/" class="md-tabs__link">
+          Computer Network
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../English/speaking/" class="md-tabs__link">
+          English
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Forensics/image/" class="md-tabs__link">
+          Forensics
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Linux/Linux/" class="md-tabs__link">
+          Linux
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../YOLO/yolo%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          YOLO
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Socket/socket/" class="md-tabs__link">
+          Socket
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../DataStructure/chain/LinkList/" class="md-tabs__link">
+          DataStructure
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Skill/common_thougt/" class="md-tabs__link">
+          Skill
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="PurpleCypress" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    PurpleCypress
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      CSAPP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSAPP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CSAPP-PartZero/" title="【考研向】计算机系统基本概念" class="md-nav__link">
+      【考研向】计算机系统基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        【考研向】程序结构和执行-信息的表示和处理
+      </label>
+    
+    <a href="./" title="【考研向】程序结构和执行-信息的表示和处理" class="md-nav__link md-nav__link--active">
+      【考研向】程序结构和执行-信息的表示和处理
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    【写在前面】
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    网课问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a. 信息的编码与存储
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-1" class="md-nav__link">
+    a-1 数制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-2" class="md-nav__link">
+    a-2 【非数值数据】非数值数据的编码表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-3" class="md-nav__link">
+    a-3 数据宽度和存储容量的单位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-4" class="md-nav__link">
+    a-4 数据存储时的字节排列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-5-ppt" class="md-nav__link">
+    a-5 运算电路基础【不在考点内 且 工大ppt未讲】
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    b. 【数值数据】整数的表示与运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b-1-" class="md-nav__link">
+    b-1 定点数的编码-机器数、原码、反码、补码、移码的区别以及联系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-2" class="md-nav__link">
+    b-2 带符号整数/无符号整数
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    有符号数和无符号数「转换」的基本原则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    有符号数和无符号数「扩展、截断」的基本原则
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-3" class="md-nav__link">
+    b-3 整数的加减运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    补码加减运算器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-4" class="md-nav__link">
+    b-4 整数乘法运算
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-5" class="md-nav__link">
+    b-5 整数除法运算
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c. 【数值数据】浮点数的表示与运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-1" class="md-nav__link">
+    c-1 浮点数的编码表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-2" class="md-nav__link">
+    c-2 浮点数的运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    浮点数加/减运算
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    浮点乘法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    浮点数舍入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    浮点数比较
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppt" class="md-nav__link">
+    内存、指针、字符串表示 【不在考纲内，在工大ppt内】
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CSAPP-PartOne-2/" title="【考研向】程序结构和执行-程序的机器级表示" class="md-nav__link">
+      【考研向】程序结构和执行-程序的机器级表示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CSAPP-PartTwo/" title="【考研向】在系统上运行程序" class="md-nav__link">
+      【考研向】在系统上运行程序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CSAPP-PartThree/" title="【考研向】程序间的交互和通信" class="md-nav__link">
+      【考研向】程序间的交互和通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Computer Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Computer Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/ComputerNetwork/" title="工大计网" class="md-nav__link">
+      工大计网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      English
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        English
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/speaking/" title="Speaking" class="md-nav__link">
+      Speaking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/writing/" title="Writing" class="md-nav__link">
+      Writing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/listening/" title="Listening" class="md-nav__link">
+      Listening
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading/" title="Reading" class="md-nav__link">
+      Reading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw5-a/" title="Reading-Homework5-1" class="md-nav__link">
+      Reading-Homework5-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw5-b/" title="Reading-Homework5-2" class="md-nav__link">
+      Reading-Homework5-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw6/" title="Reading-Homework6" class="md-nav__link">
+      Reading-Homework6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw7/" title="Reading-Homework7" class="md-nav__link">
+      Reading-Homework7
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Forensics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Forensics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Forensics/image/" title="数字图像取证" class="md-nav__link">
+      数字图像取证
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/Linux/" title="嵌入式计算机系统实验自救手册" class="md-nav__link">
+      嵌入式计算机系统实验自救手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/Linux_Corresponence_Windows/" title="Linux与Windows文件交互" class="md-nav__link">
+      Linux与Windows文件交互
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      YOLO
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        YOLO
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo%E5%8E%9F%E7%90%86/" title="yolo原理" class="md-nav__link">
+      yolo原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo_spp_code_1/" title="yolo_spp_code_学习笔记1" class="md-nav__link">
+      yolo_spp_code_学习笔记1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo_spp_code_2/" title="yolo_spp_code_学习笔记2" class="md-nav__link">
+      yolo_spp_code_学习笔记2
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Socket
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Socket
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Socket/socket/" title="socket基础" class="md-nav__link">
+      socket基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      DataStructure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        DataStructure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      chain
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        chain
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/chain/LinkList/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/chain/STL/" title="STL" class="md-nav__link">
+      STL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/bipartite/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/GenerateTree/" title="生成树" class="md-nav__link">
+      生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/netstream/" title="网络流" class="md-nav__link">
+      网络流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/ShortestRoad/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/tarjan/" title="tarjan" class="md-nav__link">
+      tarjan
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
+    
+    <label class="md-nav__link" for="nav-9-3">
+      tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-3">
+        tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/binary_tree/" title="二叉树" class="md-nav__link">
+      二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/DiameterOfTree/" title="树的直径" class="md-nav__link">
+      树的直径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/modui/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/PointDivide/" title="点分治" class="md-nav__link">
+      点分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/segopration/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/treearray/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/treediff/" title="树上差分" class="md-nav__link">
+      树上差分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Skill
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Skill
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/common_thougt/" title="常用思维" class="md-nav__link">
+      常用思维
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/DramaticProgramme/" title="动态规划" class="md-nav__link">
+      动态规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/sort/" title="排序" class="md-nav__link">
+      排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/string/" title="字符串" class="md-nav__link">
+      字符串
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    【写在前面】
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    网课问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a. 信息的编码与存储
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-1" class="md-nav__link">
+    a-1 数制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-2" class="md-nav__link">
+    a-2 【非数值数据】非数值数据的编码表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-3" class="md-nav__link">
+    a-3 数据宽度和存储容量的单位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-4" class="md-nav__link">
+    a-4 数据存储时的字节排列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-5-ppt" class="md-nav__link">
+    a-5 运算电路基础【不在考点内 且 工大ppt未讲】
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    b. 【数值数据】整数的表示与运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b-1-" class="md-nav__link">
+    b-1 定点数的编码-机器数、原码、反码、补码、移码的区别以及联系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-2" class="md-nav__link">
+    b-2 带符号整数/无符号整数
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    有符号数和无符号数「转换」的基本原则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    有符号数和无符号数「扩展、截断」的基本原则
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-3" class="md-nav__link">
+    b-3 整数的加减运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    补码加减运算器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-4" class="md-nav__link">
+    b-4 整数乘法运算
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-5" class="md-nav__link">
+    b-5 整数除法运算
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c. 【数值数据】浮点数的表示与运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-1" class="md-nav__link">
+    c-1 浮点数的编码表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-2" class="md-nav__link">
+    c-2 浮点数的运算
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    浮点数加/减运算
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    浮点乘法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    浮点数舍入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    浮点数比较
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppt" class="md-nav__link">
+    内存、指针、字符串表示 【不在考纲内，在工大ppt内】
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="partone">【考研黑书向】PartOne 程序结构和执行之<u>信息的表示和处理</u><a class="headerlink" href="#partone" title="Permanent link">&para;</a></h1>
+<h2 id="_1">【写在前面】<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">问题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 信息表示和处理 位、整数 巧用无符号数：向下计数，看不懂 </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 信息表示和处理 位、整数 大小端举例，0xfffffea0的值的计算</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 五段式指令流水线</li>
+</ul>
+<h3 id="_3">参考<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><a href="https://www.icourse163.org/course/NJU-1001625001">计算机系统基础(一)：程序的表示、转换与链接 袁春风</a></p>
+</li>
+<li>
+<p>第一周 计算机系统概述</p>
+<ul>
+<li>计算机层次结构</li>
+<li>第二周 数据的表示和存储</li>
+<li>数制和编码</li>
+<li>定点数的编码表示</li>
+<li>C语言中的整数【部分未总结】</li>
+<li>浮点数的编码表示</li>
+<li>非数值数据的编码表示 【未总结】</li>
+<li>数据宽度和存储容量的单位【未总结】</li>
+<li>数据存储时的字节排列【未总结】</li>
+<li>第三周 运算电路基础</li>
+</ul>
+</li>
+<li>
+<p>CSAPP课本</p>
+</li>
+</ul>
+<hr />
+<h3 id="_4">网课问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="网课问题1" src="../img-PartOne/Q1.png" /></p>
+<p><img alt="网课问题2" src="../img-PartOne/Q2.png" /></p>
+<ul>
+<li>考察将原来的4位表示扩充为8位表示<ul>
+<li>法1：先将原来的4位扩充为8位的原码表示为：10001000，然后再将原码转换为补码-取反加一得：11111000</li>
+<li>法2：直接按符号位(该题中符号位为1)扩充左边的其余4位，得：11111000</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Q3变形补码" src="../img-PartOne/Q3.png" /></p>
+<p><img alt="Q4-浮点数精度的问题" src="../img-PartOne/Q4.png" /></p>
+<p><img alt="n位全加器问题" src="../img-PartOne/Q5.png" /></p>
+<p><img alt="n位带标志加法器问题" src="../img-PartOne/Q6.png" /></p>
+<p><img alt="整数的乘运算" src="../img-PartOne/Q10.png" /></p>
+<ul>
+<li>意思时浮点数不会出现溢出问题，了解浮点数相乘的过程</li>
+</ul>
+<hr />
+<h2 id="a">a. 信息的编码与存储<a class="headerlink" href="#a" title="Permanent link">&para;</a></h2>
+<h3 id="a-1">a-1 数制<a class="headerlink" href="#a-1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>“转换”的概念在数据表示中的反映</p>
+<p><img alt="数据表示中反映的转换概念" src="../img-PartOne/convertion.png" /></p>
+</li>
+<li>
+<p>机器级数据</p>
+<ul>
+<li>数值数据<ul>
+<li>整数(定点数，定点运算指令) - 无符号整数、有符号整数</li>
+<li>实数(浮点数，浮点运算指令) - 浮点数</li>
+<li>表示的三要素：<ul>
+<li>进位计数制</li>
+<li>定/浮点表示(解决小数点问题)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定点数的编码(解决正负号问题) - 如何用二进制编码：原码、补码、移码、反码(很少用)</li>
+<li>非数值数据<ul>
+<li>逻辑数，包括位串</li>
+<li>西文字符和汉字</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>数值数据中的小数点的表示</p>
+<ul>
+<li>约定小数点的位置<ul>
+<li>定点数Fixed Point Number：小数点位置约定在固定位置的数<ul>
+<li>形式过于僵硬，决定了固定位数的整数和小数部分，不利于同时表达特别大的数或者特别小的数</li>
+</ul>
+</li>
+<li>浮点数Floating Point Number：小数点位置约定为可浮动的数<ul>
+<li>是一种<strong>数字表示方式</strong>，类似于科学计数法</li>
+<li>定点小数用来表示浮点数的尾数部分</li>
+<li>定点整数用来表示(带符号/无符号)整数</li>
+<li><strong>在计算机内部，任何实数都可以用两个定点数(定点小数-指定有效数字+定点整数-指定小数点的位置)来表示</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>二进制</p>
+<ul>
+<li>
+<p>MSB / LSB
+      <img alt="MSB和LSB" src="../img-PartOne/MSBLSB.png" /></p>
+</li>
+<li>
+<p>用二进制编码的原因</p>
+<ul>
+<li>物理器件、便于计算机存储</li>
+<li>编码、计数、算术运算规则简单</li>
+<li>支持逻辑运算</li>
+</ul>
+</li>
+<li>十六进制</li>
+<li>引入八进制和十六进制的原因：(1)是二进制的简便表示，便于阅读和书写，显示时可缩短长度；(2)他们之间对应简单，转换容易</li>
+<li>进制转换</li>
+<li>10进制转k进制<ul>
+<li>法①：先将十进制数转化为二进制数，再将二进制转化为16或8进制)，转成二进制也要通过下面的方法</li>
+<li>法②：不通过二进制，直接转换<ul>
+<li>整数：除法-除基取余法<ul>
+<li>十进制数整数部分不断除以基数k(2、8或16) ，并记下余数，直到商为0为止</li>
+<li>上右下左(最上面的余数位于右边/低位，最下面的余数位于左边/高位)</li>
+</ul>
+</li>
+<li>小数：乘法-乘基取整法，乘以基数k，记录整数部分，直到小数部分为0为止，上左下右<ul>
+<li>现实中的精确值可能无法用0和1值表示</li>
+</ul>
+</li>
+<li><img alt="⭐️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/2b50.svg" title=":star:" />常识需谨记<ul>
+<li>整数部分的转换：1、2、4、8、16、32、64、128、256、512、1024、2048、4096、8192、16384、32768、65536</li>
+<li>小数部分的转换：0.5、0.25、0.125、0.0625 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>k进制转10进制<ul>
+<li>按权展开</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>编码：计算机内的数值表示</p>
+<ul>
+<li>需考虑的问题：编码的长度；数的符号；数的运算</li>
+</ul>
+</li>
+</ol>
+<h3 id="a-2">a-2 【非数值数据】非数值数据的编码表示<a class="headerlink" href="#a-2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>逻辑数据的编码表示</li>
+<li>西文字符的编码表示<ul>
+<li>常用编码为7位ASCII码</li>
+<li>数字、字母、空格、回车、换行</li>
+</ul>
+</li>
+<li>汉字及国际字符的编码表示<ul>
+<li>编码形式<ul>
+<li>输入码</li>
+<li>内码</li>
+<li>字模点阵或轮廓描述</li>
+</ul>
+</li>
+<li>GB2312-80字符集</li>
+</ul>
+</li>
+<li>多媒体信息的表示<ul>
+<li>多媒体信息用一个复杂的数据结构来描述，其中的基本数据或者是数值数据，或者是用0/1编码的非数值数据</li>
+</ul>
+</li>
+</ol>
+<h3 id="a-3">a-3 数据宽度和存储容量的单位<a class="headerlink" href="#a-3" title="Permanent link">&para;</a></h3>
+<p>数据的基本宽度</p>
+<ol>
+<li>位 / 比特bit</li>
+<li>字节</li>
+</ol>
+<h3 id="a-4">a-4 数据存储时的字节排列<a class="headerlink" href="#a-4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>变量的地址是其<strong>最小地址</strong>，即若int型变量x的存放地址是100，则表示x存放在100#~103#</li>
+<li>
+<p><code>有多个字节的字(word)，其各个字节在内存中的存放的顺序</code></p>
+<ol>
+<li>大端序/大尾序 Big Endian：LSB的字节地址最高，MIPS / Sun / PPC Mac / Internet</li>
+<li>小端序/小尾序 Little Endian：LSB的字节地址最低，Intel 80x86 / 运行Android 的ARM 处理器 /  iOS / Windows</li>
+<li>双端序 Bi-Endian</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h3 id="a-5-ppt">a-5 运算电路基础【不在考点内 且 工大ppt未讲】<a class="headerlink" href="#a-5-ppt" title="Permanent link">&para;</a></h3>
+<details>
+    <summary>数字逻辑电路基础 + 从C表达式到逻辑电路 + C语言中的各类运算</summary>
+
+
+#### 数字逻辑电路基础
+
+位级运算：布尔代数
+
+
+#### 从C表达式(高级语言)到逻辑电路
+
+
+
+#### C语言中的各类运算
+
+- 位级运算
+- 移位计算
+- 逻辑运算
+- 异或
+- 位扩展和位截断
+
+  </details>
+
+<h2 id="b">b. 【数值数据】整数的表示与运算<a class="headerlink" href="#b" title="Permanent link">&para;</a></h2>
+<h3 id="b-1-">b-1 定点数的编码-机器数、原码、反码、补码、移码的区别以及联系<a class="headerlink" href="#b-1-" title="Permanent link">&para;</a></h3>
+<p><strong>机器数</strong><img alt="🌟" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f31f.svg" title=":star2:" /></p>
+<blockquote>
+<ol>
+<li>概念：用0和1编码的计算机内部的0/1序列</li>
+<li><img alt="⭐️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/2b50.svg" title=":star:" />真值：真正的值，即现实中带正负号的数</li>
+<li>数在计算机中的表示形式 / 机器能识别的形式</li>
+<li><strong>带符号</strong>：最高位0表示非负数，1表示负数</li>
+<li>例子：假设机器字长为8位，则1表示为[00000001]，-1表示为[10000001]，其中00000001和10000001是机器数</li>
+</ol>
+</blockquote>
+<p><strong>原码 Sign and Magnitude</strong></p>
+<blockquote>
+<ol>
+<li>就是机器数</li>
+<li>符号(最高位)+绝对值</li>
+</ol>
+<p>整数采用<strong>补码</strong>表示，浮点数的尾数用<strong>原码定点小数</strong>表示</p>
+</blockquote>
+<p><strong>反码</strong></p>
+<blockquote>
+<ol>
+<li>
+<p>表示</p>
+<ul>
+<li>正数的反码是其本身</li>
+<li>负数的反码是符号位不变，其他位取反</li>
+</ul>
+</li>
+<li>
+<p>例子</p>
+<p>假设机器字长为8位，则[+1]=[00000001]原=[00000001]反；[-1]=[10000001]原=[11111110]反</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>补码</strong></p>
+<blockquote>
+<p>模运算 <span><span class="MathJax_Preview"> [X]补 = 2^n + X ( -2^n \leq X &lt; 2^n, mod 2^n) </span><script type="math/tex"> [X]补 = 2^n + X ( -2^n \leq X < 2^n, mod 2^n) </script></span> </p>
+<ol>
+<li>
+<p>表示</p>
+<ul>
+<li>正数的补码是其本身</li>
+<li>负数的补码在反码的基础上+1 <ul>
+<li>负数的补码 = 将其<u>对应正数的补码</u><strong>各位取反、末位加一</strong></li>
+<li>负数的补码 = 其对应的正数的补码，从右向左遇到的第一个1的前面各位取反</li>
+<li>其实也是<code>负数A[补]=模-绝对值(A)</code></li>
+<li>对于某一确定的模，某数减去小于模的另一数，总可以用该数加上另一数负数的补码来代替 - <strong>加法代替减法</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>例子</p>
+<p>假设机器字长为8位，则[+1]=[00000001]=[00000001]原=[00000001]反=[00000001]补；[-1]=[10000001]原=[11111110]反=[11111111]补</p>
+</li>
+<li>
+<p>求特殊数的补码</p>
+<p>假定机器数有n位</p>
+<ul>
+<li><span><span class="MathJax_Preview"> [-2^{(n-1)}]补 = 2^n - 2^{(n-1)} = 10...0(n-1个0) (mod 2^n) </span><script type="math/tex"> [-2^{(n-1)}]补 = 2^n - 2^{(n-1)} = 10...0(n-1个0) (mod 2^n) </script></span></li>
+<li><span><span class="MathJax_Preview"> [-1]补 = 2^n - 0...01 = 11...1(n个1) (mod 2^n) </span><script type="math/tex"> [-1]补 = 2^n - 0...01 = 11...1(n个1) (mod 2^n) </script></span></li>
+<li><span><span class="MathJax_Preview"> [+0]补 = [-0]补 = 00...0(n个0) </span><script type="math/tex"> [+0]补 = [-0]补 = 00...0(n个0) </script></span></li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>出现时期：原码 &lt; 反码 &lt; 补码</p>
+<p><strong>有了原码为什么还出现了反码？</strong></p>
+<ul>
+<li>
+<p>计算机辨别和处理符号位困难，不利于硬件设计</p>
+</li>
+<li>
+<p>使用原码加减运算方式不统一(特别当a&lt;b时，实现a-b比较困难)，且需要额外对符号位进行处理(同号数相减和异号数相加时需要判断绝对值大小和最终符号)</p>
+<ul>
+<li>
+<p>计算机只需要实现加法，把减一个数变为加上这个数的负数：1-1=1+(-1)，即让符号位参与运算</p>
+</li>
+<li>
+<p>按照正常的加法规则，原码的方式无法实现正数和负数的加法，一套用于正数+正数，一套用于正数+负数，则需要为加法运算<strong>做两种电路</strong></p>
+</li>
+<li>
+<p>原码实现1+(-1)的过程会出现错误</p>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>1+(-1)=[00000001]原+[10000001]原=[10000010]原，值为-2
+</code></pre></div>
+</td></tr></table>
+</li>
+<li>
+<p>用反码计算减法：</p>
+<ul>
+<li>反码实现1+(-1)的过程，结果正确</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>1+(-1)=[00000001]反+[11111110]反=[11111111]反=[10000000]原=-0(超过的部分截断，反码需要化成原码才能知道具体的值)
+2+(-1)=[00000010]反+[11111110]反=[00000000]反=[00000000]原=0(用补码可以解决)
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>解决了原码的部分加法问题，有些使用反码的加法也不成立，反码只是为了过渡引出补码(是一个发现问题解决问题的过程)</li>
+</ul>
+</li>
+</ul>
+<p><strong>为什么会出现补码？</strong></p>
+<ul>
+<li>
+<p>补码运算系统是模运算系统，解决了原码带来的加法问题，可以将加法运算规则扩展到整个整数集，从而<strong>用一套电路就可以实现全部整数的加法</strong></p>
+<ul>
+<li>补码实现1+(-1)和2+(-1)的问题</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>1+(-1)=[00000001]补+[11111111]补=[00000000]补=[00000000]原=0(超过的部分截断，补码需要化成原码才能知道具体的值)
+2+(-1)=[00000010]补+[11111111]反=[00000001]补=[00000001]原=1(补码求原码：采用逆推法，先把补码变为反码，然后在把反码变为原码 / 或者对结果求补)
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>
+<p>补码的运算：</p>
+<ul>
+<li>符号位与数值部分一起参加运算</li>
+<li>舍去超出字长的进位</li>
+<li>用补码运算，结果也为补码</li>
+<li>在转换为真值(真正的值，带符号)时，若符号位为0，数位不变；若符号位为1，应将结果求补才是其真值 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>解决了+0和-0及其编码的问题(不利于程序员编程)，0带符号是没有任何意义的， 而且用<code>[0000 0000]原</code>和<code>[1000 0000]原</code>两个编码表示</p>
+<ul>
+<li>假设机器字长为8位，补码中：用<code>[00000000]补</code>表示0，用<code>[10000000]补</code>表示-128</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>(-1)+(-127)=[10000001]原+[11111111]原=[11111111]补+[10000001]补=[10000000]补=-128
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>在该条件下，原、反码的范围是-127~127(因为第一位是符号位)，所以-128并没有原码和反码的表示</li>
+</ul>
+</li>
+<li>
+<p>使用补码，取值范围扩大到[-128,127]，因为0只需要一个编码，所以多出来一个编码表示-128(比原码多表示一个最小负数)</p>
+</li>
+</ul>
+<p>变形补码(4's complement)的表示</p>
+<blockquote>
+<p>变形(4's)补码：双符号，用于存放可能溢出的中间结果</p>
+</blockquote>
+<p><img alt="变形4's补码" src="../img-PartOne/4scomplement.png" /></p>
+<p><strong>移码 Excess(biased) notion</strong></p>
+<blockquote>
+<ol>
+<li>将每一个数值加上一个偏置常数(Excess / bias)</li>
+<li>当编码位数为n时，bias取 <span><span class="MathJax_Preview">2^{(n-1)}</span><script type="math/tex">2^{(n-1)}</script></span>或 <span><span class="MathJax_Preview">2^{(n-1)}-1</span><script type="math/tex">2^{(n-1)}-1</script></span>(如IEEE 754)<ul>
+<li>当bias为 <span><span class="MathJax_Preview">2^{(n-1)}</span><script type="math/tex">2^{(n-1)}</script></span>时，移码和补码仅第一位不同</li>
+</ul>
+</li>
+<li>移码用来表示浮点数的指数(阶码)，原因是便于浮点数加减运算时的对阶操作(比较大小-需要将阶统一)<ul>
+<li>假设一个阶为负数，一个阶为正数，通过移码将两者控制在正数范围进行比较更方便</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<details>
+      <summary>参考资料</summary>
+
+- http://www.ruanyifeng.com/blog/2009/08/twos_complement.html
+- https://blog.csdn.net/ch717828/article/details/103315407 - 概念解析
+- https://blog.csdn.net/zl10086111/article/details/80907428 - 用钟表类比反码和补码为什么成立的原理
+- :rainbow:理解上面那一段已经能基本解决我的问题，以下参考作为储备，太困了，逃ε=ε=ε=┏(゜ロ゜;)┛
+- https://www.zhihu.com/question/20159860 - 原码、反码、补码的产生、应用以及优缺点有哪些？
+- https://www.zhihu.com/question/352057791/answer/882175484
+- https://www.jianshu.com/p/ffc97c4d2306
+
+  </details>
+
+<hr />
+<h3 id="b-2">b-2 带符号整数/无符号整数<a class="headerlink" href="#b-2" title="Permanent link">&para;</a></h3>
+<p>无符号整数Unsigned integer</p>
+<ul>
+<li>机器中字的位排序2种</li>
+<li>没有符号位</li>
+<li>能表示的最大值大于位数相同的带符号整数的最大值</li>
+<li>C语言：在数后面加一个u或者U，unsigned int/short/long</li>
+</ul>
+<p>带符号整数Signed integer</p>
+<ul>
+<li>
+<p>MSB表示数符</p>
+</li>
+<li>
+<p>三种定点编码方式</p>
+<ul>
+<li>原码：定点小数，用来表示浮点数的尾数</li>
+<li>移码：定点整数，用来表示浮点数的阶(指数)</li>
+<li>补码：50年代以来，所有的计算机都用补码来表示带符号整数</li>
+</ul>
+</li>
+<li>C语言：int/short/long；同时有无符号数和带符号数，强制将带符号整数转换为无符号整数</li>
+</ul>
+<p>C语言中C90和C99的区别</p>
+<h4 id="_5">有符号数和无符号数「转换」的基本原则<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>位模式不变</li>
+<li>重新解读（按目标编码类型的规则解读）</li>
+<li>会有意外副作用: 数值被<span><span class="MathJax_Preview"> \pm 2^{w} </span><script type="math/tex"> \pm 2^{w} </script></span></li>
+<li>表达式含无符号数和有符号数时<ul>
+<li>有符号数被转换成无符号数（如int转成unsigned int）</li>
+</ul>
+</li>
+</ul>
+<h4 id="_6">有符号数和无符号数「扩展、截断」的基本原则<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>扩展(例如从short int到int的转换)
+- 无符号数: 填充0
+- 有符号数:符号扩展
+- 结果都是明确的预期值</p>
+<p>截断(例如从unsigned 到unsigned short的转换)
+- 无论有/无符号数:多出的位均被截断
+- 结果重新解读
+- 无符号数: 相当于求模运算
+- 有符号数: 与求模运算相似
+    - 有符号数截断以后，最高位要转换为符号位
+- 对于小整数，结果是明确的预期值</p>
+<hr />
+<h3 id="b-3">b-3 整数的加减运算<a class="headerlink" href="#b-3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>指针、地址等通常被说明为无符号整数，因而在进行指针或地址运算时，需要进行无符号整数的加减运算</li>
+<li>运算电路称为：整数加减运算部件，基于<strong>带标志加法器</strong>实现</li>
+<li>计算机中的加法器，只有n位，所以是一种<span><span class="MathJax_Preview">n^2</span><script type="math/tex">n^2</script></span>运算系统</li>
+</ul>
+<h4 id="_7">补码加减运算器<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>补码加减运算公式</p>
+<blockquote>
+<p><span><span class="MathJax_Preview">[A+B]补 = [A]补 + [B]补 (mod 2^n)</span><script type="math/tex">[A+B]补 = [A]补 + [B]补 (mod 2^n)</script></span>
+<span><span class="MathJax_Preview">[A-B]补 = [A]补 + [-B]补 (mod 2^n)</span><script type="math/tex">[A-B]补 = [A]补 + [-B]补 (mod 2^n)</script></span></p>
+</blockquote>
+<ul>
+<li>加减法运算统一采用加法</li>
+<li>实现减法主要在于求 <span><span class="MathJax_Preview"> [-B]补 = \overline{B} + 1 </span><script type="math/tex"> [-B]补 = \overline{B} + 1 </script></span></li>
+<li>符号位(最高有效位MSB)和数值位一起参与运算</li>
+<li>直接用Adder实现两个数的加运算<ul>
+<li>采用模运算系统：将运算结果高位丢弃，保留低n位，相当于取模<span><span class="MathJax_Preview">2^n</span><script type="math/tex">2^n</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>所有运算电路的核心</p>
+<p><img alt="加法器" src="../img-PartOne/integer-adder.png" /></p>
+<ul>
+<li>计算机中所有运算都基于加法器实现</li>
+<li>加法器不知道所运算的是无符号数还是带符号数，只认01序列</li>
+<li>加法器不判定对错，总是取低n位作为结果sum，并生成条件标志(Flag)信息 [ 条件标志位 / 条件码CC ]<ul>
+<li><strong>ZF</strong>：零标志，若sum位0，则1，否则0</li>
+<li><strong>OF</strong>：溢出标志，若A与B’同号但与sum不同号，则1，否则0</li>
+<li><strong>CF</strong>：做加运算时，CF表示进位；做减运算时，CF表示借位。若在加法中有进位，则Cout=1而Sub=0；若在减法中有借位，则Cout=0而Sub=1</li>
+<li><strong>SF</strong>：符号标志，sum的符号</li>
+<li>生成并保存条件标志是为了在<strong>分支指令(条件转移指令)</strong>中被用作是否转移执行的条件</li>
+<li>条件标志在运算电路中产生，被记录到专门的寄存器中，通常称为<strong>程序/状态字寄存器或标志寄存器</strong>，每个标志对应标志寄存器中的一个标志位，如IA-32中的EFLAGS寄存器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>n位带标志加法器</p>
+<p><img alt="n位带标志加法器" src="../img-PartOne/nbits-flag-adder.png" /></p>
+<ul>
+<li>为什么无法判断溢出？</li>
+<li>为什么cin是sub？</li>
+</ul>
+</li>
+<li>
+<p>整数加法举例</p>
+<p><img alt="整数加法举例" src="../img-PartOne/integer-add.png" /></p>
+<p><img alt="整数加法举例1" src="../img-PartOne/integer-add1.png" /></p>
+</li>
+<li>
+<p>整数减法举例</p>
+<p><img alt="整数减法举例" src="../img-PartOne/integer-sub.png" /></p>
+<p><img alt="整数减法举例1" src="../img-PartOne/integer-sub1.png" /></p>
+</li>
+<li>
+<p>无符号整数加法溢出判断程序</p>
+<ul>
+<li>发生溢出时，一定满足<code>result&lt;x &amp;&amp; result&lt;y</code>，否则若 <span><span class="MathJax_Preview">x+y-2^n ≥ x，则y≥2^n</span><script type="math/tex">x+y-2^n ≥ x，则y≥2^n</script></span>，不可能 </li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">uadd_ok</span><span class="p">(</span><span class="kt">unsigned</span> <span class="n">x</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">y</span><span class="p">){</span>
+  <span class="kt">unsigned</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</li>
+<li>
+<p>带符号整数加法溢出判断程序</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">tadd_ok</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">neg_over</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">sum</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">pos_over</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">sum</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="o">!</span><span class="n">neg_over</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">pos_over</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</li>
+<li>
+<p>无符号减的溢出判断函数</p>
+</li>
+<li>
+<p>带符号减的溢出判断函数</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cm">/* WARNING: This code is buggy.　*/</span>
+<span class="kt">int</span> <span class="nf">tsub_ok</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span>
+  <span class="k">return</span> <span class="n">tadd</span><span class="o">+</span><span class="n">ok</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 当x=0，y=0x80000000时，该函数判断失误</span>
+<span class="c1">// 因为 y = -2^(31)</span>
+<span class="c1">// 0 - [-2^(31) ] = 2 ^ (31) 满足正溢出的条件</span>
+<span class="c1">// 但是如果x和y作为参数传入tadd_ok函数中时</span>
+<span class="c1">// y经过取－之后 仍然为 -2^(31)</span>
+<span class="c1">// 所以 x 和 -y相加的时候，是两个异号数相加，不会判断为溢出</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>如何改进呢？</li>
+</ul>
+</li>
+</ul>
+<h3 id="b-4">b-4 整数乘法运算<a class="headerlink" href="#b-4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>整数乘法运算</p>
+<ul>
+<li>高级语言中两个n位整数相乘得到的结果通常也是一个n位整数(取低n位)<ul>
+<li>以下是自己总结的用二进制方法计算乘法也不知道对不对</li>
+<li>无符号乘法：正常十进制乘法，当超长则截断</li>
+<li>带符号乘法<ul>
+<li>超长，截断</li>
+<li>不够长，需进行符号扩展，符号通过一开始给的两个数值进行判断</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>高级语言中，程序员判断返回值z是正确的语句<code>!x || z / x == y</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span>
+  <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">z</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</li>
+<li>
+<p>在编译器层面，当 <span><span class="MathJax_Preview"> -2{n-1} \leq x*y \le 2{n-1} (不溢出) </span><script type="math/tex"> -2{n-1} \leq x*y \le 2{n-1} (不溢出) </script></span> 乘积是正确判断方式为</p>
+<ul>
+<li>无符号：乘积的高n位为全0，则不溢出</li>
+<li>有符号：乘积的高n位为全0或全1并等于低n位的最高位 / 即乘积的高n+1位为全0或全1</li>
+</ul>
+</li>
+<li>硬件<strong>不判断</strong>溢出(乘法指令不生成溢出标志)，仅保留2n位乘积，供软件使用和判断是否溢出</li>
+<li>
+<p>指令：分<strong>无符号</strong>数乘指令、<strong>带符号</strong>整数乘指令</p>
+<ul>
+<li>在无符号乘和带符号乘中，尽管位级表示相同，但是2n位的乘积是不同的，所以要区分(不同于加法)</li>
+</ul>
+<p><img alt="整数的乘法" src="../img-PartOne/integer-sign-unsign-multi.png" /></p>
+</li>
+<li>
+<p>整数乘法溢出漏洞</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cm">/*复制数组到堆中，count为数组元素个数*/</span>
+<span class="kt">int</span> <span class="nf">copy_array</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">){</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="cm">/*在堆区申请一块内存*/</span>
+  <span class="kt">int</span>  <span class="o">*</span><span class="n">myarray</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">count</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">myarray</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">myarray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 当参数count很大时，count*sizeof(int)会溢出</span>
+<span class="c1">// count = 2^(30) + 1时，count*sizeof(int) = [ 2^(30) + 1]* 2^2 mod 2^(32) = [ 2^(32) + 4] mod 2^(32)</span>
+<span class="c1">// 导致程序仅仅只给函数分配了4个字节的内存</span>
+<span class="c1">// 当数组复制的时候，堆heap中的大量数据被破坏</span>
+<span class="c1">// 攻击者可构造特殊参数来触发整数溢出，</span>
+<span class="c1">// 以一段预设信息覆盖一个已分配的堆缓冲区，</span>
+<span class="c1">// 造成远程服务器崩溃或者改变内存数据并执行任意代码</span>
+</code></pre></div>
+</td></tr></table>
+</li>
+</ul>
+</li>
+<li>
+<p>变量与常数之间的乘运算</p>
+<p>乘法运算比移位和加法等运算所用时间长，编译器在处理变量与常数相乘时，往往以移位、加法、减法的组合运算来代替乘法运算。如x*20 = (x &lt;&lt; 4) + (x &lt;&lt; 2)，因为20 = 16 + 4 = 2^4 + 2^2。在乘积溢出时，利用移位和加减运算组合的方式得到的结果和采用直接相乘的结果是一样的</p>
+</li>
+</ol>
+<h3 id="b-5">b-5 整数除法运算<a class="headerlink" href="#b-5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>整数的除运算</p>
+<p>对于带符号整数，n位整数除以n位整数
+- <span><span class="MathJax_Preview">-2^{n-1} / (-1) = 2^{n-1}</span><script type="math/tex">-2^{n-1} / (-1) = 2^{n-1}</script></span>会发生溢出，因为假设在32位的情况下，最大能表示的整数是<span><span class="MathJax_Preview">2^{31}-1</span><script type="math/tex">2^{31}-1</script></span>
+- 其余情况不会发生溢出，因为商的绝对值不可能比被除数的绝对值大
+- 因为整数除法的商也是整数，所以在不能整除的时候通常按照朝0方向舍入
+    - 正数商取比自身小的最接近整数(Floor，地板)
+    - 负数商取比自身大的最接近整数(Ceiling，天板)
+- 整除0的结果无法用一个机器数表示，所以当除数为0时，会发生<strong>异常</strong>，调用操作系统中的异常处理程序处理
+- 未发生除法溢出 / 浮点异常</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>```c++
+// CASE 1
+int a = 0x80000000;
+int b = a / -1;
+printf(&quot;%d\n&quot;,b);
+
+// 运行结果为-2147483648
+// 因为除以-1被优化成取负指令
+// 相当于把0x80000000取负后的机器码仍然是 1000+28个0
+// 负数即为 -2^(31)
+// 故未发生除法溢出
+
+// CASE 2
+int a = 0x80000000;
+int b = -1;
+int c = a / b;
+printf(&quot;%d\n&quot;,c);
+
+// 运行结果为“Floating point exception”，即CPU检测到了异常
+```
+</code></pre></div>
+</td></tr></table>
+</li>
+<li>
+<p>变量与常数之间的除运算</p>
+<p>由于计算机中除法运算比较复杂，而且不能用流水线方式实现，且需要比乘法指令还要长的时钟周期。所以编译器在处理<u>一个变量与一个2的幂次形式的整数相除</u>时，常采用<strong>右移运算</strong>(无符号：逻辑右移；带符号：算术右移)来实现 </p>
+</li>
+</ol>
+<details>
+  <summary>算术左、右移和逻辑左、右移</summary>
+
+  1. 算术左移<<：依次左移一位，尾部补0，最高的符号位保持不变
+
+  2. 算术右移>>：依次右移一位，尾部丢失，符号位右移后，原位置上**补符号位**，即正数补0，负数补1
+
+  > 算术运算
+  >
+  > 1. 左移：无论有/无符号数，都可以用逻辑左移实现乘以$2^k$
+  > 2. 右移：
+  >     - **无符号数：逻辑右移**，除以$2^k$（除法+向0舍入）
+  >     - **有符号数：算术右移**
+  >         - 正整数:除以 $2^k$ (除法 + 向0舍入) 
+  >         - 负整数:除以 $2^k$ (除法 + 若不纠偏则是远离0舍入)，所以最后还要使用偏置(+1<<k-1,即加上$2^k-1$)来修正
+
+  1. 逻辑左移：最高位丢失，最低位补0
+
+  2. 逻辑右移>>>：最高位补0，最低位丢失
+
+  </details>
+
+<ul>
+<li>能整除直接右移</li>
+<li>
+<p>不能整除时，则右移移出的位中有非0，采用<strong>朝零舍入</strong>(截断)</p>
+<ul>
+<li><strong>无符号数</strong>、<strong>带符号正整数</strong> - 地板：移除的低位直接<strong>舍弃</strong></li>
+<li>
+<p><strong>带符号负整数</strong> - 天板：加偏移量<span><span class="MathJax_Preview">2^k -1</span><script type="math/tex">2^k -1</script></span>，然后再右移k位，低位截断(k：右移位数)</p>
+<p><img alt="常数除法的问题" src="../img-PartOne/constant-divide-question.png" /></p>
+<ul>
+<li>
+<p>实践是检验真理的唯一标准</p>
+<p><img alt="常数除法的检验" src="../img-PartOne/constant-divide-answer.png" /></p>
+</li>
+<li>
+<p>原理解析</p>
+<p>如果仅仅是算术右移&gt;&gt;，则得到<span><span class="MathJax_Preview">\lfloor x / 2^k \rfloor</span><script type="math/tex">\lfloor x / 2^k \rfloor</script></span>，所以是远离0的舍入方向，为了使得是向0方向的舍入，则按<span><span class="MathJax_Preview">\lceil (x+2^k-1)/2^k \rceil</span><script type="math/tex">\lceil (x+2^k-1)/2^k \rceil</script></span>计算，即 <span><span class="MathJax_Preview"> (x + (1 &lt;&lt; k ) -1) &gt;&gt; k </span><script type="math/tex"> (x + (1 << k ) -1) >> k </script></span></p>
+<p><img alt="无舍入情况" src="../img-PartOne/negativenumber-divide-1.png" /></p>
+<p><img alt="有舍入情况" src="../img-PartOne/negativenumber-divide-2.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>举例：假设x为一个int型变量，请给出一个用来计算x/32的值的函数div32。要求不能使用除法、乘法、模运算、比较运算、循环语句和条件语句，可以使用右移、加法以及任何按位运算</p>
+<ul>
+<li>
+<p>除以32，相当于右移5位</p>
+<ul>
+<li>正数直接右移</li>
+<li>负数需要加偏移量31</li>
+<li>设偏移量为b，则x为正时，b=0；x为负时，b=31，即(x&gt;=0 ? x : (x+31))&gt;&gt;5</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">div32</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+  <span class="cm">/*根据x的符号得到偏移量b*/</span>
+  <span class="cm">/* 00000000 &amp; 00011111 | 11111111(右移补符号位) &amp; 00011111 */</span>
+  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;&gt;</span><span class="mi">31</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1F</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="c">c. 【数值数据】浮点数的表示与运算<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>为什么需要浮点数？浮点数是如何浮动的？</p>
+<ul>
+<li>定点数的范围存在缺陷，比如数很小的时候，大部分位都是0，则不能充分运用存储单元</li>
+<li>小数的存储和计算需要考虑小数点的位置和对齐问题</li>
+</ul>
+<blockquote>
+<p>how a point floats? 
+How much memory allocation needs an average point number?
+For the fixed point number, the computer allocates a fixed amount for fractional part, as for currency where you know how much precision you need, and the other fixed amount of bits for the integral part.
+If you have <strong>small numbers</strong> you need more space for the fractional part of the number, and for <strong>big numbers</strong> you want less for the fractional and more for the integral part. Here comes the floating point ability to float on the needs. 
+A floating-point number sees the both parts as one number, which is put in one chunk of bits, named mantissa, and the rest of bits are for sign and for the exponent. The exponent tells where the floating-point is in this number</p>
+</blockquote>
+</li>
+</ul>
+<details>
+  <summary>参考资料</summary>
+
+- [阮一峰-浮点数的二进制表示](http://www.ruanyifeng.com/blog/2010/06/ieee_floating-point_representation.html)
+- what is a floating point number
+    - https://www.zhihu.com/question/19848808
+    - https://www.quora.com/What-is-a-floating-point-numberhttps://www.webopedia.com/TERM/F/floating_point_number.html
+    - https://stevenpcurtis.medium.com/what-is-a-floating-point-number-6991f2f85a28 - 针对初学者理解
+    - https://www.webopedia.com/TERM/F/floating_point_number.html
+
+  </details>
+
+<hr />
+<h3 id="c-1">c-1 浮点数的编码表示<a class="headerlink" href="#c-1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>实数类型：单精度浮点(C语言:32位)、双精度浮点(C语言:64位)、扩展精度浮点(C语言:80/96位)</p>
+<p><img alt="精度选项" src="../img-PartOne/precision-option.png" /></p>
+</li>
+<li>
+<p>类比科学计数法(Scientific Notation)</p>
+<ul>
+<li>Normalized 规格化形式 - 唯一</li>
+<li>Unnormalized 非规格化 - 不唯一</li>
+</ul>
+</li>
+<li>
+<p>二进制实数</p>
+<p><img alt="二进制实数" src="../img-PartOne/binary-real-notation.png" /></p>
+</li>
+<li>
+<p>32位浮点数格式的规格化数的表示</p>
+<ul>
+<li>
+<p>&plusmn;0.1xxx * <span><span class="MathJax_Preview">2^E</span><script type="math/tex">2^E</script></span>，但通常规定规格化数的小数点前为1，&plusmn;1.xxx * <span><span class="MathJax_Preview">R^{Exponent}</span><script type="math/tex">R^{Exponent}</script></span>，R是基(可以是2/4/8/16，约定信息，无需显式表示)</p>
+<p><img alt="32位浮点数格式" src="../img-PartOne/32b-FP.png" /></p>
+</li>
+<li>
+<p>第0位数符S</p>
+</li>
+<li>
+<p>第1~8位为8位移码表示阶码E(假设一般的偏置常数为128=2^7)</p>
+</li>
+<li>
+<p>第9~31位为24位二进制原码小数表示的尾数M</p>
+<ul>
+<li>原码具有<strong>对称性</strong></li>
+<li>因为规格化尾数的小数点后<strong>第一位总是1</strong>，故规定第一位默认的1不明显表示出来(节省存储空间)，这样可用23个数位表示24位尾数</li>
+</ul>
+</li>
+<li>
+<p>最大正数：<span><span class="MathJax_Preview">0.11...1 × 2^{11...1} = [ 1-2^{-24} ] × 2 ^ {127}</span><script type="math/tex">0.11...1 × 2^{11...1} = [ 1-2^{-24} ] × 2 ^ {127}</script></span></p>
+<ul>
+<li>小数点后面的第一个1不表示</li>
+<li>8个1，即11111111 = 255 = 127 + 128(偏置常数) 【e = E + Bias / E = e - Bias】，所以不加偏置常数能表示的最大数为127</li>
+</ul>
+</li>
+<li>
+<p>最小正数：<span><span class="MathJax_Preview">0.10...0 × 2^{00...0} = [ 1 / 2 ] × 2 ^ {-128}</span><script type="math/tex">0.10...0 × 2^{00...0} = [ 1 / 2 ] × 2 ^ {-128}</script></span></p>
+<ul>
+<li>8个0，即00000000 = 0 = 128 + (-128)</li>
+</ul>
+</li>
+<li>
+<p>因为原码对称，故其表示范围关于原点对称</p>
+<p><img alt="表示范围" src="../img-PartOne/represent-number.png" /></p>
+<ul>
+<li>机器0：尾数为0或落在下溢区中的数(被舍入)</li>
+<li>浮点数范围比定点数大，但数的个数没变多(因为32位的编码，编码个数只能是2的32次方，和整数)，故数之间更稀疏且不均匀</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>IEEE 754标准 Single Precision(单精度)  <span><span class="MathJax_Preview">v = (-1)^s × M × 2^E</span><script type="math/tex">v = (-1)^s × M × 2^E</script></span></p>
+<p><img alt="32位浮点数格式" src="../img-PartOne/32b-FP.png" /></p>
+<ul>
+<li>
+<p><strong>Sign bit</strong>：1表示negative；0表示positive</p>
+</li>
+<li>
+<p><strong>Exponent(阶码)</strong></p>
+<ul>
+<li><u>阶码</u>表示阶的编码，<u>阶或指数</u>表示阶码的值</li>
+<li><code>E = Exp - Bias</code> E是最初的指数的值，Bias是偏置常数，Exp是阶</li>
+<li>SP<strong>规格化</strong>阶码范围为00000001(-126 = 1-127) ~ 11111110(127 = 254 - 127) <ul>
+<li>全0和全1用来表示特殊值</li>
+</ul>
+</li>
+<li>bias为127(single <span><span class="MathJax_Preview">2^7-1</span><script type="math/tex">2^7-1</script></span>)，1023(double <span><span class="MathJax_Preview">2^10-1</span><script type="math/tex">2^10-1</script></span>)</li>
+<li>为什么bias选择127？<ul>
+<li>若用128，则阶码范围为 00000001(-127)~11111110(126)，则表示小数部分多了一位，但是表示整数部分少了一位，所以少了很多可表示的范围，因为小数的一位变化范围比整数的一位变化范围少，如精度由0.1 -&gt; 0.01，多表示了0.01~0.1之间的小数，但是如果精度由1 -&gt; 10，则不仅可以表示由1~10之间的小数，而且还能表示之间的小数 (<img alt="😄" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f604.svg" title=":smile:" />个人想法，也许表述不精，意会意思)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Significand(部分尾数)</strong></p>
+<ul>
+<li>规格化尾数最高位总是1，所以隐含表示，省1位：1 + 23bits(single)，1 + 52bits(double)</li>
+<li>frac = 0...0 (M = 1.0)时，为最小值；frac = 1...1(M = 2.0 - ε)时，为最大值</li>
+<li>SP: <span><span class="MathJax_Preview">(-1)^S × (1 + Significand) × 2^{Exponent - 127}</span><script type="math/tex">(-1)^S × (1 + Significand) × 2^{Exponent - 127}</script></span></li>
+<li>DP: <span><span class="MathJax_Preview">(-1)^S × (1 + Significand) × 2^{Exponent - 1023}</span><script type="math/tex">(-1)^S × (1 + Significand) × 2^{Exponent - 1023}</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>特殊数的表示</p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">机器数表示</th>
+<th align="center">exponent</th>
+<th align="center">significand</th>
+<th align="center">sign</th>
+<th>相关操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">+0: 0 00000000 0~0(23bits) / -0: 1 00000000 0~0(23bits)</td>
+<td align="center">all zeros</td>
+<td align="center">all zeros</td>
+<td align="center">both cases &plusmn; valid</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">+∞ / -∞</td>
+<td align="center">+∞: 0 11111111 0~0(23bits) / -∞: 1 11111111 0~0(23bits)</td>
+<td align="center">all ones(11111111B = 255)</td>
+<td align="center">all zeros</td>
+<td align="center"></td>
+<td>5.0   / 0 = +∞; -5.0 / 0 = -∞; 5 +  (+∞) = +∞; (+∞) + (+∞) = +∞; 5 -(+∞) = -∞; (-∞) - (+∞) = -∞</td>
+</tr>
+<tr>
+<td align="center">非数 NaN(Not a Number)</td>
+<td align="center"></td>
+<td align="center">255</td>
+<td align="center">nonzero</td>
+<td align="center"></td>
+<td>sqrt(-4.0)=NaN; 0/0=NaN; op(NaN,x)=NaN; +∞+(-∞)=NaN; +∞-(+∞)=NaN; ∞/∞=NaN</td>
+</tr>
+<tr>
+<td align="center">非规格化数 Denorms</td>
+<td align="center"></td>
+<td align="center">0</td>
+<td align="center">nonzero</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">规格化数 Norms</td>
+<td align="center"></td>
+<td align="center">1-254(exp≠0...0且exp≠1...1)</td>
+<td align="center">任意小数点前隐含1</td>
+<td align="center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="有趣的数字" src="../img-PartOne/interesting-numbers.png" /></p>
+<p><img alt="浮点编码总结" src="../img-PartOne/floating-point-conclusion.png" /></p>
+<ul>
+<li>
+<p>浮点数除0的结果是 &plusmn;∞，而不是溢出异常(整数除0为异常)，因为这样可以利用&plusmn;∞作比较，例如 X/0 &gt; Y <strong>可作为有效比较？？？ 为什么可以作为有效比较</strong></p>
+</li>
+<li>
+<p>NaNs可以帮助调试程序和判断原因，而不会让程序出现异常而无法执行和得不到结果，也无法查找原因</p>
+</li>
+<li>
+<p>非规格化数(Denorms)的表示</p>
+<ul>
+<li>条件是exp = 0...0 </li>
+<li>阶码值：<u>E = 1 - Bias(instead of E = 0 - Bias)</u> <ul>
+<li>相当于指数恒为-126了(在单精度中)</li>
+<li>原因：使得最大非规格化数和最小规格化数之间可以平滑转换，补偿非规格化数的尾数没有隐含的开头的1</li>
+</ul>
+</li>
+</ul>
+<p><img alt="非规格化数的表示" src="../img-PartOne/Denorms.png" /></p>
+<ul>
+<li>假设正数，则规格化数能表示的最小正数为<span><span class="MathJax_Preview">2^{-126} = 1.0...0 × 2^{-126}</span><script type="math/tex">2^{-126} = 1.0...0 × 2^{-126}</script></span>，0 00000001 0~0(23bits)</li>
+<li><span><span class="MathJax_Preview">[2^{-126},2^{-125}]</span><script type="math/tex">[2^{-126},2^{-125}]</script></span>的区间长度为<span><span class="MathJax_Preview">2^{-126}</span><script type="math/tex">2^{-126}</script></span>，而<span><span class="MathJax_Preview">[2^{-125},2^{-126}]</span><script type="math/tex">[2^{-125},2^{-126}]</script></span>的区间长度为<span><span class="MathJax_Preview">2^{-125}</span><script type="math/tex">2^{-125}</script></span>，是前者的区间长度的两倍，因为每个区间都可以表示<span><span class="MathJax_Preview">2^{23}</span><script type="math/tex">2^{23}</script></span>个数，所以数的间距也是前者数的间距的两倍 -&gt; 浮点数往数轴正方向上数的间距越大，越稀疏，越离原点近的数，精度越好</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>机器数转换为真值</p>
+<p><img alt="机器数转化为真值" src="../img-PartOne/machine-real-number.png" /></p>
+</li>
+<li>
+<p>真值转换为机器数</p>
+<p><img alt="真值转换为机器数" src="../img-PartOne/real-machine-number.png" /></p>
+</li>
+<li>
+<p>浮点数精度：当输入数据是一个不可表示数时，机器将其转换为最邻近的可表示数</p>
+</li>
+</ul>
+<hr />
+<h3 id="c-2">c-2 浮点数的运算<a class="headerlink" href="#c-2" title="Permanent link">&para;</a></h3>
+<p>基本思想：
+1. 计算精确结果
+2. 变换到指定格式
+      - 可能溢出：阶码(Exponent)太大
+      - 小数部分可能需要舍入</p>
+<p>设两个规格化浮点数分别为：<span><span class="MathJax_Preview">A = Ma*2^{Ea},B =Mb*2^{Eb}</span><script type="math/tex">A = Ma*2^{Ea},B =Mb*2^{Eb}</script></span></p>
+<ul>
+<li><span><span class="MathJax_Preview">A \pm B = (Ma \pm Mb*2^{-(Ea-Eb)})*2^{Ea},假设Ea \geq Eb</span><script type="math/tex">A \pm B = (Ma \pm Mb*2^{-(Ea-Eb)})*2^{Ea},假设Ea \geq Eb</script></span></li>
+<li><span><span class="MathJax_Preview">A*B = (Ma * Mb)*2^{Ea+Eb}</span><script type="math/tex">A*B = (Ma * Mb)*2^{Ea+Eb}</script></span></li>
+<li><span><span class="MathJax_Preview">A / B = (Ma / Mb)*2^{Ea-Eb}</span><script type="math/tex">A / B = (Ma / Mb)*2^{Ea-Eb}</script></span></li>
+</ul>
+<p>上述运算结果可能出现以下几种情况:</p>
+<ul>
+<li>阶码上溢：一个正指数超过了最大允许值=〉+∞/-∞/溢出<ul>
+<li>SP最大指数为127</li>
+</ul>
+</li>
+<li>阶码下溢：一个负指数超过了最小允许值=〉+0/-0<ul>
+<li>SP最小指数为-126</li>
+</ul>
+</li>
+<li>尾数溢出：最高有效位有进位=〉右规<ul>
+<li>尾数溢出，结果不一定溢出</li>
+<li>1.5+1.5=？</li>
+</ul>
+</li>
+<li>非规格化尾数：数值部分高位为0 =〉左规<ul>
+<li>1.5-1.0=？</li>
+</ul>
+</li>
+<li>右规或对阶时，右段有效位丢失=〉尾数舍入<ul>
+<li>运算过程中添加保护位</li>
+<li>IEEE建议实现时为每种异常情况提供一个<strong>自陷允许位</strong>。若某异常对应的位为1，则发生相应异常时，就调用一个特定的异常处理程序执行</li>
+</ul>
+</li>
+</ul>
+<p>IEEE 754 标准规定的五种异常情况：</p>
+<ul>
+<li>无效运算（无意义）<ul>
+<li>运算时有一个数是非有限数，如：加/ 减∞、0 x ∞、∞/∞等</li>
+<li>结果无效，如：源操作数是NaN、0/0、x REM 0、∞REM y 等</li>
+</ul>
+</li>
+<li>除以0（即：无穷大）</li>
+<li>数太大（阶上溢）: 对于SP，指阶码E &gt;1111 1110 （指数大于127）</li>
+<li>数太小（阶下溢）: 对于SP，指阶码E &lt; 0000 0001（指数小于-126）</li>
+<li>结果不精确（舍入时引起），例如&#8531;、1/10等不能精确表示成浮点数</li>
+</ul>
+<p>上述情况硬件可以捕捉到，因此这些异常可设定让硬件处理，也可设定让软件处理。让硬件处理时，称为<strong>硬件陷阱</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="c1">// case 1</span>
+  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;division by zero: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">);</span>
+
+  <span class="c1">// 整数除0会发生异常</span>
+
+  <span class="c1">// case 2</span>
+  <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">-1.0</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;division by zero: %f %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">z</span> <span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="n">z</span><span class="p">);</span>
+
+  <span class="c1">// 结果为 1.#INFOO -1.#INFOO</span>
+  <span class="c1">// 浮点数除0不会出现异常</span>
+  <span class="c1">// 因为在浮点运算中，一个有限数除以0，结果为正无穷大(负无穷大)</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></div>
+</td></tr></table>
+<h4 id="_8">浮点数加/减运算<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>基本要点：</p>
+<p>(假定：<span><span class="MathJax_Preview">Xm</span><script type="math/tex">Xm</script></span>、<span><span class="MathJax_Preview">Ym</span><script type="math/tex">Ym</script></span>分别是<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>和<span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span>的尾数，<span><span class="MathJax_Preview">Xe</span><script type="math/tex">Xe</script></span>和<span><span class="MathJax_Preview">Ye</span><script type="math/tex">Ye</script></span>分别是<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>和<span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span>的阶码)</p>
+<ol>
+<li>求阶差：<span><span class="MathJax_Preview">\Delta e = Xe-Ye</span><script type="math/tex">\Delta e = Xe-Ye</script></span> (若<span><span class="MathJax_Preview">Ye &gt; Xe</span><script type="math/tex">Ye > Xe</script></span>，则结果的阶码为<span><span class="MathJax_Preview">Ye</span><script type="math/tex">Ye</script></span>)</li>
+<li>对阶：将<span><span class="MathJax_Preview">Xm</span><script type="math/tex">Xm</script></span>右移<span><span class="MathJax_Preview">\Delta e</span><script type="math/tex">\Delta e</script></span>位，尾数变为<span><span class="MathJax_Preview">Xm*2^{Xe-Ye}</span><script type="math/tex">Xm*2^{Xe-Ye}</script></span>(保留右移部分<strong>附加位</strong>)<ul>
+<li>目的是使两数<strong>阶码相等</strong></li>
+<li>小阶向大阶看齐，阶小的那个数的尾数右移，右移位数等于两个阶码差的绝对值</li>
+<li>IEEE 754尾数右移时，要将隐含的“1”移到小数部分，高位补0，移出的低位保留到特定的<code>“附加位”</code>上</li>
+</ul>
+</li>
+<li>尾数相减：<span><span class="MathJax_Preview">Xm*2^{Xe-Ye} \pm Ym</span><script type="math/tex">Xm*2^{Xe-Ye} \pm Ym</script></span></li>
+<li>
+<p>规格化</p>
+<ul>
+<li>当尾数高位位0，需<strong>左规</strong>：尾数左移一次，阶码减1，直到MSB为1 :s 每次阶码减1后要判断阶码是否下溢(比最小可表示的阶码还要小)</li>
+<li>当尾数最高位有进位，需<strong>右规</strong>：尾数右移一次，阶码加1，直到MSB为1 :s 每次阶码加1后要判断阶码是否上溢(比最大可表示的阶码还要大)<ul>
+<li>IEEE 754 加减运算右规时最多只需一次，因为即使是两个最大的尾数相加(一开始的规范形式即为1.xxx)，得到的和最多为11.xxx，即尾数的整数部分最多有两位，即不会达到4。结果保留一个隐含的“1”后，最多只有一位被右移到小数部分</li>
+</ul>
+</li>
+<li>阶码溢出异常处理：阶码上溢，则结果溢出；阶码下溢，则结果为0</li>
+</ul>
+</li>
+<li>
+<p>如果尾数比规定位数长(有附加位)，则需考虑舍入(有多种舍入方式)</p>
+</li>
+<li>若<strong>运算结果尾数</strong>是0，说明结果也应该为0，则需要将阶码也置为0</li>
+</ol>
+<p><img alt="问题" src="../img-PartOne/Q12.png" /></p>
+<h4 id="_9">浮点乘法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><span><span class="MathJax_Preview">(-1)^{s1}*M1*2^{E1} × (-1)^{s2}*M2*2^{E2}</span><script type="math/tex">(-1)^{s1}*M1*2^{E1} × (-1)^{s2}*M2*2^{E2}</script></span>，精确结果<span><span class="MathJax_Preview">(-1)^s*M*2^E</span><script type="math/tex">(-1)^s*M*2^E</script></span>如下：
+- 符号s：依据s1和s2
+- 尾数M：<span><span class="MathJax_Preview">M1×M2</span><script type="math/tex">M1×M2</script></span>
+- 阶码E：<span><span class="MathJax_Preview">E1+E2</span><script type="math/tex">E1+E2</script></span></p>
+<p>修正</p>
+<ul>
+<li>如M ≥ 2，将M右移(1位)，E加1</li>
+<li>如 E 超出范围，则溢出</li>
+<li>将 M 舍入，以符合小数部分的精度要求 </li>
+</ul>
+<p>实现</p>
+<ul>
+<li>主要问题：实现尾数(Significand)的乘</li>
+</ul>
+<h4 id="_10">浮点数舍入<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><strong>附加位(Extra Bits)</strong></p>
+<ul>
+<li>IEEE754规定: 中间结果须在右边加2个附加位（guard &amp; round）<ul>
+<li>Guard (保护位)：在significand右边的位</li>
+<li>Round (舍入位)：在保护位右边的位</li>
+</ul>
+</li>
+<li>作用：用以保护对阶时<strong>右移的位</strong>或运算的<strong>中间结果</strong>，如果不在后面加附加位，则这些精度之外的数就会被无情舍去，可能会产生影响</li>
+<li>处理：①左规时被移到significand中; ②作为舍入的依据</li>
+</ul>
+<p><strong>Rounding Digits(舍入位)</strong></p>
+<ul>
+<li>IEEE有四种舍入方式</li>
+</ul>
+<p><img alt="IEEE-rounding-modes" src="../img-PartOne/IEEE-rounding-modes.png" /></p>
+<ul>
+<li>就近舍入<ul>
+<li>向偶数舍入的意思是：当恰好在两个可能的数值正中间时如10，舍入后使得<strong>最低有效位</strong>的数码为偶数<ul>
+<li>“偶数”：最低有效位值为0</li>
+<li>“中间值”：舍入位置右侧的位都是0，即形如：<span><span class="MathJax_Preview">×××100..._{2}</span><script type="math/tex">×××100..._{2}</script></span></li>
+</ul>
+</li>
+<li>Z1和Z2为10，且Z1和Z2前的一位数为0，则无需进位</li>
+<li>Z1和Z2为10，且Z1和Z2前的一位数为1，则需往前进一位</li>
+</ul>
+</li>
+<li>就近舍入的方式得到的平均误差最小</li>
+</ul>
+<h4 id="_11">浮点数比较<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="kt">float</span> <span class="n">a</span><span class="p">;</span> <span class="kt">double</span> <span class="n">b</span><span class="p">;</span> 
+  <span class="n">a</span> <span class="o">=</span> <span class="mf">123456.789e4</span><span class="p">;</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="mf">123456.789e4</span><span class="p">;</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f/n%f/n&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span> 
+
+  <span class="c1">// 运行结果如下：</span>
+  <span class="c1">// 1234567936.000000</span>
+  <span class="c1">// 1234567890.000000</span>
+  <span class="c1">// float可精确表示**7个**十进制有效位数????，</span>
+  <span class="c1">// 后面的数位是舍入后的结果，舍入后的值可能会更大，也可能会更小</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>单精度浮点数float型的表示范围多大? 最大的数据: <span><span class="MathJax_Preview">+1.11…1×2^{127}</span><script type="math/tex">+1.11…1×2^{127}</script></span>，约<span><span class="MathJax_Preview">+3.4×10^{38}</span><script type="math/tex">+3.4×10^{38}</script></span></li>
+<li>双精度浮点数double型约<span><span class="MathJax_Preview">+1.8×10^{308}</span><script type="math/tex">+1.8×10^{308}</script></span></li>
+<li>C语言中的浮点数类型：float / double，分别对应IEEE 754单精度浮点数格式和双精度浮点数格式</li>
+<li>从int转换为float时，不会发生溢出，但可能有数据被舍入</li>
+<li>从int或float转换为double时，因为double的有效位数更多，故能保留精确值</li>
+<li>从double转换为float和int时，可能发生溢出，此外，由于有效位数变少，故可能被舍入</li>
+<li>从float 或double转换为int时，因为int没有小数部分，所以数据可能会向0方向被截断</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>原类型</th>
+<th>结果类型</th>
+<th>可能发生溢出</th>
+<th>可能发生舍入</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>float</td>
+<td>×</td>
+<td>√</td>
+<td>float的表示范围比int的表示范围大？，所以不会发生溢出。因为int是由1位符号位和31位数据部分组成，而float最多只有24位(1位隐含和23位尾数)，所以31位转化为24位时会发生舍入</td>
+</tr>
+<tr>
+<td>int / float</td>
+<td>double</td>
+<td>×</td>
+<td>×</td>
+<td>double的有效位数53位更多，故能保留精确值</td>
+</tr>
+<tr>
+<td>double</td>
+<td>int / float</td>
+<td>√</td>
+<td>√</td>
+<td>double表示范围更大，转换为表示范围小的数据类型则会发生溢出。由于有效位数变少，故可能被舍入</td>
+</tr>
+<tr>
+<td>float / double</td>
+<td>int</td>
+<td>?</td>
+<td>?</td>
+<td>int没有小数部分，所以数据可能会向0方向被截断</td>
+</tr>
+</tbody>
+</table>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="c1">// Assume neither d nor f is NaN</span>
+<span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">d</span><span class="p">;</span>
+
+<span class="n">x</span> <span class="o">==</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="kt">float</span><span class="p">)</span> <span class="n">x</span> <span class="c1">// no 24位尾数</span>
+<span class="n">x</span> <span class="o">==</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="kt">double</span><span class="p">)</span> <span class="n">x</span> <span class="c1">// yes 53位尾数</span>
+<span class="n">f</span> <span class="o">==</span> <span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="kt">double</span><span class="p">)</span> <span class="n">f</span> 
+<span class="c1">// yes 增加精度</span>
+<span class="n">d</span> <span class="o">==</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">d</span> 
+<span class="c1">// no 损失精度</span>
+<span class="n">f</span> <span class="o">==</span> <span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">f</span><span class="p">)</span>
+<span class="c1">// yes 仅仅改变符号位</span>
+<span class="mi">2</span><span class="o">/</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">2</span><span class="o">/</span><span class="mf">3.0</span> 
+<span class="c1">// no</span>
+<span class="n">d</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="err">⇒</span> <span class="p">((</span><span class="n">d</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="c1">// yes</span>
+<span class="n">d</span> <span class="o">&gt;</span> <span class="n">f</span> <span class="err">⇒</span> <span class="o">-</span><span class="n">f</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="c1">// yes</span>
+<span class="n">d</span> <span class="o">*</span> <span class="n">d</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="c1">// yes</span>
+<span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="c1">// no</span>
+<span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="n">f</span><span class="p">)</span><span class="o">-</span><span class="n">d</span> <span class="o">==</span> <span class="n">f</span> <span class="c1">// no 当d很大，f很小的时候，f会被吃掉，因为对阶的时候f的精度会损失</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>
+<p>浮点数加法结合律不正确</p>
+<p>因为 <span><span class="MathJax_Preview"> x = – 1.5 × 10^{38}, y = 1.5 × 10^{38}, z = 1.0 </span><script type="math/tex"> x = – 1.5 × 10^{38}, y = 1.5 × 10^{38}, z = 1.0 </script></span></p>
+<p>则 <span><span class="MathJax_Preview"> (x+y)+z = (–1.5 × 10^{38} + 1.5 × 10^{38} )+1.0 = 1.0 </span><script type="math/tex"> (x+y)+z = (–1.5 × 10^{38} + 1.5 × 10^{38} )+1.0 = 1.0 </script></span></p>
+<p>不等于 <span><span class="MathJax_Preview"> x + (y + z) = –1.5 × 10^{38} + (1.5 × 10^{38}+1.0) = 0.0 </span><script type="math/tex"> x + (y + z) = –1.5 × 10^{38} + (1.5 × 10^{38}+1.0) = 0.0 </script></span></p>
+</li>
+<li>
+<p>浮点数和实数运算不同：结合性、分配性有冲突</p>
+</li>
+</ul>
+<p><img alt="问题" src="../img-PartOne/Q11.png" /></p>
+<ul>
+<li>不能遇到小数就用浮点数表示，有些情况下(如需要将一个整数变量乘以一个确定的小数常量)，可先用一个确定的定点整数常量与整数变量相乘，然后再通过移位运算来确定小数点<ul>
+<li>有没有什么例子，光看文字看不懂哇</li>
+<li>我的理解：浮点数的运算比较麻烦，相比之下整数相乘运算简单，所以在可以用定点整数运算的时候可以优先选择定点整数的运算，然后再考虑转为浮点数格式</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="ppt">内存、指针、字符串表示 【不在考纲内，在工大ppt内】<a class="headerlink" href="#ppt" title="Permanent link">&para;</a></h2>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../CSAPP-PartZero/" title="【考研向】计算机系统基本概念" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                【考研向】计算机系统基本概念
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../CSAPP-PartOne-2/" title="【考研向】程序结构和执行-程序的机器级表示" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                【考研向】程序结构和执行-程序的机器级表示
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/purplezi" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

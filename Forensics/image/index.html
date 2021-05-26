@@ -1,0 +1,1426 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>数字图像取证 - PurpleCypress</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#e91e63">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="pink" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="PurpleCypress" aria-label="PurpleCypress" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              PurpleCypress
+            </span>
+            <span class="md-header-nav__topic">
+              
+                数字图像取证
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../CSAPP/CSAPP-PartZero/" class="md-tabs__link">
+          CSAPP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Network/ComputerNetwork/" class="md-tabs__link">
+          Computer Network
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../English/speaking/" class="md-tabs__link">
+          English
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          Forensics
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Linux/Linux/" class="md-tabs__link">
+          Linux
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../YOLO/yolo%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          YOLO
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Socket/socket/" class="md-tabs__link">
+          Socket
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../DataStructure/chain/LinkList/" class="md-tabs__link">
+          DataStructure
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Skill/common_thougt/" class="md-tabs__link">
+          Skill
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="PurpleCypress" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    PurpleCypress
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      CSAPP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSAPP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartZero/" title="【考研向】计算机系统基本概念" class="md-nav__link">
+      【考研向】计算机系统基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartOne-1/" title="【考研向】程序结构和执行-信息的表示和处理" class="md-nav__link">
+      【考研向】程序结构和执行-信息的表示和处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartOne-2/" title="【考研向】程序结构和执行-程序的机器级表示" class="md-nav__link">
+      【考研向】程序结构和执行-程序的机器级表示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartTwo/" title="【考研向】在系统上运行程序" class="md-nav__link">
+      【考研向】在系统上运行程序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartThree/" title="【考研向】程序间的交互和通信" class="md-nav__link">
+      【考研向】程序间的交互和通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Computer Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Computer Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/ComputerNetwork/" title="工大计网" class="md-nav__link">
+      工大计网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      English
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        English
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/speaking/" title="Speaking" class="md-nav__link">
+      Speaking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/writing/" title="Writing" class="md-nav__link">
+      Writing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/listening/" title="Listening" class="md-nav__link">
+      Listening
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading/" title="Reading" class="md-nav__link">
+      Reading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw5-a/" title="Reading-Homework5-1" class="md-nav__link">
+      Reading-Homework5-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw5-b/" title="Reading-Homework5-2" class="md-nav__link">
+      Reading-Homework5-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw6/" title="Reading-Homework6" class="md-nav__link">
+      Reading-Homework6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw7/" title="Reading-Homework7" class="md-nav__link">
+      Reading-Homework7
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Forensics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Forensics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="数字图像取证" class="md-nav__link md-nav__link--active">
+      数字图像取证
+    </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/Linux/" title="嵌入式计算机系统实验自救手册" class="md-nav__link">
+      嵌入式计算机系统实验自救手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/Linux_Corresponence_Windows/" title="Linux与Windows文件交互" class="md-nav__link">
+      Linux与Windows文件交互
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      YOLO
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        YOLO
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo%E5%8E%9F%E7%90%86/" title="yolo原理" class="md-nav__link">
+      yolo原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo_spp_code_1/" title="yolo_spp_code_学习笔记1" class="md-nav__link">
+      yolo_spp_code_学习笔记1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo_spp_code_2/" title="yolo_spp_code_学习笔记2" class="md-nav__link">
+      yolo_spp_code_学习笔记2
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Socket
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Socket
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Socket/socket/" title="socket基础" class="md-nav__link">
+      socket基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      DataStructure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        DataStructure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      chain
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        chain
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/chain/LinkList/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/chain/STL/" title="STL" class="md-nav__link">
+      STL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/bipartite/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/GenerateTree/" title="生成树" class="md-nav__link">
+      生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/netstream/" title="网络流" class="md-nav__link">
+      网络流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/ShortestRoad/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/tarjan/" title="tarjan" class="md-nav__link">
+      tarjan
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
+    
+    <label class="md-nav__link" for="nav-9-3">
+      tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-3">
+        tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/binary_tree/" title="二叉树" class="md-nav__link">
+      二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/DiameterOfTree/" title="树的直径" class="md-nav__link">
+      树的直径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/modui/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/PointDivide/" title="点分治" class="md-nav__link">
+      点分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/segopration/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/treearray/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/treediff/" title="树上差分" class="md-nav__link">
+      树上差分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Skill
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Skill
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/common_thougt/" title="常用思维" class="md-nav__link">
+      常用思维
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/DramaticProgramme/" title="动态规划" class="md-nav__link">
+      动态规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/sort/" title="排序" class="md-nav__link">
+      排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/string/" title="字符串" class="md-nav__link">
+      字符串
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">题目<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>基于自监督学习的图像篡改取证</strong></li>
+<li>针对数字图像篡改<u>检测与定位</u>问题</li>
+<li>研究<u>设计和实现</u>一种基于自监督学习的取证<u>算法</u></li>
+<li>完成系统的<u>仿真评测</u>，包括<u>算法性能比较</u>实验</li>
+<li>思路</li>
+<li>研究背景<ul>
+<li>人工智能的背景</li>
+<li>自编码器</li>
+<li>支持向量机SVM</li>
+<li>噪声处理</li>
+<li>图像分割</li>
+<li>特征处理</li>
+<li>相似度检测</li>
+</ul>
+</li>
+<li>研究意义<ul>
+<li>模糊图像取证难，去除图像的噪声干扰：监控图像效果不佳的情况，很多细节模糊不易识别分辨，电子数据取证难以获得有价值的线索和证据，需要图像处理工具来对不易分辨的图像进行处理，从而获取最为清晰的影像资料，提高视频监控侦查工作的效率，最大限度还原图像画质，挖掘出图像中有用的信息</li>
+<li>以具体情形而定？在消除噪声的同时，还需要不要让图片变得过于平滑，即保留图像中的精细细节和结构</li>
+</ul>
+</li>
+<li>国内外现状</li>
+<li>【我的】研究目的</li>
+<li>研究思路<ul>
+<li>算法</li>
+<li>对象：grayscale &amp; color noisy images → real-world noisy images &amp; synthetic noise</li>
+<li>定性和定量</li>
+<li>评估指标：PSNR（Peak Signal-to-Noise Ratio峰值信噪比），MSE（均方误差）</li>
+<li>软硬件条件</li>
+<li>training datasets &amp; test datasets</li>
+</ul>
+</li>
+<li>参考文献</li>
+</ul>
+<h1 id="_2">基本概念<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<h2 id="_3">图像<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>对客观存在的物体某种属性的描述</li>
+<li>图像分类：图片、光图像、数学函数、非可见物理图等</li>
+</ul>
+<h2 id="_4">数字图像<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>一个被采样和量化后的二维函数f(x,y)</p>
+</li>
+<li>
+<p>每一个元素（像素）具有特定的位置和幅值，例如物理图想的某个点对应数字图像上的某个坐标，该坐标的数值就是这个像素点的颜色或者是灰度值</p>
+</li>
+</ul>
+<p><img alt="数字图像" src="img\physical-and-gray.png" /></p>
+<h2 id="_5">数字图像的获取<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">传感器采集数据<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>通过相机上的传感器阵列才图像进行采集，模拟人眼成像的过程：光线经过物体的反射到达人眼，产生视觉反应</p>
+<p><img alt="用传感器阵列成像、采集数据" src="img\collect.png" /></p>
+<ul>
+<li>场景元素反映来自照射源的能量</li>
+<li>成像系统首先收集入射的能力，聚焦在图像平面上</li>
+<li>传感器阵列产生输出，该输出与每个传感器接收的光的总量成正比</li>
+<li>后端电路扫描这些输出，转化为模拟信号</li>
+<li>由成像系统的其他部分数字化，最后输出数字图像</li>
+</ul>
+<h3 id="_7">图像采样和量化：<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>将模拟图像经过离散化之后得到数字表示的图像</p>
+<h4 id="_8">采样<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>在空间上隔一段距离对数据进行采集</li>
+<li>在特定区域取样本点</li>
+<li>把空域上或时域上连续的图像（模拟图像）转换成离散采样点（像素）集合（数字图像）的操作</li>
+<li>“坐标上的离散化”</li>
+</ul>
+<h4 id="_9">量化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li>对不同像素点的灰度进行离散化，用数字来表示，例如将灰度分为256个等级</li>
+<li>把像素的灰度（浓淡）变换成离散的整数值的操作</li>
+<li><strong>量化所达到的精度取决于<u>采样信号的噪声</u></strong></li>
+<li>“幅值上的离散化”</li>
+</ul>
+<h2 id="_10">像素<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_11">数字图像处理技术<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_12">灰度分辨率<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>指在灰度级别中可分辨的最小变化</p>
+<h2 id="_13">空间分辨率<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>图像中可分辨的最小细节，单位一般为： 米/像素</p>
+<h1 id="_14">噪声<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>噪声是当前众多图像篡改取证方法的<strong>基础</strong>，可深入理解分析</p>
+</blockquote>
+<p>感光度，又称为ISO值，是衡量底片对于光的灵敏程度，由敏感度测量学及测量数个数值来决定，最近已经被国际标准化组织标准化</p>
+<h2 id="_15">数码相机的噪声类型<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>参考资料：<a href="https://zhuanlan.zhihu.com/p/23868867">https://zhuanlan.zhihu.com/p/23868867</a></p>
+</blockquote>
+<p>【特点】：【噪声来源】+【表现】+【对画面的影响】</p>
+<ul>
+<li>非均匀响应噪声</li>
+<li>这种噪声是与亮度成正比</li>
+<li>在信噪比曲线上，曲线是一条水平线</li>
+<li>随机噪声</li>
+<li>这种噪声是与亮度的平方根成正比</li>
+<li>在信噪比曲线上是一条斜率为 10dB/dec 的直线</li>
+<li>固定噪声</li>
+<li>这类噪声是不随亮度变化</li>
+<li>在信噪比曲线上是一条斜率为 20dB/dec 的直线</li>
+</ul>
+<h2 id="image-denoising">去噪算法 Image Denoising<a class="headerlink" href="#image-denoising" title="Permanent link">&para;</a></h2>
+<p>可调研最新针对真实照片图像的图像去噪算法，是不是更有利于提前图像中的指纹信息</p>
+<h3 id="recent-trends-in-denoising">Recent trends in Denoising<a class="headerlink" href="#recent-trends-in-denoising" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Two notable denoising algorithms: NLM &amp; BM3D</li>
+<li>由于卷积神经网络CNN的普及，DnCNN &amp; IrCNN</li>
+</ul>
+<h3 id="_16">深度学习在图像去噪领域<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>盲降噪&amp;非盲降噪</p>
+<p>提高去噪速度</p>
+<p>不同类型的噪声：加性白噪声（高斯噪声）、盲噪声、真实噪声、混合噪声</p>
+<p>思路：特征提取 → → 残差学习</p>
+<h4 id="fundamental-frameworks">基础框架 fundamental frameworks<a class="headerlink" href="#fundamental-frameworks" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Machine learning methods for image denoising 用于图像去噪的机器学习</li>
+<li>Neural networks for image denoising 用于图像去噪的神经网络</li>
+<li>CNNs for image denoising </li>
+</ul>
+<h4 id="deep-learning-techniques">深度学习技术 deep learning techniques<a class="headerlink" href="#deep-learning-techniques" title="Permanent link">&para;</a></h4>
+<p>略</p>
+<p>评估：</p>
+<ul>
+<li>定量</li>
+<li>PSNR</li>
+<li>图像去噪的运行时间</li>
+<li>定性</li>
+<li>使用视觉图形显示恢复的干净图像</li>
+</ul>
+<p>设计损失函数</p>
+<p>挖掘边缘信息</p>
+<h1 id="forensics">取证 Forensics<a class="headerlink" href="#forensics" title="Permanent link">&para;</a></h1>
+<h2 id="forensic-similarity">Forensic Similarity<a class="headerlink" href="#forensic-similarity" title="Permanent link">&para;</a></h2>
+<p>从噪声残差中提取特征</p>
+<h3 id="_17">参考资料<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li>“Real Image Denoising with Feature Attention” </li>
+<li><a href="https://blog.csdn.net/liujiuxiaoshitou/article/details/106171150">https://blog.csdn.net/liujiuxiaoshitou/article/details/106171150</a> </li>
+<li><a href="https://blog.csdn.net/weixin_42096202/article/details/103234140">https://blog.csdn.net/weixin_42096202/article/details/103234140</a></li>
+<li>“Deep Learning on Image Denoising: An Overview”</li>
+<li>deep learning software</li>
+<li>challenges</li>
+<li><a href="https://zhuanlan.zhihu.com/p/107635056?utm_source=qq">https://zhuanlan.zhihu.com/p/107635056?utm_source=qq</a></li>
+<li>“Forensic Similarity for Digital Images”</li>
+<li>forensic similarity</li>
+<li>“Media Forensics and DeepFakes: an overview”</li>
+<li>“Noiseprint: a CNN-based camera model fingerprint”</li>
+<li>相机指纹</li>
+<li>“On Addressing the Impact of ISO Speed Upon PRNU and Forgery Detection”</li>
+</ul>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../English/reading-hw7/" title="Reading-Homework7" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Reading-Homework7
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../Linux/Linux/" title="嵌入式计算机系统实验自救手册" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                嵌入式计算机系统实验自救手册
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/purplezi" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2466 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>网络流 - PurpleCypress</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#e91e63">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="pink" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="PurpleCypress" aria-label="PurpleCypress" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              PurpleCypress
+            </span>
+            <span class="md-header-nav__topic">
+              
+                网络流
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../CSAPP/CSAPP-PartZero/" class="md-tabs__link">
+          CSAPP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Network/ComputerNetwork/" class="md-tabs__link">
+          Computer Network
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../English/speaking/" class="md-tabs__link">
+          English
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Forensics/image/" class="md-tabs__link">
+          Forensics
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Linux/Linux/" class="md-tabs__link">
+          Linux
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../YOLO/yolo%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          YOLO
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Socket/socket/" class="md-tabs__link">
+          Socket
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../chain/LinkList/" class="md-tabs__link">
+          DataStructure
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Skill/common_thougt/" class="md-tabs__link">
+          Skill
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="PurpleCypress" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    PurpleCypress
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      CSAPP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSAPP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartZero/" title="【考研向】计算机系统基本概念" class="md-nav__link">
+      【考研向】计算机系统基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartOne-1/" title="【考研向】程序结构和执行-信息的表示和处理" class="md-nav__link">
+      【考研向】程序结构和执行-信息的表示和处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartOne-2/" title="【考研向】程序结构和执行-程序的机器级表示" class="md-nav__link">
+      【考研向】程序结构和执行-程序的机器级表示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartTwo/" title="【考研向】在系统上运行程序" class="md-nav__link">
+      【考研向】在系统上运行程序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSAPP/CSAPP-PartThree/" title="【考研向】程序间的交互和通信" class="md-nav__link">
+      【考研向】程序间的交互和通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Computer Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Computer Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Network/ComputerNetwork/" title="工大计网" class="md-nav__link">
+      工大计网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      English
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        English
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/speaking/" title="Speaking" class="md-nav__link">
+      Speaking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/writing/" title="Writing" class="md-nav__link">
+      Writing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/listening/" title="Listening" class="md-nav__link">
+      Listening
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading/" title="Reading" class="md-nav__link">
+      Reading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw5-a/" title="Reading-Homework5-1" class="md-nav__link">
+      Reading-Homework5-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw5-b/" title="Reading-Homework5-2" class="md-nav__link">
+      Reading-Homework5-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw6/" title="Reading-Homework6" class="md-nav__link">
+      Reading-Homework6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../English/reading-hw7/" title="Reading-Homework7" class="md-nav__link">
+      Reading-Homework7
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Forensics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Forensics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Forensics/image/" title="数字图像取证" class="md-nav__link">
+      数字图像取证
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Linux/Linux/" title="嵌入式计算机系统实验自救手册" class="md-nav__link">
+      嵌入式计算机系统实验自救手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Linux/Linux_Corresponence_Windows/" title="Linux与Windows文件交互" class="md-nav__link">
+      Linux与Windows文件交互
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      YOLO
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        YOLO
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../YOLO/yolo%E5%8E%9F%E7%90%86/" title="yolo原理" class="md-nav__link">
+      yolo原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../YOLO/yolo_spp_code_1/" title="yolo_spp_code_学习笔记1" class="md-nav__link">
+      yolo_spp_code_学习笔记1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../YOLO/yolo_spp_code_2/" title="yolo_spp_code_学习笔记2" class="md-nav__link">
+      yolo_spp_code_学习笔记2
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Socket
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Socket
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Socket/socket/" title="socket基础" class="md-nav__link">
+      socket基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      DataStructure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        DataStructure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      chain
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        chain
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain/LinkList/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain/STL/" title="STL" class="md-nav__link">
+      STL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2" checked>
+    
+    <label class="md-nav__link" for="nav-9-2">
+      graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bipartite/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../GenerateTree/" title="生成树" class="md-nav__link">
+      生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        网络流
+      </label>
+    
+    <a href="./" title="网络流" class="md-nav__link md-nav__link--active">
+      网络流
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    网络流最大流
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    最小费用最大流1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    最小费用最大流2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最小割
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    最大权闭合子图
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ShortestRoad/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tarjan/" title="tarjan" class="md-nav__link">
+      tarjan
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
+    
+    <label class="md-nav__link" for="nav-9-3">
+      tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-3">
+        tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/binary_tree/" title="二叉树" class="md-nav__link">
+      二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/DiameterOfTree/" title="树的直径" class="md-nav__link">
+      树的直径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/modui/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/PointDivide/" title="点分治" class="md-nav__link">
+      点分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/segopration/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/treearray/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/treediff/" title="树上差分" class="md-nav__link">
+      树上差分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Skill
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Skill
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/common_thougt/" title="常用思维" class="md-nav__link">
+      常用思维
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/DramaticProgramme/" title="动态规划" class="md-nav__link">
+      动态规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/sort/" title="排序" class="md-nav__link">
+      排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Skill/string/" title="字符串" class="md-nav__link">
+      字符串
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    网络流最大流
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    最小费用最大流1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    最小费用最大流2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最小割
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    最大权闭合子图
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>网络流</h1>
+                
+                <h3 id="_1">网络流最大流<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;cstring&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;math.h&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#define MS(x) memset(x,0,sizeof(x));
+#define MS1(x) memset(x,-1,sizeof(x));
+using namespace std;
+const int maxN = 200;//点数
+const int maxM = 1e6;//边数必须得是给定边数的两倍 因为还有反向边
+
+const int inf = 0x3f3f3f3f;
+
+
+class Graph
+{
+    //先Graph G 生成一个类
+    //然后G.init(n) n是点的个数
+    //然后addedge加边
+    //记得设置源点汇点 set_st(start,end);
+    //最后直接跑Dinic() 返回的就是最大流
+private:
+    int s, t;//源点和汇点
+    int n;//点的个数
+    int cnt;//前向星
+    int Head[maxN];//每个点最后一条边的编号
+    int Next[maxM];//指向对应点的前一条边
+    int W[maxM];//每一条边的残量
+    int V[maxM];//每一条边指向的点
+    int Depth[maxN];//分层图的深度
+    int cur[maxN];//cur就是记录当前点u循环到了哪一条边
+public:
+    void init(int n)//源点 汇点 点的个数
+    {
+        cnt = -1;
+        memset(Head, -1, sizeof(Head));
+        memset(Next, -1, sizeof(Next));
+        this-&gt;n = n;
+    }
+    void set_st(int source, int terminal)//设置源点 汇点
+    {
+        s = source;
+        t = terminal;
+    }
+    void _Add(int u, int v, int w)//前向星
+    {
+        cnt++;
+        Next[cnt] = Head[u];
+        Head[u] = cnt;
+        V[cnt] = v;
+        W[cnt] = w;
+    }
+    void Add_Edge(int u, int v, int w)//前向星
+    {
+        _Add(u, v, w);
+        _Add(v, u, 0);
+    }
+    int dfs(int u, int flow)//u是当前节点,flow是当前流量
+    {
+        if (u == t)//达到汇点 直接返回
+            return flow;
+        for (int&amp; i = cur[u]; i != -1; i = Next[i])//注意这里的&amp;符号，这样i增加的同时也能改变cur[u]的值，达到记录当前弧的目的
+        {
+            if ((Depth[V[i]] == Depth[u] + 1) &amp;&amp; (W[i] != 0))//如果满足分层图条件并且参量不为0
+            {
+                int di = dfs(V[i], min(flow, W[i]));//向下增广
+                if (di &gt; 0)//增广成功
+                {
+                    W[i] -= di;//正向边减
+                    W[i ^ 1] += di;//反向边加
+                    return di;//返回流量
+                }
+            }
+        }
+        return 0;//增广失败 返回0
+    }
+    bool bfs()
+    {
+        queue&lt;int&gt; Q;
+        while (!Q.empty()) Q.pop();
+        MS(Depth);
+        Depth[s] = 1;//源点的深度为1
+        Q.push(s);
+        while (!Q.empty())
+        {
+            int u = Q.front();
+            Q.pop();
+            for (int i = Head[u]; i != -1; i = Next[i])
+                if ((Depth[V[i]] == 0) &amp;&amp; (W[i] &gt; 0))//深度等于0并且残量大于0
+                {
+                    Depth[V[i]] = Depth[u] + 1;//它就是下一层
+                    Q.push(V[i]);
+                }
+        }
+        if (!Depth[t]) return 0;//如果汇点的深度为0 也就是不存在增广路
+        return 1;//汇点深度不为0 存在增广路
+    }
+    int Dinic()
+    {
+        int Ans = 0;//纪录最大流量
+        while (bfs())//存在增广路
+        {
+            for (int i = 1; i &lt;= n; i++)//当前弧优化
+                cur[i] = Head[i];
+            while (int d = dfs(s, inf))//源点汇入inf的流量 当还能增广时 一直增加流量
+            {
+                Ans += d;
+            }
+        }
+        return Ans;//返回流量
+    }
+}G;
+</code></pre></div>
+</td></tr></table>
+<h3 id="1">最小费用最大流1<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>#pragma warning(disable:4996)
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int maxn = 1e4 + 10;
+const int maxm = 1e5 + 10;
+const int maxt = 2139062143;
+inline int min_(int x, int y) { return x &lt; y ? x : y; }
+int n, m, s, t, nflow, nfee, flow, fee;
+int a, b, c, d;
+int h[maxn], hs = 1;
+int e_q[maxm], e_z[maxm], e_n[maxm], e_w[maxm], e_f[maxm];
+void add(int q, int z, int k, int w, int f) { e_q[k] = q, e_z[k] = z, e_n[k] = h[q], e_w[k] = w, e_f[k] = f, h[q] = k; }
+int q[maxm], head, tail;
+int w[maxn], p[maxn];
+bool v[maxn];
+int ap(int k, int v) {
+    if (k == s) return v;
+    int ret = ap(e_q[p[k]], min_(v, e_w[p[k]]));
+    if (!e_f[p[k] ^ 1]) add(k, e_q[p[k]], p[k] ^ 1, 0, -e_f[p[k]]);
+    e_w[p[k]] -= ret, e_w[p[k] ^ 1] += ret;
+    return ret;
+}
+void Mcmf() {
+    while (1) {
+        memset(w, 0x7f, sizeof(w));
+        memset(v, 0, sizeof(v));
+        head = tail = w[s] = 0;
+        q[head++] = s, v[s] = 1;
+        while (head &gt; tail) {
+            a = q[tail++], v[a] = 0;
+            for (int i = h[a]; i; i = e_n[i])
+                if (0ll + e_f[i] + w[a] &lt; w[e_z[i]] &amp;&amp; e_w[i]) {
+                    p[e_z[i]] = i;
+                    w[e_z[i]] = e_f[i] + w[a];
+                    if (!v[e_z[i]]) q[head++] = e_z[i], v[e_z[i]] = 1;
+                }
+        }
+        if (w[t] == maxt) break;
+        nflow = ap(t, maxt);
+        flow += nflow;
+        fee += nflow * w[t];
+    }
+}
+</code></pre></div>
+</td></tr></table>
+<h3 id="2">最小费用最大流2<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>#include &lt;iostream&gt;
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define INF 0x3f3f3f3f
+const int maxn = 5000 + 7;
+/**********邻接表数组形式***********/
+struct Edge {/***表边**/
+    int from, to;/****起点终点***/
+    int next;/*****相同起点 的下一条边***/
+    int cap, flow;/*****该边 的 容量 和流量***/
+    int cost;/****花费**/
+}edge[maxn * 20];
+int head[maxn];/****表头***/
+int pre[maxn];
+int dist[maxn], n, m, tot, s, t;
+bool vis[maxn];
+
+/***加边函数********/
+void addEdge(int a, int b, int c, int cost) {//注意反向弧的负权值
+    edge[tot].from = a; edge[tot].to = b;/*****a到 b****/
+    edge[tot].next = head[a];/*****他的下一条边 是 之前最后一条 以 a为起点的边******/
+    edge[tot].cap = c; edge[tot].flow = 0;/*******容量 流量 流量初始化 为 0*******/
+    edge[tot].cost = cost; head[a] = tot++;/***他成为 目前 以a 为起点的最后一条边****/
+
+    /*****反向边的建立 反向边的容量 初始化为 0******/
+    edge[tot].from = b; edge[tot].to = a; edge[tot].next = head[b]; edge[tot].cap = 0; edge[tot].flow = 0; edge[tot].cost = -cost; head[b] = tot++;
+}
+bool SPFA() {//SPFA求增广路，dist[t]保存最小花费  ，
+    memset(dist, INF, sizeof(dist));
+    memset(vis, 0, sizeof(vis));
+    queue&lt;int&gt; que;
+    dist[s] = 0;
+    vis[s] = 1;
+    que.push(s);
+    while (!que.empty()) {
+        int u = que.front();
+        que.pop();
+        vis[u] = 0;
+        for (int i = head[u]; i != -1/**可以 用～i*/; i = edge[i].next) {
+            int v = edge[i].to;
+            if (edge[i].cap &gt; edge[i].flow &amp;&amp; dist[v] &gt; dist[u] + edge[i].cost) {
+                dist[v] = dist[u] + edge[i].cost;
+                pre[v] = i;
+                if (!vis[v]) {
+                    vis[v] = 1;
+                    que.push(v);
+                }
+            }
+        }
+    }
+    if (dist[t] != INF)return true;
+    return false;
+}
+
+int CostFlow(int &amp;flow) {//EK算法
+    int mincost = 0;
+    while (SPFA()) {//能找到增广路
+        int Min = INF;
+        for (int i = t; i != s; i = edge[pre[i]].from)
+        {//寻找最小流
+            Min = min(Min, edge[pre[i]].cap - edge[pre[i]].flow);
+        }
+        for (int i = t; i != s; i = edge[pre[i]].from) {//处理所有边
+            edge[pre[i]].flow += Min;
+            edge[pre[i] ^ 1].flow -= Min;
+        }
+        flow += Min;
+        mincost += (dist[t] * Min);//累和最小花费
+    }
+    return mincost;
+}
+int main()
+{
+
+    int T;
+    scanf(&quot;%d&quot;, &amp;T);
+    while (T--) {
+        tot = 0;
+        memset(head, -1, sizeof(head));
+        scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;s, &amp;t);
+        for (int i = 0; i &lt; m; i++) {
+            int a, b, c, cost;
+            scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b, &amp;c, &amp;cost);
+            addEdge(a, b, c, cost);
+        }
+        int MaxFlow = 0;
+        int MinCost = CostFlow(MaxFlow);
+        printf(&quot;%d %d\n&quot;, MaxFlow, MinCost);
+    }
+    return 0;
+}
+</code></pre></div>
+</td></tr></table>
+<h3 id="_2">最小割<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>给定一个网络G=(V,E),源点为S,汇点为T,若一个边集E'被删掉后，源点S和汇点T不再连通，则称该边集为网络的割。边的容量之和最小的割称为网络的最小割。
+* 最大流最小割定理：任何一个网络的最大流量等于最小割中边的容量之和</p>
+<p>eg.给定一张无向图，求最少去掉多少个点，可以使图不连通。点数N&lt;=50
+若无向图不连通，则图中必有两个点不连通，但这两个点是未知的。可以枚举这两个点S和T，然后在剩余的N-2个节点中最少去掉多少个，可以使S和T不连通（S和T不是直接相连的）
+构建点边转换网络：
+(1)把原来无向图的每个点x，拆成x和x'=x+N两个点
+(2)对<span><span class="MathJax_Preview">\forall x \neq S,x \neq T</span><script type="math/tex">\forall x \neq S,x \neq T</script></span>,连有向边（x,x')，容量为1
+(3)对于原无向图的每条边(x,y)，在网路中连有向边(x',y)，(y',x)，容量为<span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span>
+(4)以S'为网络的源点，T为网络的汇点，求最小割（最大流），即可知道最少需要获得的点数</p>
+<p>若求全局最小割，则需要枚举源汇点来跑网络流，时间复杂度较高，一般使用stoer-wagner算法
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>//poj2914
+
+/*
+
+translation:
+
+    给出一副无源汇的无向图，求其最小割。
+
+solution:
+
+    原本的想法是枚举源汇，然后DINIC最大流。然而这样必然超时。所以必须有一种办法能够快速求出
+
+    全局最小割，这种算法就是stoer-wagner算法。
+
+*/
+
+#include &lt;iostream&gt;
+
+#include &lt;cstdio&gt;
+
+#include &lt;cstring&gt;
+
+
+
+using namespace std;
+
+const int maxn = 500 + 5;
+
+const int INF = 0x3f3f3f3f;
+
+
+
+int wage[maxn], n, m;
+
+bool in_set[maxn], vis[maxn];
+
+int G[maxn][maxn];
+
+
+
+int find_min_cut(int&amp; S, int&amp; T)
+
+{
+
+    memset(wage, 0, sizeof(wage));
+
+    memset(vis, 0, sizeof(vis));
+
+
+
+    S = T = -1;
+
+    int min_cut, u = 0;
+
+    for(int i = 0; i &lt; n; i++) {
+
+        int mx = -INF;
+
+        for(int j = 0; j &lt; n; j++) {
+
+            if(!in_set[j] &amp;&amp; !vis[j] &amp;&amp; mx &lt; wage[j]) {
+
+                mx = wage[j];
+
+                u = j;
+
+            }
+
+        }
+
+        if(u == T)  return min_cut;
+
+        S = T;  T = u;
+
+        min_cut = mx;
+
+        vis[u] = true;
+
+        for(int v = 0; v &lt; n; v++) {
+
+            if(!in_set[v] &amp;&amp; !vis[v]) {
+
+                wage[v] += G[u][v];
+
+            }
+
+        }
+
+    }
+
+    return min_cut;
+
+}
+
+
+
+int stoer_wagner()
+
+{
+
+    int S, T;
+
+    int ans = INF, min_cut;
+
+    for(int i = 1; i &lt; n; i++) {
+
+        min_cut = find_min_cut(S, T);
+
+        ans = min(ans, min_cut);
+
+        if(ans == 0)    return ans;
+
+
+
+        in_set[T] = true;
+
+        for(int j = 0; j &lt; n; j++) {
+
+            if(!in_set[j] &amp;&amp; j != S) {
+
+                G[S][j] += G[T][j];
+
+                G[j][S] += G[j][T];     //缩点操作，将T节点的信息附加到S上面
+
+            }
+
+        }
+
+    }
+
+    return ans;
+
+}
+
+
+
+int main()
+
+{
+
+    //freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+
+    while(~scanf(&quot;%d%d&quot;, &amp;n, &amp;m)) {
+
+        memset(in_set, 0, sizeof(in_set));
+
+        memset(G, 0, sizeof(G));
+
+
+
+        int u, v, c;
+
+        for(int i = 0; i &lt; m; i++) {
+
+            scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;c);
+
+            G[u][v] += c;
+
+            G[v][u] += c;
+
+        }
+
+
+
+        printf(&quot;%d\n&quot;, stoer_wagner());
+
+    }
+
+    return 0;
+
+}
+</code></pre></div>
+</td></tr></table></p>
+<h3 id="_3">最大权闭合子图<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>定义：有一个有向图，每一个点都有一个权值(正负皆可),选择一个权值和最大的子图，<strong>使得每个点的后继都在子图里面</strong>，这个子图就叫最大权闭合子图
+解法：将其转化为最小割问题
+(1)从源点s向每个正权点连一条容量为权值的边，每个负权点向汇点t连一条容量为权值绝对值的边，有向图原来的边容量全部为无限
+(2)求它的最小割，割掉后，与源点s连通的点构成最大权闭合子图，权值为（正权值之和-最小割）
+由于原图的边都是无穷大，那么割边一定是与源点s或汇点t相连的。
+割掉s与i的边，表示不选择i点作为子图的点； 
+割掉i与t的边，表示选择i点为子图的点。
+如果s与i有边，表示i存在子图中； 
+如果i与t有边，表示i不存在于子图中。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+typedef struct Edge {
+       int u, v, w, next;
+}Edge;
+
+ const int inf = 0x7f7f7f7f;
+ const int maxn = 500;
+
+ int cnt, dhead[maxn];
+ int cur[maxn], dd[maxn];
+ Edge dedge[maxn*maxn];
+ int S, T, N;
+ int n, m;
+
+ void init() {
+     memset(dhead, -1, sizeof(dhead));
+     for(int i = 0; i &lt; maxn; i++) dedge[i].next = -1;
+     cnt = 0;
+ }
+
+ void adde(int u, int v, int w, int c1) {
+     dedge[cnt].u = u; dedge[cnt].v = v; dedge[cnt].w = w; 
+     dedge[cnt].next = dhead[u]; dhead[u] = cnt++;
+     dedge[cnt].u = v; dedge[cnt].v = u; dedge[cnt].w = c1; 
+     dedge[cnt].next = dhead[v]; dhead[v] = cnt++;
+ }
+
+ bool bfs(int s, int t, int n) {
+     queue&lt;int&gt; q;
+     for(int i = 0; i &lt; n; i++) dd[i] = inf;
+     dd[s] = 0;
+     q.push(s);
+     while(!q.empty()) {
+         int u = q.front(); q.pop();
+         for(int i = dhead[u]; ~i; i = dedge[i].next) {
+             if(dd[dedge[i].v] &gt; dd[u] + 1 &amp;&amp; dedge[i].w &gt; 0) {
+                 dd[dedge[i].v] = dd[u] + 1;
+                 if(dedge[i].v == t) return 1;
+                 q.push(dedge[i].v);
+             }
+         }
+     }
+     return 0;
+ }
+
+ int dinic(int s, int t, int n) {
+     int st[maxn], top;
+     int u;
+     int flow = 0;
+     while(bfs(s, t, n)) {
+         for(int i = 0; i &lt; n; i++) cur[i] = dhead[i];
+         u = s; top = 0;
+         while(cur[s] != -1)
+          {
+             if(u == t) {
+                 int tp = inf;
+                 for(int i = top - 1; i &gt;= 0; i--) {
+                     tp = min(tp, dedge[st[i]].w);
+                 }
+                 flow += tp;
+                 for(int i = top - 1; i &gt;= 0; i--) {
+                     dedge[st[i]].w -= tp;
+                     dedge[st[i] ^ 1].w += tp;
+                     if(dedge[st[i]].w == 0) top = i;
+                 }
+                 u = dedge[st[top]].u;
+             }
+             else if(cur[u] != -1 &amp;&amp; dedge[cur[u]].w &gt; 0 &amp;&amp; dd[u] + 1 == dd[dedge[cur[u]].v]) 
+             {
+                 st[top++] = cur[u];
+                u = dedge[cur[u]].v;
+             }
+             else {
+                    while(u != s &amp;&amp; cur[u] == -1) {
+                        u = dedge[st[--top]].u;
+                    }
+                    cur[u] = dedge[cur[u]].next;
+                  }
+           }
+       }
+    return flow;
+ }
+
+ int main() {
+    // freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+     int k, u, v, w;
+     while(~scanf(&quot;%d %d&quot;, &amp;n, &amp;m)) {
+         init(); S = 0; T = n + m + 1; N = T + 1;
+         int pos = 0;
+         for(int i = 1; i &lt;= m; i++) {
+             scanf(&quot;%d&quot;, &amp;w);
+             if(w != 0) adde(n+i, T, w, 0);
+             else adde(n+i, T, inf, 0);
+         }
+         for(int i = 1; i &lt;= n; i++) {
+             scanf(&quot;%d %d&quot;, &amp;w, &amp;k);
+             pos += w;
+             if(w != 0) adde(S, i, w, 0);
+            else adde(S, i, inf, 0);
+            for(int j = 0; j &lt; k; j++) {
+                scanf(&quot;%d&quot;, &amp;v);
+                adde(i, n+v, inf, 0);
+            }
+        }
+        printf(&quot;%d\n&quot;, pos - dinic(S,T,N));
+    }
+}
+</code></pre></div>
+</td></tr></table>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../GenerateTree/" title="生成树" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                生成树
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../ShortestRoad/" title="最短路" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                最短路
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/purplezi" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1.2",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

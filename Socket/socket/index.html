@@ -1,0 +1,3709 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>socket基础 - PurpleCypress</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#e91e63">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="pink" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#socket" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="PurpleCypress" aria-label="PurpleCypress" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              PurpleCypress
+            </span>
+            <span class="md-header-nav__topic">
+              
+                socket基础
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../CSAPP/CSAPP-PartZero/" class="md-tabs__link">
+          CSAPP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Network/ComputerNetwork/" class="md-tabs__link">
+          Computer Network
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../English/speaking/" class="md-tabs__link">
+          English
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Forensics/image/" class="md-tabs__link">
+          Forensics
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Linux/Linux/" class="md-tabs__link">
+          Linux
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../YOLO/yolo%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          YOLO
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          Socket
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../DataStructure/chain/LinkList/" class="md-tabs__link">
+          DataStructure
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Skill/common_thougt/" class="md-tabs__link">
+          Skill
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="PurpleCypress" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    PurpleCypress
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      CSAPP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSAPP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartZero/" title="【考研向】计算机系统基本概念" class="md-nav__link">
+      【考研向】计算机系统基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartOne-1/" title="【考研向】程序结构和执行-信息的表示和处理" class="md-nav__link">
+      【考研向】程序结构和执行-信息的表示和处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartOne-2/" title="【考研向】程序结构和执行-程序的机器级表示" class="md-nav__link">
+      【考研向】程序结构和执行-程序的机器级表示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartTwo/" title="【考研向】在系统上运行程序" class="md-nav__link">
+      【考研向】在系统上运行程序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSAPP/CSAPP-PartThree/" title="【考研向】程序间的交互和通信" class="md-nav__link">
+      【考研向】程序间的交互和通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Computer Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Computer Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/ComputerNetwork/" title="工大计网" class="md-nav__link">
+      工大计网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      English
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        English
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/speaking/" title="Speaking" class="md-nav__link">
+      Speaking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/writing/" title="Writing" class="md-nav__link">
+      Writing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/listening/" title="Listening" class="md-nav__link">
+      Listening
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading/" title="Reading" class="md-nav__link">
+      Reading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw5-a/" title="Reading-Homework5-1" class="md-nav__link">
+      Reading-Homework5-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw5-b/" title="Reading-Homework5-2" class="md-nav__link">
+      Reading-Homework5-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw6/" title="Reading-Homework6" class="md-nav__link">
+      Reading-Homework6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../English/reading-hw7/" title="Reading-Homework7" class="md-nav__link">
+      Reading-Homework7
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Forensics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Forensics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Forensics/image/" title="数字图像取证" class="md-nav__link">
+      数字图像取证
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/Linux/" title="嵌入式计算机系统实验自救手册" class="md-nav__link">
+      嵌入式计算机系统实验自救手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/Linux_Corresponence_Windows/" title="Linux与Windows文件交互" class="md-nav__link">
+      Linux与Windows文件交互
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      YOLO
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        YOLO
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo%E5%8E%9F%E7%90%86/" title="yolo原理" class="md-nav__link">
+      yolo原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo_spp_code_1/" title="yolo_spp_code_学习笔记1" class="md-nav__link">
+      yolo_spp_code_学习笔记1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../YOLO/yolo_spp_code_2/" title="yolo_spp_code_学习笔记2" class="md-nav__link">
+      yolo_spp_code_学习笔记2
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Socket
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Socket
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        socket基础
+      </label>
+    
+    <a href="./" title="socket基础" class="md-nav__link md-nav__link--active">
+      socket基础
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#socket" class="md-nav__link">
+    Socket编程
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-tcp" class="md-nav__link">
+    0 TCP 原理（三次握手与四次挥手）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-tcp" class="md-nav__link">
+    0.1 TCP 报文格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    0.2 三次握手建立连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    0.3 四次挥手关闭连接：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 工作流程
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 基本流程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 单进程多端口模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 多进程多端口模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 多线程单端口模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 多进程多线程多端口模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-messageheaderhpp" class="md-nav__link">
+    2 定义消息结构(MessageHeader.hpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 定义枚举消息：如登录、登录返回、登出、登出返回、新用户加入、错误等
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 定义消息头/报文头（可包含命令和数据长度）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 继承消息头定义各种消息体
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 客户端
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-class-easytcpclienthpp" class="md-nav__link">
+    3.1 class 定义(EasyTcpClient.hpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.1.1 成员变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-socket" class="md-nav__link">
+    3.1.2 初始化 socket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-connect" class="md-nav__link">
+    3.1.3 连接服务器 connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314" class="md-nav__link">
+    3.1.4 发送数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315" class="md-nav__link">
+    3.1.5 接收数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#316" class="md-nav__link">
+    3.1.6 响应数据(主要更改模块)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#317-select" class="md-nav__link">
+    3.1.7 探询网络消息(select 模型)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#318" class="md-nav__link">
+    3.1.8 判断是否工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#319-socket" class="md-nav__link">
+    3.1.9 关闭 socket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-clientcpp" class="md-nav__link">
+    3.2 主函数(Client.cpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321" class="md-nav__link">
+    3.2.1 线程函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-main" class="md-nav__link">
+    3.2.2 main 函数流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 服务端
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-class-easytcpserverhpp" class="md-nav__link">
+    4.1 class 定义(EasyTcpServer.hpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    4.1.1 成员变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-socket" class="md-nav__link">
+    4.1.2 建立 socket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-ip" class="md-nav__link">
+    4.1.3 绑定端口和 ip 地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-listen" class="md-nav__link">
+    4.1.4 端口监听 listen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415" class="md-nav__link">
+    4.1.5 发送数据
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4151" class="md-nav__link">
+    4.1.5.1 单发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4152" class="md-nav__link">
+    4.1.5.2 群发
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#416-accept" class="md-nav__link">
+    4.1.6 接受新客户端加入 accept
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#417" class="md-nav__link">
+    4.1.7 接收数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#418" class="md-nav__link">
+    4.1.8 响应数据(主要更改模块)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#419-select" class="md-nav__link">
+    4.1.9 探询网络消息(select 模型)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4110" class="md-nav__link">
+    4.1.10 判断是否工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4111-socket" class="md-nav__link">
+    4.1.11 关闭 socket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-servercpp" class="md-nav__link">
+    4.2 主函数(server.cpp)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 跨平台配置
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-windows" class="md-nav__link">
+    5.1 windows的配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-linux" class="md-nav__link">
+    5.1 Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-mac-osxcode" class="md-nav__link">
+    5.2 Mac OS(Xcode)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      DataStructure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        DataStructure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      chain
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        chain
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/chain/LinkList/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/chain/STL/" title="STL" class="md-nav__link">
+      STL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/bipartite/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/GenerateTree/" title="生成树" class="md-nav__link">
+      生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/netstream/" title="网络流" class="md-nav__link">
+      网络流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/ShortestRoad/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/graph/tarjan/" title="tarjan" class="md-nav__link">
+      tarjan
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
+    
+    <label class="md-nav__link" for="nav-9-3">
+      tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-3">
+        tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/binary_tree/" title="二叉树" class="md-nav__link">
+      二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/DiameterOfTree/" title="树的直径" class="md-nav__link">
+      树的直径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/modui/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/PointDivide/" title="点分治" class="md-nav__link">
+      点分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/segopration/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/treearray/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DataStructure/tree/treediff/" title="树上差分" class="md-nav__link">
+      树上差分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Skill
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Skill
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/common_thougt/" title="常用思维" class="md-nav__link">
+      常用思维
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/DramaticProgramme/" title="动态规划" class="md-nav__link">
+      动态规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/sort/" title="排序" class="md-nav__link">
+      排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Skill/string/" title="字符串" class="md-nav__link">
+      字符串
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#socket" class="md-nav__link">
+    Socket编程
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-tcp" class="md-nav__link">
+    0 TCP 原理（三次握手与四次挥手）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-tcp" class="md-nav__link">
+    0.1 TCP 报文格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    0.2 三次握手建立连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    0.3 四次挥手关闭连接：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 工作流程
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 基本流程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 单进程多端口模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 多进程多端口模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 多线程单端口模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 多进程多线程多端口模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-messageheaderhpp" class="md-nav__link">
+    2 定义消息结构(MessageHeader.hpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 定义枚举消息：如登录、登录返回、登出、登出返回、新用户加入、错误等
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 定义消息头/报文头（可包含命令和数据长度）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 继承消息头定义各种消息体
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 客户端
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-class-easytcpclienthpp" class="md-nav__link">
+    3.1 class 定义(EasyTcpClient.hpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.1.1 成员变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-socket" class="md-nav__link">
+    3.1.2 初始化 socket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-connect" class="md-nav__link">
+    3.1.3 连接服务器 connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314" class="md-nav__link">
+    3.1.4 发送数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315" class="md-nav__link">
+    3.1.5 接收数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#316" class="md-nav__link">
+    3.1.6 响应数据(主要更改模块)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#317-select" class="md-nav__link">
+    3.1.7 探询网络消息(select 模型)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#318" class="md-nav__link">
+    3.1.8 判断是否工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#319-socket" class="md-nav__link">
+    3.1.9 关闭 socket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-clientcpp" class="md-nav__link">
+    3.2 主函数(Client.cpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321" class="md-nav__link">
+    3.2.1 线程函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-main" class="md-nav__link">
+    3.2.2 main 函数流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 服务端
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-class-easytcpserverhpp" class="md-nav__link">
+    4.1 class 定义(EasyTcpServer.hpp)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    4.1.1 成员变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-socket" class="md-nav__link">
+    4.1.2 建立 socket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-ip" class="md-nav__link">
+    4.1.3 绑定端口和 ip 地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-listen" class="md-nav__link">
+    4.1.4 端口监听 listen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415" class="md-nav__link">
+    4.1.5 发送数据
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4151" class="md-nav__link">
+    4.1.5.1 单发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4152" class="md-nav__link">
+    4.1.5.2 群发
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#416-accept" class="md-nav__link">
+    4.1.6 接受新客户端加入 accept
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#417" class="md-nav__link">
+    4.1.7 接收数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#418" class="md-nav__link">
+    4.1.8 响应数据(主要更改模块)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#419-select" class="md-nav__link">
+    4.1.9 探询网络消息(select 模型)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4110" class="md-nav__link">
+    4.1.10 判断是否工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4111-socket" class="md-nav__link">
+    4.1.11 关闭 socket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-servercpp" class="md-nav__link">
+    4.2 主函数(server.cpp)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 跨平台配置
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-windows" class="md-nav__link">
+    5.1 windows的配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-linux" class="md-nav__link">
+    5.1 Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-mac-osxcode" class="md-nav__link">
+    5.2 Mac OS(Xcode)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>socket基础</h1>
+                
+                <h2 id="socket">Socket编程<a class="headerlink" href="#socket" title="Permanent link">&para;</a></h2>
+<h3 id="0-tcp">0 TCP 原理（三次握手与四次挥手）<a class="headerlink" href="#0-tcp" title="Permanent link">&para;</a></h3>
+<h4 id="01-tcp">0.1 TCP 报文格式<a class="headerlink" href="#01-tcp" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/TCP_Header.png.png" /></p>
+<h4 id="02">0.2 三次握手建立连接<a class="headerlink" href="#02" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/TCP_Three_ShaveHands.png" /></p>
+<ul>
+<li>第一次握手：客户端要向服务端发起连接请求，首先客户端随机生成一个起始序列号ISN(比如是100)，那客户端向服务端发送的报文段包含SYN标志位(也就是SYN=1)，序列号seq=100。</li>
+<li>第二次握手：服务端收到客户端发过来的报文后，发现SYN=1，知道这是一个连接请求，于是将客户端的起始序列号100存起来，并且随机生成一个服务端的起始序列号(比如是300)。然后给客户端回复一段报文，回复报文包含SYN和ACK标志(也就是SYN=1,ACK=1)、序列号seq=300、确认号ack=101(客户端发过来的序列号+1)。</li>
+<li>第三次握手：客户端收到服务端的回复后发现ACK=1并且ack=101,于是知道服务端已经收到了序列号为100的那段报文；同时发现SYN=1，知道了服务端同意了这次连接，于是就将服务端的序列号300给存下来。然后客户端再回复一段报文给服务端，报文包含ACK标志位(ACK=1)、ack=301(服务端序列号+1)、seq=101(第一次握手时发送报文是占据一个序列号的，所以这次seq就从101开始，需要注意的是不携带数据的ACK报文是不占据序列号的，所以后面第一次正式发送数据时seq还是101)。当服务端收到报文后发现ACK=1并且ack=301，就知道客户端收到序列号为300的报文了，就这样客户端和服务端通过TCP建立了连接。</li>
+</ul>
+<h4 id="03">0.3 四次挥手关闭连接：<a class="headerlink" href="#03" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/TCP_Four_Wavehands.png" /></p>
+<ul>
+<li>第一次挥手：当客户端的数据都传输完成后，客户端向服务端发出连接释放报文(当然数据没发完时也可以发送连接释放报文并停止发送数据)，释放连接报文包含FIN标志位(FIN=1)、序列号seq=1101(100+1+1000，其中的1是建立连接时占的一个序列号)。需要注意的是客户端发出FIN报文段后只是不能发数据了，但是还可以正常收数据；另外FIN报文段即使不携带数据也要占据一个序列号。</li>
+<li>第二次挥手：服务端收到客户端发的FIN报文后给客户端回复确认报文，确认报文包含ACK标志位(ACK=1)、确认号ack=1102(客户端FIN报文序列号1101+1)、序列号seq=2300(300+2000)。此时服务端处于关闭等待状态，而不是立马给客户端发FIN报文，这个状态还要持续一段时间，因为服务端可能还有数据没发完。</li>
+<li>第三次挥手：服务端将最后数据(比如50个字节)发送完毕后就向客户端发出连接释放报文，报文包含FIN和ACK标志位(FIN=1,ACK=1)、确认号和第二次挥手一样ack=1102、序列号seq=2350(2300+50)。</li>
+<li>第四次挥手：客户端收到服务端发的FIN报文后，向服务端发出确认报文，确认报文包含ACK标志位(ACK=1)、确认号ack=2351、序列号seq=1102。注意客户端发出确认报文后不是立马释放TCP连接，而是要经过2MSL(最长报文段寿命的2倍时长)后才释放TCP连接。而服务端一旦收到客户端发出的确认报文就会立马释放TCP连接，所以服务端结束TCP连接的时间要比客户端早一些。</li>
+</ul>
+<h3 id="1">1 工作流程<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<h4 id="11">1.1 基本流程<a class="headerlink" href="#11" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/socket_proceed.png" /></p>
+<p>持续阻塞：</p>
+<p><img alt="" src="../img/socket_continue_CS.png" /></p>
+<p>while 循环是阻塞式通信，不能处理其他业务</p>
+<p>解决方案为 </p>
+<blockquote>
+<ul>
+<li>加入 select</li>
+<li>加入 epoll</li>
+<li>加入多线程</li>
+</ul>
+</blockquote>
+<h4 id="12">1.2 单进程多端口模型<a class="headerlink" href="#12" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/socket_single_process.png" /></p>
+<h4 id="13">1.3 多进程多端口模型<a class="headerlink" href="#13" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/socket_multy_process.png" /></p>
+<h4 id="14">1.4 多线程单端口模型<a class="headerlink" href="#14" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/socket_multy_thread.png" /></p>
+<h4 id="15">1.5 多进程多线程多端口模型<a class="headerlink" href="#15" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/socket_multy_process_thread.png" /></p>
+<h3 id="2-messageheaderhpp">2 定义消息结构(MessageHeader.hpp)<a class="headerlink" href="#2-messageheaderhpp" title="Permanent link">&para;</a></h3>
+<h4 id="21">2.1 定义枚举消息：如登录、登录返回、登出、登出返回、新用户加入、错误等<a class="headerlink" href="#21" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">enum</span> <span class="nc">CMD</span>
+<span class="p">{</span>
+    <span class="n">CMD_LOGIN</span><span class="p">,</span>
+    <span class="n">CMD_LOGIN_RESULT</span><span class="p">,</span>
+    <span class="n">CMD_LOGOUT</span><span class="p">,</span>
+    <span class="n">CMD_LOGOUT_RESULT</span><span class="p">,</span>
+    <span class="n">CMD_NEW_USER_JOIN</span><span class="p">,</span>
+    <span class="n">CMD_ERROR</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="22">2.2 定义消息头/报文头（可包含命令和数据长度）<a class="headerlink" href="#22" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">struct</span> <span class="nc">DataHeader</span>
+<span class="p">{</span>
+    <span class="kt">short</span> <span class="n">dataLength</span><span class="p">;</span>  <span class="c1">// 数据长度</span>
+    <span class="kt">short</span> <span class="n">cmd</span><span class="p">;</span>  <span class="c1">// 命令</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="23">2.3 继承消息头定义各种消息体<a class="headerlink" href="#23" title="Permanent link">&para;</a></h4>
+<p>在构造函数种便初始化消息头的命令和长度
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">struct</span> <span class="nc">Login</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DataHeader</span>
+<span class="p">{</span>
+    <span class="n">Login</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">dataLength</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Login</span><span class="p">);</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">CMD_LOGIN</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">char</span> <span class="n">userName</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">password</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<span class="p">};</span>
+
+
+<span class="k">struct</span> <span class="nc">LoginResult</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DataHeader</span>
+<span class="p">{</span>
+    <span class="n">LoginResult</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">dataLength</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">LoginResult</span><span class="p">);</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">CMD_LOGIN_RESULT</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">LogOut</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DataHeader</span>
+<span class="p">{</span>
+    <span class="n">LogOut</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">dataLength</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">LogOut</span><span class="p">);</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">CMD_LOGOUT</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">char</span> <span class="n">userName</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">LogOutResult</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DataHeader</span>
+<span class="p">{</span>
+    <span class="n">LogOutResult</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">dataLength</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">LogOutResult</span><span class="p">);</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">CMD_LOGOUT_RESULT</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">NewUserJoin</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DataHeader</span>
+<span class="p">{</span>
+    <span class="n">NewUserJoin</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">dataLength</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">NewUserJoin</span><span class="p">);</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">CMD_NEW_USER_JOIN</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">nsock</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table></p>
+<h3 id="3">3 客户端<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#ifndef _EasyTcpClient_hpp_</span>
+<span class="cp">#define _EasyTcpClient_hpp_</span>
+
+<span class="cp">#define _WINSOCK_DEPRECATED_NO_WARNINGS</span>
+<span class="cp">#ifdef _WIN32</span>
+<span class="cp">#define WIN32_LEAN_AND_MEAN</span>
+<span class="cp">#include</span><span class="cpf">&lt;windows.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;WinSock2.h&gt;</span><span class="cp"></span>
+<span class="cp">#pragma comment(lib,&quot;ws2_32.lib&quot;)   </span><span class="c1">// 指定动态链接库</span>
+<span class="cp">#else</span>
+<span class="cp">#include</span><span class="cpf">&lt;unistd.h&gt;</span><span class="c1">  //  unix std</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define SOCKET int  </span><span class="c1">// Linux下没有包装SOCKET,需要从windows查看重新进行宏定义</span>
+<span class="cp">#define INVALID_SOCKET  (SOCKET)(~0)</span>
+<span class="cp">#define SOCKET_ERROR            (-1)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&quot;MessageHeader.hpp&quot;</span><span class="cp"></span>
+
+<span class="p">...</span>
+
+<span class="cp">#endif</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="31-class-easytcpclienthpp">3.1 class 定义(EasyTcpClient.hpp)<a class="headerlink" href="#31-class-easytcpclienthpp" title="Permanent link">&para;</a></h4>
+<h5 id="311">3.1.1 成员变量<a class="headerlink" href="#311" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">EasyTcpClient</span>
+<span class="p">{</span>
+    <span class="n">SOCKET</span> <span class="n">_sock</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">EasyTcpClient</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_sock</span> <span class="o">=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 虚析构函数</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">EasyTcpClient</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Close</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 以下皆为此类的成员函数</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>虚析构函数的作用：防止内存泄露</p>
+<blockquote>
+<p>如果父类的析构函数不加 virtual 关键字
+当父类的析构函数不声明成虚析构函数的时候，当子类继承父类，父类的指针指向子类时， delete 掉父类的指针，只调动父类的析构函数，而不调动子类的析构函数。
+如果父类的析构函数加 virtual 关键字
+当父类的析构函数声明成虚析构函数的时候，当子类继承父类，父类的指针指向子类时， delete 掉父类的指针，<mark>先调动子类的析构函数，再调动父类的析构函数。</mark></p>
+</blockquote>
+<h5 id="312-socket">3.1.2 初始化 socket<a class="headerlink" href="#312-socket" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">InitSocket</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// 启动 WinSock 2.x环境</span>
+<span class="cp">#ifdef _WIN32</span>
+    <span class="n">WORD</span> <span class="n">ver</span> <span class="o">=</span> <span class="n">MAKEWORD</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>  <span class="c1">// 版本号</span>
+    <span class="n">WSADATA</span> <span class="n">dat</span><span class="p">;</span>  <span class="c1">// 接收winsows socket实现细节的结构体</span>
+    <span class="n">WSAStartup</span><span class="p">(</span><span class="n">ver</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dat</span><span class="p">);</span>  <span class="c1">// 绑定socket库,初始化链接库</span>
+<span class="cp">#endif</span>
+    <span class="c1">// 建立一个socket</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;socket = %d&gt;关闭旧连接</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">_sock</span><span class="p">);</span>
+        <span class="n">Close</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">_sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="n">IPPROTO_TCP</span><span class="p">);</span>  <span class="c1">// 同服务端不同，这里不用指明TCP协议</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">INVALID_SOCKET</span> <span class="o">==</span> <span class="n">_sock</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;创建socket失败</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;创建socket成功</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="313-connect">3.1.3 连接服务器 connect<a class="headerlink" href="#313-connect" title="Permanent link">&para;</a></h5>
+<p>传入连接的 ip 地址和端口号</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">Connect</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ip</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">port</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">INVALID_SOCKET</span> <span class="o">==</span> <span class="n">_sock</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">InitSocket</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">sockaddr_in</span> <span class="n">_sin</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+    <span class="cp">#ifdef _WIN32</span>
+        <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">S_un</span><span class="p">.</span><span class="n">S_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>  <span class="c1">// 这里替换相应的ip地址</span>
+    <span class="cp">#else</span>
+        <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
+    <span class="cp">#endif</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="p">(</span><span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">_sin</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sockaddr_in</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">SOCKET_ERROR</span> <span class="o">==</span> <span class="n">ret</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;连接服务器失败</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;连接服务器成功</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="314">3.1.4 发送数据<a class="headerlink" href="#314" title="Permanent link">&para;</a></h5>
+<p>c++ 的多态性：</p>
+<blockquote>
+<p>「派生类的指针」可以赋给「基类指针」；
+通过基类指针调用基类和派生类中的同名「虚函数」时:
+* 若该指针指向一个基类的对象，那么被调用是 基类的虚函数；
+* 若该指针指向一个派生类的对象，那么被调用 的是派生类的虚函数。</p>
+<p>派生类的对象可以赋给基类「引用」
+通过基类引用调用基类和派生类中的同名「虚函数」时:
+* 若该引用引用的是一个基类的对象，那么被调 用是基类的虚函数；
+* 若该引用引用的是一个派生类的对象，那么被 调用的是派生类的虚函数。</p>
+</blockquote>
+<p>header 为基类指针,其他消息为其派生类</p>
+<p><mark>派生类指针可以赋予基类指针，如发送数据的 <code>int SendData(DataHeadr *header)</code></mark></p>
+<p><mark>基类指针赋予派生类指针要强制转换，如下面接收数据的 <code>Login* login = (Login*)header;</code></mark></p>
+<ul>
+<li>1，直接用基类指针引用基类对象</li>
+<li>2，直接用派生类指针引用派生类对象</li>
+<li>3，用基类指针引用一个派生类对象，由于派生类对象也是基类的对象，所以这种引用是安全的，
+但是只能引用基类成员。若试图通过基类指针引用那些只在派生类中才有的成员，编译器会报告语法错误。（解决该问题的答案是虚函数和多态性）</li>
+<li>4，用派生类指针引用基类的对象。这种引用方式会导致语法错误。派生类指针必须先强制转换为基类指针，这种方法是不安全的。</li>
+</ul>
+<p>传入参数为消息头指针，其中子指针也可以传入，强制转换为常字符指针即可</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">SendData</span><span class="p">(</span><span class="n">DataHeader</span> <span class="o">*</span><span class="n">header</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isRun</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">header</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">,</span> <span class="n">header</span><span class="o">-&gt;</span><span class="n">dataLength</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>   
+    <span class="k">return</span> <span class="n">SOCKET_ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="315">3.1.5 接收数据<a class="headerlink" href="#315" title="Permanent link">&para;</a></h5>
+<p>先接收消息头，再接收消息体，字符数组指针与消息头指针可转换，消息头指针可赋予子指针</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">Recv</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// 缓冲区</span>
+    <span class="kt">char</span> <span class="n">szRecv</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="kt">int</span> <span class="n">nlen</span> <span class="o">=</span> <span class="n">recv</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="n">szRecv</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">DataHeader</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">DataHeader</span><span class="o">*</span> <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="n">DataHeader</span><span class="o">*</span><span class="p">)</span><span class="n">szRecv</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nlen</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务器关闭</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">recv</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="n">szRecv</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">DataHeader</span><span class="p">),</span> <span class="n">header</span><span class="o">-&gt;</span><span class="n">dataLength</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">DataHeader</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">OnNetMsg</span><span class="p">(</span><span class="n">header</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="316">3.1.6 响应数据(主要更改模块)<a class="headerlink" href="#316" title="Permanent link">&para;</a></h5>
+<p>当命令不同只需更改此模块即可，定义成 vitual 即可使得其子类修改此模块</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">OnNetMsg</span><span class="p">(</span><span class="n">DataHeader</span><span class="o">*</span> <span class="n">header</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">header</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="nl">CMD_LOGIN_RESULT</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">LoginResult</span><span class="o">*</span> <span class="n">loginret</span> <span class="o">=</span> <span class="p">(</span><span class="n">LoginResult</span><span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;收到服务器命令：%d,数据长度：%d , 应答： %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">loginret</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">,</span> <span class="n">loginret</span><span class="o">-&gt;</span><span class="n">dataLength</span><span class="p">,</span> <span class="n">loginret</span><span class="o">-&gt;</span><span class="n">result</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="nl">CMD_LOGOUT_RESULT</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">LogOutResult</span><span class="o">*</span> <span class="n">logoutret</span> <span class="o">=</span> <span class="p">(</span><span class="n">LogOutResult</span><span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;收到服务器命令：%d,数据长度：%d , 应答： %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">logoutret</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">,</span> <span class="n">logoutret</span><span class="o">-&gt;</span><span class="n">dataLength</span><span class="p">,</span> <span class="n">logoutret</span><span class="o">-&gt;</span><span class="n">result</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="nl">CMD_NEW_USER_JOIN</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">NewUserJoin</span><span class="o">*</span> <span class="n">userjoin</span> <span class="o">=</span> <span class="p">(</span><span class="n">NewUserJoin</span><span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;收到服务器命令：%d,数据长度：%d , 应答： 客户端%d已加入</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">userjoin</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">,</span> <span class="n">userjoin</span><span class="o">-&gt;</span><span class="n">dataLength</span><span class="p">,</span> <span class="n">userjoin</span><span class="o">-&gt;</span><span class="n">nsock</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">DataHeader</span> <span class="n">header</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="n">CMD_ERROR</span> <span class="p">};</span>
+            <span class="n">send</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">header</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">header</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="317-select">3.1.7 探询网络消息(select 模型)<a class="headerlink" href="#317-select" title="Permanent link">&para;</a></h5>
+<p>在 select 模型下，当前的 socket 加入文件描述符集合<code>fdRead</code>中</p>
+<p>当 <code>time == NULL</code> ， 则为阻塞式等待，当 <code>fdRead</code> 有可读操作(即收到服务端消息)时才会返回函数</p>
+<p>当 <code>time</code> 如下设置时，则超时即返回，不会阻塞客户端处理其他业务</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">bool</span> <span class="nf">OnRun</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isRun</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">fd_set</span> <span class="n">fdRead</span><span class="p">;</span>
+        <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+        <span class="n">FD_SET</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+        <span class="n">timeval</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">};</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">_sock</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">-1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;socket = %d&gt;select失败</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">_sock</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">FD_CLR</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">Recv</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;socket = %d&gt;任务结束</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">_sock</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="c1">//printf(&quot;空闲时间处理其他业务\n&quot;);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="318">3.1.8 判断是否工作<a class="headerlink" href="#318" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">bool</span> <span class="nf">isRun</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="319-socket">3.1.9 关闭 socket<a class="headerlink" href="#319-socket" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">Close</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="cp">#ifdef _WIN32</span>
+        <span class="n">closesocket</span><span class="p">(</span><span class="n">_sock</span><span class="p">);</span>
+        <span class="n">WSACleanup</span><span class="p">();</span>
+    <span class="cp">#else</span>
+        <span class="n">close</span><span class="p">(</span><span class="n">_sock</span><span class="p">);</span>
+    <span class="cp">#endif</span>
+        <span class="n">_sock</span> <span class="o">=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="32-clientcpp">3.2 主函数(Client.cpp)<a class="headerlink" href="#32-clientcpp" title="Permanent link">&para;</a></h4>
+<p>为了保证用户可以手动输入命令，加入了一个输入发送线程，主线程则负责接受服务器数据</p>
+<h5 id="321">3.2.1 线程函数<a class="headerlink" href="#321" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&quot;EasyTcpClient.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>
+<span class="kt">void</span> <span class="nf">cmdThread</span><span class="p">(</span><span class="n">EasyTcpClient</span> <span class="o">*</span><span class="n">client</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">cmdBuf</span><span class="p">[</span><span class="mi">128</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">cmdBuf</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">cmdBuf</span><span class="p">,</span> <span class="s">&quot;Exit&quot;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">client</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">cmdBuf</span><span class="p">,</span><span class="s">&quot;login&quot;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">Login</span> <span class="n">login</span><span class="p">;</span>
+            <span class="n">strcpy</span><span class="p">(</span><span class="n">login</span><span class="p">.</span><span class="n">userName</span><span class="p">,</span> <span class="s">&quot;zizi&quot;</span><span class="p">);</span>
+            <span class="n">strcpy</span><span class="p">(</span><span class="n">login</span><span class="p">.</span><span class="n">password</span><span class="p">,</span> <span class="s">&quot;zizi19991203&quot;</span><span class="p">);</span>
+            <span class="n">client</span><span class="o">-&gt;</span><span class="n">SendData</span><span class="p">(</span><span class="o">&amp;</span><span class="n">login</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">cmdBuf</span><span class="p">,</span> <span class="s">&quot;logout&quot;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">LogOut</span> <span class="n">logout</span><span class="p">;</span>
+            <span class="n">strcpy</span><span class="p">(</span><span class="n">logout</span><span class="p">.</span><span class="n">userName</span><span class="p">,</span> <span class="s">&quot;zizi&quot;</span><span class="p">);</span>
+            <span class="n">client</span><span class="o">-&gt;</span><span class="n">SendData</span><span class="p">(</span><span class="o">&amp;</span><span class="n">logout</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;不支持该命令,请重新输入</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="322-main">3.2.2 main 函数流程<a class="headerlink" href="#322-main" title="Permanent link">&para;</a></h5>
+<p><code>t.detach</code> 是线程分离函数,使得子线程在后台运行
+<code>t.join</code> 是等待子线程运行结束才能继续主线程</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">EasyTcpClient</span> <span class="n">client</span><span class="p">;</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">InitSocket</span><span class="p">();</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">Connect</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">4567</span><span class="p">);</span>
+    <span class="kr">thread</span> <span class="n">t1</span><span class="p">(</span><span class="n">cmdThread</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">client</span><span class="p">);</span>
+    <span class="n">t1</span><span class="p">.</span><span class="n">detach</span><span class="p">();</span>
+    <span class="err">循环发送命令和接收服务器信息</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">isRun</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">OnRun</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+    <span class="c1">//getchar();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="4">4 服务端<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#ifndef _EasyTcpServer_hpp_</span>
+<span class="cp">#define _EasyTcpServer_hpp_</span>
+
+<span class="cp">#define _WINSOCK_DEPRECATED_NO_WARNINGS</span>
+<span class="cp">#ifdef _WIN32</span>
+<span class="cp">#define WIN32_LEAN_AND_MEAN</span>
+<span class="cp">#include</span><span class="cpf">&lt;windows.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;WinSock2.h&gt;</span><span class="cp"></span>
+<span class="cp">#pragma comment(lib,&quot;ws2_32.lib&quot;)   </span><span class="c1">// 指定动态链接库</span>
+<span class="cp">#else</span>
+<span class="cp">#include</span><span class="cpf">&lt;unistd.h&gt;</span><span class="c1">  //  unix std</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define SOCKET int  </span><span class="c1">// Linux下没有包装SOCKET,需要从windows查看重新进行宏定义</span>
+<span class="cp">#define INVALID_SOCKET  (SOCKET)(~0)</span>
+<span class="cp">#define SOCKET_ERROR            (-1)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&quot;MesaageHeader.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="cp">#endif</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="41-class-easytcpserverhpp">4.1 class 定义(EasyTcpServer.hpp)<a class="headerlink" href="#41-class-easytcpserverhpp" title="Permanent link">&para;</a></h4>
+<h5 id="411">4.1.1 成员变量<a class="headerlink" href="#411" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">EasyTcpServer</span>
+<span class="p">{</span>
+    <span class="n">SOCKET</span> <span class="n">_sock</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">SOCKET</span><span class="o">&gt;</span> <span class="n">g_clients</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">EasyTcpServer</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_sock</span> <span class="o">=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+        <span class="n">g_clients</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">EasyTcpServer</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Close</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 以下皆为此类的成员函数</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="412-socket">4.1.2 建立 socket<a class="headerlink" href="#412-socket" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">SOCKET</span> <span class="nf">InitSocket</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// 启动 WinSock 2.x环境</span>
+<span class="cp">#ifdef _WIN32</span>
+    <span class="n">WORD</span> <span class="n">ver</span> <span class="o">=</span> <span class="n">MAKEWORD</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>  <span class="c1">// 版本号</span>
+    <span class="n">WSADATA</span> <span class="n">dat</span><span class="p">;</span>  <span class="c1">// 接收winsows socket实现细节的结构体</span>
+    <span class="n">WSAStartup</span><span class="p">(</span><span class="n">ver</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dat</span><span class="p">);</span>  <span class="c1">// 绑定socket库,初始化链接库</span>
+<span class="cp">#endif</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;socket = %d&gt;关闭旧连接</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">_sock</span><span class="p">);</span>
+        <span class="n">Close</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">_sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="n">IPPROTO_TCP</span><span class="p">);</span>  <span class="c1">// 同服务端不同，这里不用指明TCP协议</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">INVALID_SOCKET</span> <span class="o">==</span> <span class="n">_sock</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务器创建socket失败</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务器创建socket成功</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+        <span class="k">return</span> <span class="n">_sock</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="413-ip">4.1.3 绑定端口和 ip 地址<a class="headerlink" href="#413-ip" title="Permanent link">&para;</a></h5>
+<p>IP 地址可手动输入也可自动选择任意</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">Bind</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ip</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">port</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">sockaddr_in</span> <span class="n">_sin</span> <span class="o">=</span> <span class="p">{};</span>  <span class="c1">// 不直接用sockaddr类型是因为sockaddr_in类型更适合填写</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>  <span class="c1">// host to net unsigned short主机类型和网络类型的short类型不同</span>
+    <span class="c1">//_sin.sin_addr.S_un.S_addr = INADDR_ANY;  // inet_addr(&quot;127.0.0.1&quot;),任意ip地址</span>
+<span class="cp">#ifdef _WIN32</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">S_un</span><span class="p">.</span><span class="n">S_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>  <span class="c1">// 这里替换相应的ip地址</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">S_un</span><span class="p">.</span><span class="n">S_addr</span> <span class="o">=</span> <span class="n">INADDR_ANY</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">#else</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">INADDR_ANY</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">#endif</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="p">(</span><span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">_sin</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">_sin</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">SOCKET_ERROR</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务器绑定端口&lt;%d&gt;失败</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">port</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务器绑定端口&lt;%d&gt;成功</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">port</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="414-listen">4.1.4 端口监听 listen<a class="headerlink" href="#414-listen" title="Permanent link">&para;</a></h5>
+<p><img alt="" src="../img/TCP_Status.png" /></p>
+<blockquote>
+<p>对于<code>listen(int fd,int backlog)</code>函数，内核会为一个监听套接字维护两个队列
+当有 TCP 请求到来时,即 3 次握手中的 syn 分节发送来时,会在<code>未完成队列</code>中增加一项
+3 次握手完成时,<code>未完成队列</code>中的项就移动到<code>已完成队列</code>里,accept() 函数会从<code>已连接队列</code>里取走已完成连接.
+backlog 参数就是控制<code>已连接队列</code>里等待 accept() 取走的连接的最大数目
+注意一点，backlog 与这个已排队连接的最大数目未必是完全相等的,不同的系统的实现可能不同，比如 backlog = 1，系统允许的实际一排队数目可能为 2</p>
+</blockquote>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">Listen</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">listen</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">SOCKET_ERROR</span> <span class="o">==</span> <span class="n">ret</span><span class="p">)</span>  <span class="c1">// 最多需要等待多少人进行连接</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;socket = %d&gt;服务器监听失败</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">_sock</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;socket = %d&gt;服务器监听成功</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">_sock</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="415">4.1.5 发送数据<a class="headerlink" href="#415" title="Permanent link">&para;</a></h5>
+<h6 id="4151">4.1.5.1 单发<a class="headerlink" href="#4151" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">SendData</span><span class="p">(</span><span class="n">DataHeader</span> <span class="o">*</span><span class="n">header</span><span class="p">,</span><span class="n">SOCKET</span> <span class="n">cSock</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isRun</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">header</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span><span class="n">cSock</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">,</span> <span class="n">header</span><span class="o">-&gt;</span><span class="n">dataLength</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">SOCKET_ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h6 id="4152">4.1.5.2 群发<a class="headerlink" href="#4152" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">SendDataToAll</span><span class="p">(</span><span class="n">DataHeader</span><span class="o">*</span> <span class="n">header</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isRun</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">header</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">--</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">SendData</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="416-accept">4.1.6 接受新客户端加入 accept<a class="headerlink" href="#416-accept" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">SOCKET</span> <span class="nf">Accept</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">sockaddr_in</span> <span class="n">clientAddr</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="kt">int</span> <span class="n">nAddrlen</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">clientAddr</span><span class="p">);</span>
+    <span class="n">SOCKET</span> <span class="n">cSock</span> <span class="o">=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+    <span class="n">cSock</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="p">(</span><span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">clientAddr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">nAddrlen</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">INVALID_SOCKET</span> <span class="o">==</span> <span class="n">cSock</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务器&lt;socket = %d&gt;接受到无效客户端...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">_sock</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务器&lt;socket = %d&gt;收到新客户端:&quot;</span><span class="p">,</span><span class="n">_sock</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;客户端IP = %s,socket = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">inet_ntoa</span><span class="p">(</span><span class="n">clientAddr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">cSock</span><span class="p">);</span>
+        <span class="cm">/*for (int n = g_clients.size() - 1; n &gt;= 0; n--)</span>
+<span class="cm">        {</span>
+<span class="cm">            NewUserJoin userjoin;</span>
+<span class="cm">            userjoin.nsock = (int)cSock;</span>
+<span class="cm">            SendData(&amp;userjoin, g_clients[n]);</span>
+<span class="cm">        }*/</span>
+        <span class="n">NewUserJoin</span> <span class="n">userjoin</span><span class="p">;</span>
+        <span class="n">userjoin</span><span class="p">.</span><span class="n">nsock</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">cSock</span><span class="p">;</span>
+        <span class="n">SendDataToAll</span><span class="p">(</span><span class="o">&amp;</span><span class="n">userjoin</span><span class="p">);</span>
+        <span class="n">g_clients</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cSock</span><span class="p">);</span>
+    <span class="p">}</span>
+        <span class="k">return</span> <span class="n">cSock</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="417">4.1.7 接收数据<a class="headerlink" href="#417" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">Recv</span><span class="p">(</span><span class="n">SOCKET</span> <span class="n">cSock</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 缓冲区</span>
+    <span class="kt">char</span> <span class="n">szRecv</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="kt">int</span> <span class="n">nlen</span> <span class="o">=</span> <span class="n">recv</span><span class="p">(</span><span class="n">cSock</span><span class="p">,</span> <span class="n">szRecv</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">DataHeader</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">DataHeader</span><span class="o">*</span> <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="n">DataHeader</span><span class="o">*</span><span class="p">)</span><span class="n">szRecv</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nlen</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;客户端%d退出</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">cSock</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">recv</span><span class="p">(</span><span class="n">cSock</span><span class="p">,</span> <span class="n">szRecv</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">DataHeader</span><span class="p">),</span> <span class="n">header</span><span class="o">-&gt;</span><span class="n">dataLength</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">DataHeader</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">OnNetMsg</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">cSock</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="418">4.1.8 响应数据(主要更改模块)<a class="headerlink" href="#418" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">OnNetMsg</span><span class="p">(</span><span class="n">DataHeader</span> <span class="o">*</span><span class="n">header</span><span class="p">,</span><span class="n">SOCKET</span> <span class="n">cSock</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">header</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="nl">CMD_LOGIN</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">Login</span><span class="o">*</span> <span class="n">login</span> <span class="o">=</span> <span class="p">(</span><span class="n">Login</span><span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;收到客户端%d命令：%d,数据长度：%d , username = %s userpsw = %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">cSock</span><span class="p">,</span> <span class="n">login</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">,</span> <span class="n">login</span><span class="o">-&gt;</span><span class="n">dataLength</span><span class="p">,</span> <span class="n">login</span><span class="o">-&gt;</span><span class="n">userName</span><span class="p">,</span> <span class="n">login</span><span class="o">-&gt;</span><span class="n">password</span><span class="p">);</span>
+
+            <span class="c1">// 数据库查看密码是否正确</span>
+            <span class="n">LoginResult</span> <span class="n">ret</span><span class="p">;</span>
+            <span class="n">SendData</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ret</span><span class="p">,</span> <span class="n">cSock</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="nl">CMD_LOGOUT</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">LogOut</span><span class="o">*</span> <span class="n">logout</span> <span class="o">=</span> <span class="p">(</span><span class="n">LogOut</span><span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;收到客户端%d命令：%d,数据长度：%d , username = %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">cSock</span><span class="p">,</span><span class="n">logout</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">,</span> <span class="n">logout</span><span class="o">-&gt;</span><span class="n">dataLength</span><span class="p">,</span> <span class="n">logout</span><span class="o">-&gt;</span><span class="n">userName</span><span class="p">);</span>
+
+            <span class="c1">// 数据库查看密码是否正确</span>
+            <span class="n">LogOutResult</span> <span class="n">ret</span><span class="p">;</span>
+            <span class="n">SendData</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ret</span><span class="p">,</span> <span class="n">cSock</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">DataHeader</span> <span class="n">header</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="n">CMD_ERROR</span> <span class="p">};</span>
+            <span class="n">SendData</span><span class="p">(</span><span class="o">&amp;</span><span class="n">header</span><span class="p">,</span> <span class="n">cSock</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="419-select">4.1.9 探询网络消息(select 模型)<a class="headerlink" href="#419-select" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">bool</span> <span class="nf">OnRun</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isRun</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="c1">// 伯克利套接字 BSD socket描述符</span>
+        <span class="n">fd_set</span> <span class="n">fdRead</span><span class="p">;</span>  <span class="c1">// 描述符集合</span>
+        <span class="n">fd_set</span> <span class="n">fdWrite</span><span class="p">;</span>
+        <span class="n">fd_set</span> <span class="n">fdExp</span><span class="p">;</span>
+
+        <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+        <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fdWrite</span><span class="p">);</span>
+        <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fdExp</span><span class="p">);</span>
+
+        <span class="n">FD_SET</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+        <span class="n">FD_SET</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdWrite</span><span class="p">);</span>
+        <span class="n">FD_SET</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdExp</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">--</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">FD_SET</span><span class="p">(</span><span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">timeval</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">};</span>
+        <span class="c1">// nfds是一个整数值，指一个fd_set集合所有描述符(socket)的范围而非数量（所有描述符最大值+1）</span>
+        <span class="c1">// 当 time == NULL时，则select会阻塞查询直到有数据可以操作,否则超时立即返回</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">_sock</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdWrite</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdExp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;服务端&lt;socket = %d&gt;select任务失败</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">_sock</span><span class="p">);</span>
+            <span class="n">Close</span><span class="p">();</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">FD_CLR</span><span class="p">(</span><span class="n">_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+            <span class="n">Accept</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">fdRead</span><span class="p">.</span><span class="n">fd_count</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">Recv</span><span class="p">(</span><span class="n">fdRead</span><span class="p">.</span><span class="n">fd_array</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+            <span class="p">{</span>
+                <span class="k">auto</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">g_clients</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">fdRead</span><span class="p">.</span><span class="n">fd_array</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>  <span class="c1">// std::vector&lt;SOCKET&gt;::iterator</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="n">g_clients</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">iter</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="4110">4.1.10 判断是否工作<a class="headerlink" href="#4110" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">bool</span> <span class="nf">isRun</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h5 id="4111-socket">4.1.11 关闭 socket<a class="headerlink" href="#4111-socket" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">Close</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">)</span>
+    <span class="p">{</span>
+<span class="cp">#ifdef _WIN32</span>
+        <span class="n">closesocket</span><span class="p">(</span><span class="n">_sock</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">--</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">closesocket</span><span class="p">(</span><span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="n">WSACleanup</span><span class="p">();</span>
+<span class="cp">#else</span>
+        <span class="n">close</span><span class="p">(</span><span class="n">_sock</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">--</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">close</span><span class="p">(</span><span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
+        <span class="p">}</span>
+<span class="cp">#endif</span>
+        <span class="n">_sock</span> <span class="o">=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="42-servercpp">4.2 主函数(server.cpp)<a class="headerlink" href="#42-servercpp" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&quot;EasyTcpServer.hpp&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">EasyTcpServer</span> <span class="n">server</span><span class="p">;</span>
+    <span class="n">server</span><span class="p">.</span><span class="n">InitSocket</span><span class="p">();</span>
+    <span class="n">server</span><span class="p">.</span><span class="n">Bind</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="mi">4567</span><span class="p">);</span>
+    <span class="n">server</span><span class="p">.</span><span class="n">Listen</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">isRun</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">server</span><span class="p">.</span><span class="n">OnRun</span><span class="p">();</span>
+        <span class="c1">//printf(&quot;空闲时间处理其他任务\n&quot;);</span>
+    <span class="p">}</span>
+    <span class="n">server</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>可以改进的地方：</p>
+<p>双缓冲:定义接受缓冲区、消息缓冲区（第二缓冲区）以解决网络拥塞造成的针对长连接多结构的粘包、少包问题</p>
+<p>多线程：thread(线程),mutex(锁),atomic(原语操作)</p>
+<p>手动上锁解锁不如自解锁：<code>lock_guard&lt;mutex&gt; lg(m)</code>
+通过构造函数上锁和析构函数解锁，比较安全</p>
+<p>生产者消费者模型</p>
+<p><img alt="" src="../img/server_produce_and_consume.png" /></p>
+<h3 id="5">5 跨平台配置<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<h4 id="51-windows">5.1 windows的配置<a class="headerlink" href="#51-windows" title="Permanent link">&para;</a></h4>
+<ul>
+<li>头文件包含需要防宏重定义</li>
+<li>在 windows 平台下需要增加绑定动态链接库、绑定 socket 库的额外代码：</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#define WIN32_LEAN_AND_MEAN</span>
+<span class="cp">#define _WINSOCK_DEPRECATED_NO_WARNINGS</span>
+<span class="cp">#include</span><span class="cpf">&lt;windows.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;WinSock2.h&gt;</span><span class="cp"></span>
+<span class="cp">#pragma comment(lib,&quot;ws2_32.lib&quot;)   </span><span class="c1">// 指定动态链接库</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="cp">#ifdef _WIN32</span>
+    <span class="n">WORD</span> <span class="n">ver</span> <span class="o">=</span> <span class="n">MAKEWORD</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>  <span class="c1">// 版本号</span>
+    <span class="n">WSADATA</span> <span class="n">dat</span><span class="p">;</span>  <span class="c1">// 接收winsows socket实现细节的结构体</span>
+    <span class="n">WSAStartup</span><span class="p">(</span><span class="n">ver</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dat</span><span class="p">);</span>  <span class="c1">// 绑定socket库,初始化链接库</span>
+<span class="cp">#endif</span>
+    <span class="c1">///</span>
+    <span class="err">在此处编写通用的</span><span class="n">socket编程代码</span>
+    <span class="c1">///</span>
+<span class="cp">#ifdef _WIN32   </span>
+    <span class="n">WSACleanup</span><span class="p">();</span>  <span class="c1">// 对应 startup</span>
+<span class="cp">#endif</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="51-linux">5.1 Linux<a class="headerlink" href="#51-linux" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>g++ client.cpp -std=c++11 -pthread -o client
+</code></pre></div>
+</td></tr></table>
+<p>跨平台使用主要用到预定义条件宏：</p>
+<p>头文件</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#ifdef _WIN32</span>
+    <span class="cp">#include</span><span class="cpf">&lt;window.h&gt;</span><span class="cp"></span>
+    <span class="cp">#include</span><span class="cpf">&lt;WinSock2.h&gt;</span><span class="cp"></span>
+    <span class="cp">#pragma comment(lib,&quot;ws2_32.lib&quot;)   </span><span class="c1">// 指定动态链接库</span>
+    <span class="cp">#define WIN32_LEAN_AND_MEAN</span>
+    <span class="cp">#define _WINSOCK_DEPRECATED_NO_WARNINGS</span>
+<span class="cp">#else</span>
+    <span class="cp">#include</span><span class="cpf">&lt;unistd.h&gt;</span><span class="c1">  //  unix std</span><span class="cp"></span>
+    <span class="cp">#include</span><span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp"></span>
+    <span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+    <span class="cp">#define SOCKET int  </span><span class="c1">// Linux下没有包装SOCKET,需要从windows查看重新进行宏定义</span>
+    <span class="cp">#define INVALID_SOCKET  (SOCKET)(~0)</span>
+    <span class="cp">#define SOCKET_ERROR            (-1)</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+</td></tr></table>
+<p>查看ip地址并更换</p>
+<p>Windows:<code>ipconfig</code>
+Linux/Mac:<code>ifconfig</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="c1">// 2.连接服务器connect</span>
+    <span class="n">sockaddr_in</span> <span class="n">_sin</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="mi">4567</span><span class="p">);</span>
+<span class="cp">#ifdef _WIN32</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">S_un</span><span class="p">.</span><span class="n">S_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">);</span>  <span class="c1">// 这里替换相应的ip地址</span>
+<span class="cp">#else</span>
+    <span class="n">_sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+</td></tr></table>
+<p>关闭套接字：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#ifdef _WIN32</span>
+    <span class="n">closesocket</span><span class="p">(</span><span class="n">_sock</span><span class="p">);</span>
+<span class="cp">#else</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">_sock</span><span class="p">);</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="52-mac-osxcode">5.2 Mac OS(Xcode)<a class="headerlink" href="#52-mac-osxcode" title="Permanent link">&para;</a></h4>
+<ul>
+<li>相应的 windows 模块同样处理</li>
+<li>所有函数必须有返回值（有一些 g++ 可以自动完成的步骤在 Mac 需要手动添加代码）</li>
+<li>对于报错的函数调用查看函数的定义，观察其在不同操作系统的数据类型，根据相应的需求进行数据强制转换或重写函数</li>
+</ul>
+<p>例如：</p>
+<p>在 Mac 中，<code>fd_set</code> 没有 <code>fd_count</code> ,则代码可做如下修改</p>
+<p>oringinal code:
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">fdRead</span><span class="p">.</span><span class="n">fd_count</span> <span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">proccesor</span><span class="p">(</span><span class="n">fdRead</span><span class="p">.</span><span class="n">fd_array</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+    <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">g_clients</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">fdRead</span><span class="p">.</span><span class="n">fd_array</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>  <span class="c1">// std::vector&lt;SOCKET&gt;::iterator</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">g_clients</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">iter</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>modified code:
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">g_clients</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">--</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="o">&amp;</span><span class="n">fdRead</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">processor</span><span class="p">(</span><span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="k">auto</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">g</span><span class="p">.</span><span class="n">clients</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">iter</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p><mark>注意</mark>：</p>
+<p>select 函数在不同操作系统的实现方式不同，主要针对于第一个参数的修改</p>
+<p>windows 下会自动修正，但 Linux 和 Mac 需要手动输入正确值:文件描述符最大值 + 1 , 所以统一用如下代码：</p>
+<p>client.cpp:
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">select</span><span class="p">(</span><span class="n">_sock</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdWrite</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdExp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>server.cpp:
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">SOCKET</span> <span class="n">maxSock</span> <span class="o">=</span> <span class="n">_sock</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">g_clients</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">--</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">FD_SET</span><span class="p">(</span><span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">fdRead</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">maxSock</span> <span class="o">&lt;</span> <span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="p">{</span>
+        <span class="n">maxSock</span> <span class="o">=</span> <span class="n">g_clients</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">select</span><span class="p">(</span><span class="n">maxSock</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fdRead</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdWrite</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fdExp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../YOLO/yolo_spp_code_2/" title="yolo_spp_code_学习笔记2" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                yolo_spp_code_学习笔记2
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../DataStructure/chain/LinkList/" title="链表" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                链表
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/purplezi" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
